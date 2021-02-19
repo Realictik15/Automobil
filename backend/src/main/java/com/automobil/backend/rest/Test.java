@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.Optional;
 
 @Controller
-public class test {
+public class Test {
     private final CountriesRepository countriesRepository;
     private final ClassesRepository classesRepository;
     private final MarksRepository marksRepository;
@@ -35,7 +35,7 @@ public class test {
     private final MessagesRepository messagesRepository;
 
     @Autowired
-    public test(CountriesRepository countriesRepository, ClassesRepository classesRepository, MarksRepository marksRepository, AdvertisRepository advertisRepository, EnginesRepository enginesRepository, GenerationsRepository generationsRepository, ClientsRepository clientsRepository, ReviewsRepository reviewsRepository, MessagesRepository messagesRepository) {
+    public Test(CountriesRepository countriesRepository, ClassesRepository classesRepository, MarksRepository marksRepository, AdvertisRepository advertisRepository, EnginesRepository enginesRepository, GenerationsRepository generationsRepository, ClientsRepository clientsRepository, ReviewsRepository reviewsRepository, MessagesRepository messagesRepository) {
         this.countriesRepository = countriesRepository;
         this.classesRepository = classesRepository;
         this.marksRepository = marksRepository;
@@ -47,41 +47,6 @@ public class test {
         this.messagesRepository = messagesRepository;
     }
 
-    @GetMapping("/a")
-    public String get() throws ParseException {
-//        Optional<Countries> countries = countriesRepository.findById((long) 1);
-//        Optional<Generations> generations = generationsRepository.findById((long) 1);
-       // Optional<Clients> clients = clientsRepository.findById((long) 1);
 
-        Clients c = new Clients();
-      //
-        c.setFirstName("dsfsfsf");
-        c.setLastName("fsf");
-        c.setEmale("dsfasgfas");
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse("2000-05-12");
-        c.setBornDay(date);
-        c.setLogin("dsfs");
-        c.setPass("DFDFD");
-        c.setTelephone((long) 1111111111);
-        c.setMessages(new ArrayList<Messages>(){{add(messagesRepository.findById((long)2).get());}});
-        clientsRepository.save(c);
-        c.getMessages().forEach(x-> System.out.println(x.getIdMess()));
-
-
-        System.out.println(messagesRepository.findById((long)2).get().getClients()+"id clint"+messagesRepository.findById((long)2).get().getReviews()+"id revi");
-
-//      //  r.setClients(clientsRepository.findById((long) 5).get());
-//        System.out.println(messagesRepository.findById((long) 1).get().getClients().getIdUser() +" "+messagesRepository.findById((long) 1).get().getReviews().getIdRevi());
-//        c.getReviews().forEach(x -> System.out.println(x.getIdRevi()));
-
-        return "/";
-    }
-
-    @GetMapping("/b")
-    public String getb() {
-        System.out.println(marksRepository.findAll());
-
-        return "/";
-    }
 
 }
