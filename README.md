@@ -3,4 +3,5 @@
 My training application.
 
 
-# Congigs
+# Creator
+Artem Solovyev 
