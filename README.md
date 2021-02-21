@@ -1,7 +1,8 @@
 # Automobil
 
-My training application.
+###About the project
 
 
-# Creator
-Artem Solovyev 
+
+## Creator
+Artem Solovyev artem-solovyev
