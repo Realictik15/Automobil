@@ -35,7 +35,7 @@ public class Marks {
     @SequenceGenerator(sequenceName = "SEQUENCE_OF_MARKS_ID", allocationSize = 1, name = "MARKS_SEQ")
     private Long idMark;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDCOUNRTY", nullable = false)
     private Countries countries;
 

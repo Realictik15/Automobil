@@ -36,7 +36,7 @@ public class Generations {
     @SequenceGenerator(sequenceName = "SEQUENCE_OF_GEN_ID", allocationSize = 1, name = "GEN_SEQ")
     private Long idGen;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDMODEL", nullable = false)
     private Models model;
 

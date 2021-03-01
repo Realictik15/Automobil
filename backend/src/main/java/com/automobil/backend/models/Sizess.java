@@ -6,15 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -30,8 +22,8 @@ public class Sizess {
     @SequenceGenerator(sequenceName = "SEQUENCE_OF_SIZESS_ID", allocationSize = 1, name = "SIZESS_SEQ")
     private Long idSiz;
 
-    @ManyToOne
-    @JoinColumn(name = "IDBODYGEN", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "IDBODYGEN")
     private Bodies bodies;
 
     @Column(name = "LENGHT")

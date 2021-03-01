@@ -1,7 +1,9 @@
 package com.automobil.backend.repository;
 
-import com.automobil.backend.models.Completesets;
+import com.automobil.backend.models.CompleteSets;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CompletesetsRepository extends JpaRepository<Completesets,Long> {
+@Repository
+public interface CompletesetsRepository extends JpaRepository<CompleteSets,Long> {
 }

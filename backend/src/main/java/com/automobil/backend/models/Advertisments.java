@@ -37,23 +37,27 @@ public class Advertisments {
     @SequenceGenerator(sequenceName = "SEQUENCE_OF_ADVERT_ID", allocationSize = 1, name = "ADVERT_SEQ")
     private Long idAdvert;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "IDCARBODY", nullable = false)
+    private Carbody carbody;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDUSER", nullable = false)
     private Clients clients;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDMARK", nullable = false)
     private Marks mark;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDMODEL", nullable = false)
     private Models model;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDGEN", nullable = false)
     private Generations generations;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDMODIF", nullable = false)
     private Modifications modification;
 

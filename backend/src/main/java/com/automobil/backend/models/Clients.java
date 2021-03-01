@@ -39,7 +39,7 @@ public class Clients {
     @SequenceGenerator(sequenceName = "SEQUENCE_OF_CLIENTS_ID", allocationSize = 1, name = "CLIENTS_SEQ")
     private Long idUser;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDPART")
     private Parts part;
 
@@ -85,7 +85,10 @@ public class Clients {
                 this.messages.clear();
             }
             this.messages.addAll(messages);
-            messages.forEach(x -> x.setClients(this));
+          //  messages.forEach(x -> x.setClients(this));
+            for (Messages message : messages) {
+                message.setClients(this);
+            }
         }
     }
 

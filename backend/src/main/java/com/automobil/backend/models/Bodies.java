@@ -6,17 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,24 +23,16 @@ public class Bodies {
     @SequenceGenerator(sequenceName = "SEQUENCE_OF_BODIES_ID", allocationSize = 1, name = "BODIES_SEQ")
     private Long idBodyGen;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDCARBODY", nullable = false)
     private Carbody carbody;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDGEN", nullable = false)
     private Generations generations;
 
-    @OneToMany(mappedBy = "bodies", cascade = CascadeType.ALL)
-    private List<Sizess> sizessList = new ArrayList<>();
+    @OneToOne(mappedBy = "bodies")
+    private Sizess sizess;
 
-    public void setSizessList(List<Sizess> sizessList) {
-        if (sizessList != null) {
-            if (!this.sizessList.isEmpty()) {
-                this.sizessList.clear();
-            }
-            this.sizessList.addAll(sizessList);
-            sizessList.forEach(x -> x.setBodies(this));
-        }
-    }
+
 }

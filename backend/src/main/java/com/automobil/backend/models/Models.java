@@ -33,11 +33,11 @@ public class Models {
     @SequenceGenerator(sequenceName = "SEQUENCE_OF_MODELS_ID", allocationSize = 1, name = "MODELS_SEQ")
     private Long idModel;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDMARK", nullable = false)
     private Marks mark;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDCLAS", nullable = false)
     private Classes classes;
 

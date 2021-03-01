@@ -24,7 +24,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "GEARBOXES")
-public class Gearboxes {
+public class GearBoxes {
     @Id
     @Column(name = "IDGEAR")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GEARBOXES_SEQ")

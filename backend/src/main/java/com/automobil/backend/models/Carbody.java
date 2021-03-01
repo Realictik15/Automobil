@@ -38,8 +38,21 @@ public class Carbody {
     @Column(name = "INFO")
     private String info;
 
-    @OneToMany(mappedBy = "carbody",cascade = {CascadeType.MERGE,CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToMany(mappedBy = "carbody", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Bodies> bodiesList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "carbody", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Advertisments> advertisments = new ArrayList<>();
+
+    public void setsAdvertismentsList(List<Advertisments> advertisments) {
+        if (advertisments != null) {
+            if (!this.advertisments.isEmpty()) {
+                this.advertisments.clear();
+            }
+            this.advertisments.addAll(advertisments);
+            advertisments.forEach(x -> x.setCarbody(this));
+        }
+    }
 
     public void setBodiesList(List<Bodies> bodiesList) {
         if (bodiesList != null) {

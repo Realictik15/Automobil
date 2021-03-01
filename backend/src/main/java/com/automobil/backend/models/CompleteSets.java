@@ -24,7 +24,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "COMPLETESETS")
-public class Completesets {
+public class CompleteSets {
     @Id
     @Column(name = "IDCOMPL")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMPLETESETS_SEQ")
@@ -60,5 +60,9 @@ public class Completesets {
             this.possibles.addAll(possibles);
             possibles.forEach(x -> x.setCompletesets(this));
         }
+    }
+    public void addCompleset(Possibles possibles){
+        possibles.setCompletesets(this);
+        this.possibles.add(possibles);
     }
 }

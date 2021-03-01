@@ -34,15 +34,15 @@ public class Modifications {
     @SequenceGenerator(sequenceName = "SEQUENCE_OF_MODIF_ID", allocationSize = 1, name = "MODIF_SEQ")
     private Long idModif;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDGEN", nullable = false)
     private Generations generations;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDENG", nullable = false)
     private Engines engines;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "IDTRANS", nullable = false)
     private Transmissions transmissions;
 
@@ -93,4 +93,16 @@ public class Modifications {
             possibles.forEach(x -> x.setModification(this));
         }
     }
+    public void addModification(Possibles possibles){
+        possibles.setModification(this);
+        this.possibles.add(possibles);
+    }
+//    public void addMedias(List<Media> medias){
+//        if (medias != null && !medias.isEmpty()){
+//            this.media.addAll(medias);
+//        }
+//        for (Media media1 : medias) {
+//            media1.setEvent(this);
+//        }
+//    }
 }
