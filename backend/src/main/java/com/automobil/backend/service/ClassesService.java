@@ -1,4 +1,4 @@
 package com.automobil.backend.service;
 
-public interface BodiesService {
+public class ClassesService {
 }

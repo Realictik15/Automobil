@@ -13,12 +13,12 @@ import java.util.List;
 @Mapper(componentModel = "spring",uses = {CountriesMapper.class})
 public interface MarksMapper {
 
-    @Mapping(source = "countries", target = "countriesDto")
+    @Mapping(source = "countries.title", target = "countriesDto")
     MarksDto toMarksDTO(Marks marks);
 
     List<MarksDto> toMarksDTOs(List<Marks> marks);
 
-    @Mapping(source = "countriesDto", target = "countries")
+    @Mapping(source = "countriesDto", target = "countries.title")
     Marks toMarks(MarksDto marksDto);
 
 }

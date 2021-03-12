@@ -79,13 +79,39 @@ public class Clients {
     @OneToMany(mappedBy = "clients", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Messages> messages = new ArrayList<>();
 
+    @OneToMany(mappedBy = "clients", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Comparisons> comparisons = new ArrayList<>();
+
+    @OneToMany(mappedBy = "clients", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Likes> likes = new ArrayList<>();
+
+    public void setComparisons(List<Comparisons> comparisons) {
+        if (comparisons != null) {
+            if (!this.comparisons.isEmpty()) {
+                this.comparisons.clear();
+            }
+            this.comparisons.addAll(comparisons);
+            comparisons.forEach(x -> x.setClients(this));
+        }
+    }
+
+    public void setLikes(List<Likes> likes) {
+        if (likes != null) {
+            if (!this.likes.isEmpty()) {
+                this.likes.clear();
+            }
+            this.likes.addAll(likes);
+            likes.forEach(x -> x.setClients(this));
+        }
+    }
+
     public void setMessages(List<Messages> messages) {
         if (messages != null) {
             if (!this.messages.isEmpty()) {
                 this.messages.clear();
             }
             this.messages.addAll(messages);
-          //  messages.forEach(x -> x.setClients(this));
+            //  messages.forEach(x -> x.setClients(this));
             for (Messages message : messages) {
                 message.setClients(this);
             }

@@ -19,7 +19,7 @@ public class MarksDto {
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class})
-    private CountriesDto countriesDto;
+    private String countriesDto;
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})

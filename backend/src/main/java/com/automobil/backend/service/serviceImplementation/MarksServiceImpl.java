@@ -1,35 +1,46 @@
 package com.automobil.backend.service.serviceImplementation;
 
 import com.automobil.backend.dto.MarksDto;
+import com.automobil.backend.dto.ModelDto;
+import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.MarksMapper;
+import com.automobil.backend.mapStruct.ModelsMapper;
 import com.automobil.backend.models.Marks;
 import com.automobil.backend.repository.MarksRepository;
+import com.automobil.backend.service.CountriesService;
 import com.automobil.backend.service.MarksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class MarksServiceImpl implements MarksService {
 
     private final MarksRepository marksRepository;
     private final MarksMapper marksMapper;
+    private final CountriesService countriesService;
+    private final ModelsMapper modelsMapper;
 
     @Autowired
-    public MarksServiceImpl(MarksRepository marksRepository, MarksMapper marksMapper) {
+    public MarksServiceImpl(MarksRepository marksRepository, MarksMapper marksMapper, CountriesService countriesService, ModelsMapper modelsMapper) {
         this.marksRepository = marksRepository;
         this.marksMapper = marksMapper;
+        this.countriesService = countriesService;
+        this.modelsMapper = modelsMapper;
     }
-
 
     @Override
     public List<MarksDto> listAll() {
-        return null;
+
+        return marksMapper.toMarksDTOs(marksRepository.findAll());
     }
 
     @Override
-    public void save(MarksDto marksDto) {
-        marksRepository.save(marksMapper.toMarks(marksDto));
+    public void save(MarksDto marksDto) throws EntityNotFoundException {
+        Marks mark = marksMapper.toMarks(marksDto);
+        mark.setCountries(countriesService.getCountryByTitle(marksDto.getCountriesDto()));
+        marksRepository.save(mark);
     }
 
     @Override
@@ -38,17 +49,25 @@ public class MarksServiceImpl implements MarksService {
     }
 
     @Override
-    public MarksDto getById(Long id) {
-        return marksMapper.toMarksDTO(marksRepository.findById(id).get());
+    public MarksDto getById(Long id) throws EntityNotFoundException {
+        return marksMapper.toMarksDTO(marksRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id, "Marks")));
     }
 
     @Override
-    public Marks getMarkByTitle(String title) {
-        return marksRepository.getMarkByTitle(title);
+    public Marks getMarkByTitle(String title) throws EntityNotFoundException {
+        return marksRepository.getMarkByTitle(title).orElseThrow(() -> new EntityNotFoundException(title, "Models"));
+    }
+
+
+    @Override
+    public MarksDto toMarksDTO(Marks marks) {
+        return marksMapper.toMarksDTO(marks);
     }
 
     @Override
-    public void delete(MarksDto marksDto) {
-        marksRepository.delete(marksMapper.toMarks(marksDto));
+    public List<ModelDto> getListModels(Long id) throws EntityNotFoundException {
+        Marks marks = marksRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id, "Marks"));
+        return modelsMapper.toModelDTOs(marks.getModels());
     }
 }
+

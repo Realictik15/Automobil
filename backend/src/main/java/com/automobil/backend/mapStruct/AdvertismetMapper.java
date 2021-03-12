@@ -14,10 +14,10 @@ import java.util.List;
 public interface AdvertismetMapper {
 
     @Mappings({
-        @Mapping(source = "carbody", target = "carbodyDto"),
+        @Mapping(source = "carbody.title", target = "carbodyTitle"),
         @Mapping(source = "clients", target = "clientsDto"),
-        @Mapping(source = "mark", target = "marksDto"),
-        @Mapping(source = "model", target = "modelDto"),
+        @Mapping(source = "mark.title", target = "marksTitle"),
+        @Mapping(source = "model.title", target = "modelTitle"),
         @Mapping(source = "generations", target = "generationsDto"),
         @Mapping(source = "modification", target = "modificationsDto")
 
@@ -27,10 +27,10 @@ public interface AdvertismetMapper {
     List<AdvertismentDto> toAdvertismentDTOs(List<Advertisments> advertisments);
 
     @Mappings({
-        @Mapping(target = "carbody", source = "carbodyDto"),
+        @Mapping(target = "carbody.title", source = "carbodyTitle"),
         @Mapping(target = "clients", source = "clientsDto"),
-        @Mapping(target = "mark", source = "marksDto"),
-        @Mapping(target = "model", source = "modelDto"),
+        @Mapping(target = "mark.title", source = "marksTitle"),
+        @Mapping(target = "model.title", source = "modelTitle"),
         @Mapping(target = "generations", source = "generationsDto"),
         @Mapping(target = "modification", source = "modificationsDto")
 

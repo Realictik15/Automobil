@@ -1,6 +1,7 @@
 package com.automobil.backend.service.serviceImplementation;
 
 import com.automobil.backend.dto.GearBoxesDto;
+import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.GearBoxesMapper;
 import com.automobil.backend.models.GearBoxes;
 import com.automobil.backend.repository.GearboxesRepository;
@@ -22,22 +23,17 @@ public class GearBoxesServiceImpl implements GearBoxesService {
     }
 
     @Override
-    public List<GearBoxes> listAll() {
-        return null;
+    public GearBoxesDto getById(Long id) throws EntityNotFoundException {
+        return gearBoxesMapper.toGearBoxesDTO(gearboxesRepository.findById(id).orElseThrow(()->new EntityNotFoundException(id,"Gearboxes")));
     }
 
     @Override
-    public void save(GearBoxesDto gearBoxesDto) {
-
+    public List<GearBoxesDto> getListGearBox() {
+        return gearBoxesMapper.toGearBoxesDTOs(gearboxesRepository.findAll());
     }
 
     @Override
-    public void deleteById(Long id) {
-
-    }
-
-    @Override
-    public GearBoxesDto getById(Long id) {
-        return gearBoxesMapper.toGearBoxesDTO(gearboxesRepository.findById(id).get());
+    public GearBoxes toGearBox(GearBoxesDto gearBoxesDto) {
+        return gearBoxesMapper.toGearBoxes(gearBoxesDto);
     }
 }

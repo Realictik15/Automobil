@@ -2,10 +2,7 @@ package com.automobil.backend.dto;
 
 import com.automobil.backend.transfer.*;
 import com.fasterxml.jackson.annotation.JsonView;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -14,6 +11,7 @@ import javax.validation.constraints.Null;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class TransmissionsDto {
     @Null(groups = {New.class}, message = "The field must be empty")
     @NotNull(groups = {Existing.class})

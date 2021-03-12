@@ -17,6 +17,6 @@ public interface TransmissionMapper {
 
     List<TransmissionsDto> toTransmissionDTOs(List<Transmissions> transmissions);
 
-    @Mapping(source = "gearBoxDto", target = "gearbox")
+    @Mapping(source = "gearBoxDto", target = "gearbox",ignore = true)
     Transmissions toTransmissions(TransmissionsDto transmissionsDto);
 }

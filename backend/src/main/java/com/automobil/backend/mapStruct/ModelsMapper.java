@@ -12,35 +12,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {MarksMapper.class, ClassesMapper.class})
-public abstract class ModelsMapper {
-    @Autowired
-    private ClassesMapper classesMapperr;
-    @Autowired
-    private MarksService marksService;
+public interface ModelsMapper {
+
 
     @Mappings({
         @Mapping(source = "mark.title", target = "markTitle"),
         @Mapping(source = "classes", target = "classesDto")
     })
-    public abstract ModelDto toModelDTO(Models model) ;
+ ModelDto toModelDTO(Models model) ;
 
 
-    public abstract List<ModelDto> toModelDTOs(List<Models> models);
+     List<ModelDto> toModelDTOs(List<Models> models);
+    @Mappings({
+        @Mapping(target = "mark.title", source = "markTitle"),
+        @Mapping(target = "classes", source = "classesDto")
+    })
+     Models toModels(ModelDto modelDto) ;
 
-    public Models toModels(ModelDto modelDto) {
-        if (modelDto == null) {
-            return null;
-        }
-
-        Models models = new Models();
-
-        models.setMark(marksService.getMarkByTitle(modelDto.getMarkTitle()));
-        models.setClasses(classesMapperr.toCountries(modelDto.getClassesDto()));
-        models.setIdModel(modelDto.getIdModel());
-        models.setTitle(modelDto.getTitle());
-        models.setInfo(modelDto.getInfo());
-        models.setImage(modelDto.getImage());
-
-        return models;
-    }
 }

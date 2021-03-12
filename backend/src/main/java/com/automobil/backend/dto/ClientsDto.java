@@ -60,8 +60,8 @@ public class ClientsDto {
     @JsonView({Details.class, AdminDetails.class})
     private Integer driveExp;
 
-    @NotNull(groups = {New.class, Existing.class})
-    @JsonView({Details.class, AdminDetails.class})
+
+    @JsonView({AdminDetails.class})
     private Double money;
 
 }

@@ -1,22 +1,32 @@
 package com.automobil.backend.service;
 
+import com.automobil.backend.dto.AdvertismentDto;
+import com.automobil.backend.dto.SizessDto;
+import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.models.Advertisments;
 
 import java.util.List;
 
 public interface AdvertService {
 
-    List<Advertisments> listAll();
+    List<AdvertismentDto> getlistAvalible();
 
-    Advertisments getById(Long id);
+    List<AdvertismentDto> getlistAll();
 
-    Advertisments save(Advertisments advertisments);
+    List<AdvertismentDto> getReport(Long id) throws EntityNotFoundException;
 
-    void update(Advertisments advertisments);
+    AdvertismentDto getById(Long id) throws EntityNotFoundException;
 
-    void delete(Advertisments advertisments);
+    Advertisments getByIdAdvert(Long id) throws EntityNotFoundException;
+
+    void save(AdvertismentDto advertismentDto) throws EntityNotFoundException;
+
+    void update(AdvertismentDto advertismentDto);
 
     void deleteById(Long id);
 
+    void userDeleteById(Long id) throws EntityNotFoundException;
+
+    SizessDto getSizeByClass(Long id);
 }
 

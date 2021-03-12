@@ -24,11 +24,11 @@ public class MessagesDto {
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
-    private Reviews reviews;
+    private ReviewsDto reviewsDto;
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
-    private Clients clients;
+    private ClientsDto clientsDto;
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})

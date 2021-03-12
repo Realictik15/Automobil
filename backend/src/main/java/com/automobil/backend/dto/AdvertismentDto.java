@@ -3,10 +3,7 @@ package com.automobil.backend.dto;
 import com.automobil.backend.models.Carbody;
 import com.automobil.backend.transfer.*;
 import com.fasterxml.jackson.annotation.JsonView;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -16,6 +13,7 @@ import java.util.Date;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class AdvertismentDto {
 
     @Null(groups = {New.class}, message = "The field must be empty")
@@ -26,7 +24,7 @@ public class AdvertismentDto {
     @NotNull(groups = {New.class})
     @Null(groups = {Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
-    private CarbodyDto carbodyDto;
+    private String carbodyTitle;
 
     @NotNull(groups = {New.class})
     @Null(groups = {Existing.class})
@@ -36,12 +34,12 @@ public class AdvertismentDto {
     @NotNull(groups = {New.class})
     @Null(groups = {Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
-    private MarksDto marksDto;
+    private String marksTitle;
 
     @NotNull(groups = {New.class})
     @Null(groups = {Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
-    private ModelDto modelDto;
+    private String modelTitle;
 
     @NotNull(groups = {New.class})
     @Null(groups = {Existing.class})
