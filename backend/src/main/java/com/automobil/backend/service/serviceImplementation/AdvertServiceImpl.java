@@ -5,10 +5,9 @@ import com.automobil.backend.dto.FormAdvert;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.AdvertismetMapper;
 import com.automobil.backend.mapStruct.FormAdvertMapper;
-import com.automobil.backend.mapStruct.SizessMapper;
 import com.automobil.backend.models.Advertisments;
 import com.automobil.backend.repository.*;
-import com.automobil.backend.service.*;
+import com.automobil.backend.service.AdvertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -33,7 +32,6 @@ public class AdvertServiceImpl implements AdvertService {
 
     private final AdvertismetMapper advertismetMapper;
     private final AdvertisRepository advertisRepository;
-    private final SizessMapper sizessMapper;
     private final GenerationsRepository generationsRepository;
     private final ClientsRepository clientsRepository;
     private final CarbodyRepository carbodyRepository;
@@ -44,13 +42,12 @@ public class AdvertServiceImpl implements AdvertService {
 
     @Autowired
     public AdvertServiceImpl(AdvertismetMapper advertismetMapper, AdvertisRepository advertisRepository,
-                             SizessMapper sizessMapper, GenerationsRepository generationsRepository,
+                             GenerationsRepository generationsRepository,
                              ClientsRepository clientsRepository, CarbodyRepository carbodyRepository,
                              MarksRepository marksRepository, ModelsRepository modelsRepository,
                              ModificationsRepository modificationsRepository, FormAdvertMapper formAdvertMapper) {
         this.advertismetMapper = advertismetMapper;
         this.advertisRepository = advertisRepository;
-        this.sizessMapper = sizessMapper;
         this.generationsRepository = generationsRepository;
         this.clientsRepository = clientsRepository;
         this.carbodyRepository = carbodyRepository;

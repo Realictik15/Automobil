@@ -8,17 +8,11 @@ import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.AdvertismetMapper;
 import com.automobil.backend.mapStruct.CliensMapper;
 import com.automobil.backend.mapStruct.ComparisonsMapper;
-import com.automobil.backend.models.Advertisments;
-import com.automobil.backend.models.Clients;
-import com.automobil.backend.models.Comparisons;
-import com.automobil.backend.models.Roles;
-import com.automobil.backend.repository.AdvertisRepository;
-import com.automobil.backend.repository.ClientsRepository;
-import com.automobil.backend.repository.ComparisonsRepository;
+import com.automobil.backend.models.*;
+import com.automobil.backend.repository.*;
 import com.automobil.backend.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,11 +26,13 @@ public class ClientsServiceImpl implements ClientService {
     private final ComparisonsRepository comparisonsRepository;
     private final ComparisonsMapper comparisonsMapper;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final ReviewsRepository reviewsRepository;
+    private final MessagesRepository messagesRepository;
 
     @Autowired
     public ClientsServiceImpl(ClientsRepository clientsRepository, CliensMapper cliensMapper,
                               AdvertismetMapper advertismetMapper, AdvertisRepository advertisRepository,
-                              ComparisonsRepository comparisonsRepository, ComparisonsMapper comparisonsMapper, BCryptPasswordEncoder passwordEncoder) {
+                              ComparisonsRepository comparisonsRepository, ComparisonsMapper comparisonsMapper, BCryptPasswordEncoder passwordEncoder, ReviewsRepository reviewsRepository, MessagesRepository messagesRepository) {
         this.clientsRepository = clientsRepository;
         this.cliensMapper = cliensMapper;
         this.advertismetMapper = advertismetMapper;
@@ -44,6 +40,8 @@ public class ClientsServiceImpl implements ClientService {
         this.comparisonsRepository = comparisonsRepository;
         this.comparisonsMapper = comparisonsMapper;
         this.passwordEncoder = passwordEncoder;
+        this.reviewsRepository = reviewsRepository;
+        this.messagesRepository = messagesRepository;
     }
 
     @Override
@@ -73,10 +71,6 @@ public class ClientsServiceImpl implements ClientService {
 //        if (userRepo.existsByUsername(signUpRequest.getUsername())) {
 //            throw new UsernameIsAlreadyTaken();
 //        }
-//        if (userRepo.existsByEmail(signUpRequest.getEmail())) {
-//            throw new EmailIsAlreadyExists();
-//        }
-        // Create new user's account
         Clients client = new Clients();
         client.setFirstName(clientsDto.getFirstName());
         client.setLastName(clientsDto.getLastName());
@@ -131,8 +125,13 @@ public class ClientsServiceImpl implements ClientService {
     }
 
     @Override
-    public void addMessage(MessagesDto messagesDto) {
-
+    public void addMessage(MessagesDto messagesDto) throws EntityNotFoundException {
+        Messages message = new Messages();
+        message.setReviews(reviewsRepository.findById(messagesDto.getReviewsDto().getIdRevi()).orElseThrow(EntityNotFoundException::new));
+        message.setClients(clientsRepository.findById(messagesDto.getClientsDto().getIdUser()).orElseThrow(EntityNotFoundException::new));
+        message.setText(messagesDto.getText());
+        message.setDateSend(messagesDto.getDateSend());
+        messagesRepository.save(message);
     }
 
     @Override

@@ -29,7 +29,7 @@ public interface ClientService {
 
     void saveUserCompare(Long idClient, Long idAdvert) throws EntityNotFoundException;
 
-    void addMessage(MessagesDto messagesDto);
+    void addMessage(MessagesDto messagesDto) throws EntityNotFoundException;
 
     void deleteCompare(Long id);
 
