@@ -11,7 +11,7 @@ import org.mapstruct.Mappings;
 import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {MarksMapper.class, ModelsMapper.class, GenerationsMapper.class, ModificationMapper.class, CarbodyMapper.class, CliensMapper.class})
-public interface AdvertismetMapper {
+public  interface AdvertismetMapper {
 
     @Mappings({
         @Mapping(source = "carbody.title", target = "carbodyTitle"),

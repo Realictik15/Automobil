@@ -6,8 +6,8 @@ import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.MarksMapper;
 import com.automobil.backend.mapStruct.ModelsMapper;
 import com.automobil.backend.models.Marks;
+import com.automobil.backend.repository.CountriesRepository;
 import com.automobil.backend.repository.MarksRepository;
-import com.automobil.backend.service.CountriesService;
 import com.automobil.backend.service.MarksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,14 +19,14 @@ public class MarksServiceImpl implements MarksService {
 
     private final MarksRepository marksRepository;
     private final MarksMapper marksMapper;
-    private final CountriesService countriesService;
+    private final CountriesRepository countriesRepository;
     private final ModelsMapper modelsMapper;
 
     @Autowired
-    public MarksServiceImpl(MarksRepository marksRepository, MarksMapper marksMapper, CountriesService countriesService, ModelsMapper modelsMapper) {
+    public MarksServiceImpl(MarksRepository marksRepository, MarksMapper marksMapper, CountriesRepository countriesRepository, ModelsMapper modelsMapper) {
         this.marksRepository = marksRepository;
         this.marksMapper = marksMapper;
-        this.countriesService = countriesService;
+        this.countriesRepository = countriesRepository;
         this.modelsMapper = modelsMapper;
     }
 
@@ -39,8 +39,10 @@ public class MarksServiceImpl implements MarksService {
     @Override
     public void save(MarksDto marksDto) throws EntityNotFoundException {
         Marks mark = marksMapper.toMarks(marksDto);
-        mark.setCountries(countriesService.getCountryByTitle(marksDto.getCountriesDto()));
+        mark.setCountries(countriesRepository.getCountriesByTitle(marksDto.
+            getCountriesDto()).orElseThrow(()->new EntityNotFoundException(marksDto.getCountriesDto(),"Country")));
         marksRepository.save(mark);
+
     }
 
     @Override
@@ -50,12 +52,14 @@ public class MarksServiceImpl implements MarksService {
 
     @Override
     public MarksDto getById(Long id) throws EntityNotFoundException {
-        return marksMapper.toMarksDTO(marksRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id, "Marks")));
+        return marksMapper.toMarksDTO(marksRepository.findById(id).
+            orElseThrow(() -> new EntityNotFoundException(id, "Marks")));
     }
 
     @Override
     public Marks getMarkByTitle(String title) throws EntityNotFoundException {
-        return marksRepository.getMarkByTitle(title).orElseThrow(() -> new EntityNotFoundException(title, "Models"));
+        return marksRepository.getMarkByTitle(title).
+            orElseThrow(() -> new EntityNotFoundException(title, "Models"));
     }
 
 

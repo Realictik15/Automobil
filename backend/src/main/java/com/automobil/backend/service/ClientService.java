@@ -2,6 +2,8 @@ package com.automobil.backend.service;
 
 import com.automobil.backend.dto.AdvertismentDto;
 import com.automobil.backend.dto.ClientsDto;
+import com.automobil.backend.dto.ComparisonsDto;
+import com.automobil.backend.dto.MessagesDto;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.models.Advertisments;
 import com.automobil.backend.models.Clients;
@@ -13,15 +15,23 @@ public interface ClientService {
 
     ClientsDto getById(Long id) throws EntityNotFoundException;
 
+    Clients findByUserName(String name);
+
     void save(ClientsDto clientsDto);
 
-    void update(ClientsDto clientsDto);
+    void register(ClientsDto clientsDto);
+
+    void update(ClientsDto clientsDto) throws EntityNotFoundException;
 
     List<AdvertismentDto> getUserAdvert(Long id) throws EntityNotFoundException;
 
-    List<AdvertismentDto> getUserCompare(Long id) throws EntityNotFoundException;
+    List<ComparisonsDto> getUserCompareDto(Long id) throws EntityNotFoundException;
 
     void saveUserCompare(Long idClient, Long idAdvert) throws EntityNotFoundException;
+
+    void addMessage(MessagesDto messagesDto);
+
+    void deleteCompare(Long id);
 
     void deleteById(Long id);
 }

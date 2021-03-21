@@ -11,9 +11,7 @@ import java.util.List;
 public interface ModificationsService {
     List<ModificationsDto> listAll();
 
-    void save(ModificationsDto modificationsDto);
-
-    void deleteById(Long id);
+    void save(ModificationsDto modificationsDto) throws EntityNotFoundException;
 
     ModificationsDto getById(Long id) throws EntityNotFoundException;
 

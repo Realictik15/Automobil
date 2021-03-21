@@ -21,7 +21,13 @@ public class SizessDto {
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private Long idSiz;
 
-    private Long idBody;
+    @NotNull(groups = {New.class})
+    @JsonView({AdminDetails.class})
+    private Long idGen;
+
+    @NotNull(groups = {New.class})
+    @JsonView({AdminDetails.class})
+    private Long idCarBody;
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})

@@ -17,5 +17,6 @@ public interface CountriesRepository extends JpaRepository<Countries,Long> {
         value = Utils.FIND_COUNTRY_BY_TILE,
         nativeQuery = true
     )
-    Optional<Countries> getCarBodyByTitle(@Param("title")String title);
+    Optional<Countries> getCountriesByTitle(@Param("title")String title);
 }
+

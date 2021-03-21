@@ -20,7 +20,8 @@ public class TransmissionServiceImpl implements TransmissionService {
     private final GearboxesRepository gearboxesRepository;
 
     @Autowired
-    TransmissionServiceImpl(TransmissionMapper transmissionMapper, TransmissionsRepository transmissionsRepository, GearBoxesService gearBoxesService, GearboxesRepository gearboxesRepository) {
+    TransmissionServiceImpl(TransmissionMapper transmissionMapper, TransmissionsRepository transmissionsRepository,
+                            GearBoxesService gearBoxesService, GearboxesRepository gearboxesRepository) {
         this.transmissionMapper = transmissionMapper;
         this.transmissionsRepository = transmissionsRepository;
         this.gearboxesRepository = gearboxesRepository;
@@ -34,7 +35,8 @@ public class TransmissionServiceImpl implements TransmissionService {
     @Override
     public void save(TransmissionsDto transmissionsDto) throws EntityNotFoundException {
         Transmissions transmissions =transmissionMapper.toTransmissions(transmissionsDto);
-        transmissions.setGearbox(gearboxesRepository.findById(transmissionsDto.getGearBoxDto().getIdGear()).orElseThrow(()->new EntityNotFoundException(transmissionsDto.getGearBoxDto().getIdGear(),"GearBox")));
+        transmissions.setGearbox(gearboxesRepository.findById(transmissionsDto.getGearBoxDto().getIdGear()).
+            orElseThrow(()->new EntityNotFoundException(transmissionsDto.getGearBoxDto().getIdGear(),"GearBox")));
         transmissionsRepository.save(transmissions);
     }
 
@@ -46,7 +48,8 @@ public class TransmissionServiceImpl implements TransmissionService {
 
     @Override
     public TransmissionsDto getById(Long id) throws EntityNotFoundException {
-        return transmissionMapper.toTransmissionDTO(transmissionsRepository.findById(id).orElseThrow(()->new EntityNotFoundException(id,"Transmission")));
+        return transmissionMapper.toTransmissionDTO(transmissionsRepository.findById(id).
+            orElseThrow(()->new EntityNotFoundException(id,"Transmission")));
     }
 
 }

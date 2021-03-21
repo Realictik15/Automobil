@@ -7,6 +7,7 @@ import com.automobil.backend.dto.ModelDto;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.models.Models;
 import com.automobil.backend.service.ModelsService;
+import com.automobil.backend.transfer.AdvertReviewDetails;
 import com.automobil.backend.transfer.Details;
 import com.automobil.backend.transfer.New;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -14,13 +15,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/models/")
+@RequestMapping("/models")
 public class ModelsController {
     private final ModelsService modelsService;
 
@@ -29,7 +31,8 @@ public class ModelsController {
         this.modelsService = modelsService;
     }
 
-    @JsonView(Details.class)
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ModelDto>> getAllModels() {
         List<ModelDto> modelDtos = modelsService.listAll();
@@ -39,7 +42,7 @@ public class ModelsController {
         return new ResponseEntity<>(modelDtos, HttpStatus.OK);
 
     }
-
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(Details.class)
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ModelDto> getModelByID(@PathVariable("id") Long id) throws EntityNotFoundException {
@@ -48,7 +51,7 @@ public class ModelsController {
         }
         return new ResponseEntity<>(modelsService.getById(id), HttpStatus.OK);
     }
-
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(Details.class)
     @GetMapping(value = "title/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ModelDto> getModelByTitle(@PathVariable("title") String title) throws EntityNotFoundException {
@@ -58,7 +61,7 @@ public class ModelsController {
         Models model = modelsService.getModelByTitle(title);
         return new ResponseEntity<>(modelsService.toModelDTO(model), HttpStatus.OK);
     }
-
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(Details.class)
     @GetMapping(value = "{id}/generetions", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<GenerationsDto>> getAllGenerationFromModel(@PathVariable("id") Long id) throws EntityNotFoundException {
@@ -69,7 +72,7 @@ public class ModelsController {
         return new ResponseEntity<>(generationsDtos, HttpStatus.OK);
 
     }
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
         MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addModel(@Validated(New.class) @RequestBody ModelDto modelDto) throws EntityNotFoundException {
@@ -81,7 +84,7 @@ public class ModelsController {
         }
     }
 
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> deleteModel(@PathVariable("id") Long id) throws EntityNotFoundException {
         if (id == null) {

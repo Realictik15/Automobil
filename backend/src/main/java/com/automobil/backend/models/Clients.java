@@ -7,17 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.servlet.http.Part;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,9 +29,10 @@ public class Clients {
     @SequenceGenerator(sequenceName = "SEQUENCE_OF_CLIENTS_ID", allocationSize = 1, name = "CLIENTS_SEQ")
     private Long idUser;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "IDPART")
-    private Parts part;
+//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @Column(name = "IDPART")
+    @Enumerated(EnumType.STRING)
+    private Roles roles;
 
     @Column(name = "FNAME")
     private String firstName;
@@ -82,8 +73,6 @@ public class Clients {
     @OneToMany(mappedBy = "clients", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Comparisons> comparisons = new ArrayList<>();
 
-    @OneToMany(mappedBy = "clients", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
-    private List<Likes> likes = new ArrayList<>();
 
     public void setComparisons(List<Comparisons> comparisons) {
         if (comparisons != null) {
@@ -95,15 +84,6 @@ public class Clients {
         }
     }
 
-    public void setLikes(List<Likes> likes) {
-        if (likes != null) {
-            if (!this.likes.isEmpty()) {
-                this.likes.clear();
-            }
-            this.likes.addAll(likes);
-            likes.forEach(x -> x.setClients(this));
-        }
-    }
 
     public void setMessages(List<Messages> messages) {
         if (messages != null) {

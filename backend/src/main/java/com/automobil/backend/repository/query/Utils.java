@@ -23,9 +23,11 @@ public class Utils {
 
     public static final String FIND_COUNTRY_BY_TILE = "SELECT c.* FROM COUNTRIES c where c.title= :title";
 
+    public static final String FIND_CLIENT_BY_LOGIN = "SELECT c.* FROM CLIENTS c where c.login= :login";
 
-    public static final String FIND_ENGINE_BY_TYPE_FUREL = "SELECT a.* FROM advertisments a where a.vin = :vin and a.available = 'no'";
 
-    public static final String FIND_TRANSMISSION_BY_TYPE = "SELECT a.* FROM advertisments a where a.vin = :vin and a.available = 'no'";
+//    public static final String FIND_ENGINE_BY_TYPE_FUREL = "SELECT a.* FROM advertisments a where a.vin = :vin and a.available = 'no'";
+//
+//    public static final String FIND_TRANSMISSION_BY_TYPE = "SELECT a.* FROM advertisments a where a.vin = :vin and a.available = 'no'";
 
 }

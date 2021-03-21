@@ -29,7 +29,8 @@ public class EnginesServiceImpl implements EnginesService {
 
     @Override
     public EnginesDto getById(Long id) throws EntityNotFoundException {
-        return enginMapper.toEnginesDTO(enginesRepository.findById(id).orElseThrow(()->new EntityNotFoundException(id,"Engines")));
+        return enginMapper.toEnginesDTO(enginesRepository.findById(id).
+            orElseThrow(()->new EntityNotFoundException(id,"Engines")));
     }
 
     @Override

@@ -13,6 +13,8 @@ public class EntityNotFoundException extends Exception{
     public EntityNotFoundException(String title, String clazzName) {
         super(String.format("'%s' is not found with title : '%s'", clazzName, title));
     }
-
+    public EntityNotFoundException() {
+        super("Something went wrong");
+    }
 
 }

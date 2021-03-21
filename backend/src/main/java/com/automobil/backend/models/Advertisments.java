@@ -115,12 +115,9 @@ public class Advertisments {
     @Column(name = "IMAGES")
     private String images;
 
-    @OneToMany(mappedBy = "advertisment", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToMany(mappedBy = "advertisment", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
+        orphanRemoval = true)
     private List<Comparisons> comparisons = new ArrayList<>();
-
-    @OneToMany(mappedBy = "advertisment", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
-    private List<Likes> likes = new ArrayList<>();
-
     public void setComparisons(List<Comparisons> comparisons) {
         if (comparisons != null) {
             if (!this.comparisons.isEmpty()) {
@@ -128,16 +125,6 @@ public class Advertisments {
             }
             this.comparisons.addAll(comparisons);
             comparisons.forEach(x -> x.setAdvertisment(this));
-        }
-    }
-
-    public void setLikes(List<Likes> likes) {
-        if (likes != null) {
-            if (!this.likes.isEmpty()) {
-                this.likes.clear();
-            }
-            this.likes.addAll(likes);
-            likes.forEach(x -> x.setAdvertisment(this));
         }
     }
 }

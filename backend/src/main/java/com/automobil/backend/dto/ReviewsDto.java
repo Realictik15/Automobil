@@ -82,7 +82,7 @@ public class ReviewsDto {
     @JsonView({AdminDetails.class})
     private Integer views;
 
-    @NotNull(groups = {New.class, Existing.class})
+    @Null(groups = {Existing.class,New.class})
     @JsonView({AdminDetails.class, AdvertReviewDetails.class})
     private String images;
 

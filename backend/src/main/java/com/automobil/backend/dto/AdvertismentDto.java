@@ -8,6 +8,7 @@ import lombok.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -127,6 +128,6 @@ public class AdvertismentDto {
     @NotNull(groups = {New.class})
     @Null(groups = {Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
-    private String images;
+    private List<String> imagesList;
 
 }

@@ -24,7 +24,8 @@ public class GearBoxesServiceImpl implements GearBoxesService {
 
     @Override
     public GearBoxesDto getById(Long id) throws EntityNotFoundException {
-        return gearBoxesMapper.toGearBoxesDTO(gearboxesRepository.findById(id).orElseThrow(()->new EntityNotFoundException(id,"Gearboxes")));
+        return gearBoxesMapper.toGearBoxesDTO(gearboxesRepository.findById(id).
+            orElseThrow(()->new EntityNotFoundException(id,"Gearboxes")));
     }
 
     @Override

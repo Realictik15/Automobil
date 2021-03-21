@@ -18,9 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Getter
@@ -65,7 +63,7 @@ public class Generations {
     private List<Reviews> reviews = new ArrayList<>();
 
     @OneToMany(mappedBy = "generations", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
-    private List<Bodies> bodies = new ArrayList<>();
+    private Set<Bodies> bodies = new HashSet<>();
 
     public void setModifications(List<Modifications> modifications) {
         if (modifications != null) {

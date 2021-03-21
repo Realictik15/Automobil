@@ -1,5 +1,6 @@
 package com.automobil.backend.dto;
 
+import com.automobil.backend.models.Possibles;
 import com.automobil.backend.transfer.*;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,8 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -43,4 +46,8 @@ public class ModificationsDto {
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private Integer doors;
+
+    @NotNull(groups = {New.class, Existing.class})
+    @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
+    private List<Long> idComplSet;
 }

@@ -4,9 +4,11 @@ import com.automobil.backend.dto.SizessDto;
 import com.automobil.backend.exeption.EntityNotFoundException;
 
 public interface SizessService {
-    SizessDto getBId(Long id) throws EntityNotFoundException;
+    SizessDto getById(Long id) throws EntityNotFoundException;
 
-    void seve(SizessDto sizessDto);
+    SizessDto getSize(Long idGen,Long idCarBody) throws EntityNotFoundException;
 
-    void delete(Long id);
+    void save(SizessDto sizessDto) throws EntityNotFoundException;
+
+    void deleteById(Long id);
 }

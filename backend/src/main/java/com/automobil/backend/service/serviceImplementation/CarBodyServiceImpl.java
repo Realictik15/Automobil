@@ -15,6 +15,7 @@ public class CarBodyServiceImpl implements CarBodyService {
     private final CarbodyRepository carbodyRepository;
     private final CarbodyMapper carbodyMapper;
 
+
     @Autowired
     public CarBodyServiceImpl(CarbodyRepository carbodyRepository, CarbodyMapper carbodyMapper) {
         this.carbodyRepository = carbodyRepository;
@@ -23,7 +24,8 @@ public class CarBodyServiceImpl implements CarBodyService {
 
     @Override
     public CarbodyDto getCarBody(Long id) throws EntityNotFoundException {
-        return carbodyMapper.toCarBodyDTO(carbodyRepository.findById(id).orElseThrow(()->new EntityNotFoundException(id,"CarBody")));
+        return carbodyMapper.toCarBodyDTO(carbodyRepository.findById(id).
+            orElseThrow(() -> new EntityNotFoundException(id, "CarBody")));
     }
 
     @Override
@@ -31,8 +33,10 @@ public class CarBodyServiceImpl implements CarBodyService {
         return carbodyMapper.toCarBodyDTOs(carbodyRepository.findAll());
     }
 
+
     @Override
     public CarbodyDto getCarBodyByTitle(String title) throws EntityNotFoundException {
-        return carbodyMapper.toCarBodyDTO(carbodyRepository.getCarBodyByTitle(title).orElseThrow(()->new EntityNotFoundException(title,"CarBody")));
+        return carbodyMapper.toCarBodyDTO(carbodyRepository.getCarBodyByTitle(title).
+            orElseThrow(() -> new EntityNotFoundException(title, "CarBody")));
     }
 }

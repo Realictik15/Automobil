@@ -3,68 +3,140 @@ package com.automobil.backend.rest;
 import com.automobil.backend.dto.*;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.ModelsMapper;
-import com.automobil.backend.mapStruct.TransmissionMapper;
+import com.automobil.backend.models.Clients;
 import com.automobil.backend.models.Models;
-import com.automobil.backend.models.Transmissions;
-import com.automobil.backend.service.AdvertService;
-import com.automobil.backend.service.EnginesService;
-import com.automobil.backend.service.ModificationsService;
-import com.automobil.backend.service.TransmissionService;
-import com.automobil.backend.transfer.AdvertReviewDetails;
-import com.automobil.backend.transfer.Details;
-import com.automobil.backend.transfer.Existing;
+import com.automobil.backend.service.*;
+import com.automobil.backend.transfer.*;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/client/")
+@RequestMapping("/client")
 public class ClientsController {
-    private final EnginesService enginesService;
-    private final TransmissionService transmissionService;
-    private final ModificationsService modificationsService;
-    private final AdvertService advertService;
-    @Autowired
-    private ModelsMapper modelsMapper;
+    private final ClientService clientService;
 
     @Autowired
-    public ClientsController(EnginesService enginesService, TransmissionService transmissionService, ModificationsService modificationsService, AdvertService advertService) {
-        this.enginesService = enginesService;
-        this.transmissionService = transmissionService;
-        this.modificationsService = modificationsService;
-        this.advertService = advertService;
+    public ClientsController(ClientService clientService) {
+        this.clientService = clientService;
     }
 
-    @JsonView(Details.class)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @JsonView(AdminDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<EnginesDto>> getAllEn() {
-        List<EnginesDto> engines = this.enginesService.listAll();
-        if (engines.isEmpty()) {
+    public ResponseEntity<List<ClientsDto>> getAllClients() {
+        List<ClientsDto> clientsDtos = this.clientService.listAll();
+        if (clientsDtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(engines, HttpStatus.OK);
+        return new ResponseEntity<>(clientsDtos, HttpStatus.OK);
     }
 
-
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
-    @GetMapping(value = "{id}")
-    public ResponseEntity<AdvertismentDto> getModif(@PathVariable("id") Long id) throws EntityNotFoundException {
-        return new ResponseEntity<>(advertService.getById(id), HttpStatus.OK);
+    @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ClientsDto> getClientByID(@PathVariable("id") Long id) throws EntityNotFoundException {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(clientService.getById(id), HttpStatus.OK);
     }
 
-    @JsonView(AdvertReviewDetails.class)
-    @PostMapping(value = "a", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
         MediaType.APPLICATION_JSON_VALUE)
-    public void getTest(@Validated(Existing.class) @RequestBody ModelDto modelDto) {
-        System.out.println(modelDto);
-        Models models =modelsMapper.toModels(modelDto);
-        System.out.println(models.getMark().getTitle()+" "+models.getMark().getImage());
+    public ResponseEntity<?> addClient(@Validated(New.class) @RequestBody ClientsDto clientsDto) throws EntityNotFoundException {
+        if (clientsDto == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            clientService.save(clientsDto);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }
+    }
 
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @PatchMapping(value = "{id}/client", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> patchClient(@Validated(Existing.class) @PathVariable("id") Long id, @RequestBody ClientsDto clientsDto) throws EntityNotFoundException, DataIntegrityViolationException {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if (clientsDto == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        clientService.update(clientsDto);
+        return new ResponseEntity(HttpStatus.CREATED);
+
+    }
+
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @JsonView(AdvertReviewDetails.class)
+    @GetMapping(value = "{id}/advert", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<AdvertismentDto>> getClientAdvert(@PathVariable("id") Long id) throws EntityNotFoundException {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(clientService.getUserAdvert(id), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @JsonView(AdvertReviewDetails.class)
+    @GetMapping(value = "{id}/compare", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ComparisonsDto>> getClientCompareDto(@PathVariable("id") Long id) throws EntityNotFoundException {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(clientService.getUserCompareDto(id), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @PostMapping(value = "{id}/advert/{idAd}", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
+        MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> addClientComp(@PathVariable("id") Long id, @PathVariable("idAd") Long idAd) throws EntityNotFoundException {
+        if (id == null || idAd == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            clientService.saveUserCompare(id, idAd);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }
+    }
+
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @PostMapping(value = "{addmess}", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
+        MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> addMessage(@RequestBody MessagesDto messagesDto) throws EntityNotFoundException {
+        if (messagesDto == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            clientService.addMessage(messagesDto);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @DeleteMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> deleteClient(@PathVariable("id") Long id) throws EntityNotFoundException {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        clientService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @DeleteMapping(value = "comparedelete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> deleteCompare(@PathVariable("id") Long id) throws EntityNotFoundException {
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        clientService.deleteCompare(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -22,7 +22,7 @@ public class GenerationsDto {
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private Long idGen;
 
-    @NotNull(groups = {New.class, Existing.class})
+    @NotNull(groups = {New.class, Existing.class,AdvertReviewDetails.class})
     @JsonView({AdminDetails.class})
     private String modelTitle;
 
@@ -31,11 +31,11 @@ public class GenerationsDto {
     private String title;
 
     @NotNull(groups = {New.class, Existing.class})
-    @JsonView({Details.class, AdminDetails.class})
+    @JsonView({Details.class, AdminDetails.class,AdvertReviewDetails.class})
     private Date yearStartDate;
 
     @NotNull(groups = {New.class, Existing.class})
-    @JsonView({Details.class, AdminDetails.class})
+    @JsonView({Details.class, AdminDetails.class,AdvertReviewDetails.class})
     private Date yearEndDate;
 
     @NotNull(groups = {New.class, Existing.class})

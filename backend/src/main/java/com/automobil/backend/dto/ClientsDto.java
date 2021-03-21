@@ -1,6 +1,6 @@
 package com.automobil.backend.dto;
 
-import com.automobil.backend.models.Parts;
+import com.automobil.backend.models.Roles;
 import com.automobil.backend.transfer.*;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
@@ -21,10 +21,10 @@ public class ClientsDto {
     @NotNull(groups = {Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private Long idUser;
-//
-//    @NotNull(groups = {New.class})
-//    @JsonView({Details.class, AdminDetails.class})
-//    private Parts part;
+
+    @Null(groups = {New.class})
+    @JsonView({AdminDetails.class})
+    private Roles roles;
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
@@ -35,7 +35,7 @@ public class ClientsDto {
     private String lastName;
 
     @NotNull(groups = {New.class, Existing.class})
-    @JsonView({Details.class, AdminDetails.class})
+    @JsonView({AdminDetails.class})
     private Date bornDay;
 
     @NotNull(groups = {New.class})
@@ -49,7 +49,7 @@ public class ClientsDto {
     private String pass;
 
     @NotNull(groups = {New.class, Existing.class})
-    @JsonView({AdminDetails.class})
+    @JsonView({Details.class,AdminDetails.class})
     private String emale;
 
     @NotNull(groups = {New.class, Existing.class})
@@ -60,8 +60,5 @@ public class ClientsDto {
     @JsonView({Details.class, AdminDetails.class})
     private Integer driveExp;
 
-
-    @JsonView({AdminDetails.class})
-    private Double money;
 
 }

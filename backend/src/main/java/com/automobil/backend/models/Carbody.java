@@ -16,7 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -39,7 +41,7 @@ public class Carbody {
     private String info;
 
     @OneToMany(mappedBy = "carbody", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
-    private List<Bodies> bodiesList = new ArrayList<>();
+    private Set<Bodies> bodiesList = new HashSet<>();
 
     @OneToMany(mappedBy = "carbody", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Advertisments> advertisments = new ArrayList<>();

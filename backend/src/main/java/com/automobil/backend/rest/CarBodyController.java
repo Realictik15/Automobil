@@ -7,6 +7,7 @@ import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.models.Marks;
 import com.automobil.backend.service.CarBodyService;
 import com.automobil.backend.service.MarksService;
+import com.automobil.backend.transfer.AdminDetails;
 import com.automobil.backend.transfer.AdvertReviewDetails;
 import com.automobil.backend.transfer.Details;
 import com.automobil.backend.transfer.New;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +31,8 @@ public class CarBodyController {
     public CarBodyController(CarBodyService carBodyService) {
         this.carBodyService = carBodyService;
     }
-
-    @JsonView(AdvertReviewDetails.class)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @JsonView(AdminDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CarbodyDto>> getAllCarBody() {
         List<CarbodyDto> carbodyDtos = carBodyService.getListCarBody();
@@ -39,7 +41,8 @@ public class CarBodyController {
         }
         return new ResponseEntity<>(carbodyDtos, HttpStatus.OK);
     }
-    @JsonView(Details.class)
+    @JsonView(AdminDetails.class)
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CarbodyDto> getCarBodyByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         if (id == null) {
@@ -47,8 +50,8 @@ public class CarBodyController {
         }
         return new ResponseEntity<>(carBodyService.getCarBody(id), HttpStatus.OK);
     }
-
-    @JsonView(Details.class)
+    @PreAuthorize(" hasAuthority('ADMIN')")
+    @JsonView(AdminDetails.class)
     @GetMapping(value = "title/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CarbodyDto> getCarBodyByTitle(@PathVariable("title") String title) throws EntityNotFoundException {
         if (title == null) {

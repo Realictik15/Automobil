@@ -14,36 +14,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public abstract class SizessMapper {
-    @Autowired
-    private BodiesRepository bodiesRepository;
+public interface SizessMapper {
+
 
     @Mappings({
-        @Mapping(source = "bodies.idBodyGen", target = "idBody"),
+        @Mapping(source = "bodies.carbody.idCarBody", target = "idCarBody"),
+        @Mapping(source = "bodies.generations.idGen", target = "idGen")
     })
     public abstract SizessDto toSizessDTO(Sizess sizess);
 
-    public abstract List<SizessDto> toSizessDTOs(List<Sizess> sizesses);
+    List<SizessDto> toSizessDTOs(List<Sizess> sizesses);
 
-   public Sizess toSizess(SizessDto sizessDto){
-       if ( sizessDto == null ) {
-           return null;
-       }
-
-       Sizess sizess = new Sizess();
-
-       sizess.setBodies(bodiesRepository.findById(sizessDto.getIdBody()).get());
-       sizess.setIdSiz( sizessDto.getIdSiz() );
-       sizess.setLenght( sizessDto.getLenght() );
-       sizess.setWidht( sizessDto.getWidht() );
-       sizess.setHight( sizessDto.getHight() );
-       sizess.setWeight( sizessDto.getWeight() );
-       sizess.setWheelbase( sizessDto.getWheelbase() );
-       sizess.setClearance( sizessDto.getClearance() );
-       sizess.setWheelsSize( sizessDto.getWheelsSize() );
-       sizess.setTrunkWight( sizessDto.getTrunkWight() );
-
-       return sizess;
-   }
+    @Mappings({
+        @Mapping(target = "bodies.carbody.idCarBody", source = "idCarBody"),
+        @Mapping(target = "bodies.generations.idGen", source = "idGen")
+    })
+    Sizess toSizess(SizessDto sizessDto);
 }
 

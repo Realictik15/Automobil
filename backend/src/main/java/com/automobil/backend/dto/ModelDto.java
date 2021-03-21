@@ -22,12 +22,12 @@ public class ModelDto {
     private Long idModel;
 
     @NotNull(groups = {New.class, Existing.class})
-    @JsonView({AdminDetails.class})
+    @JsonView({AdminDetails.class,Details.class,})
     private String markTitle;
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({AdminDetails.class})
-    private ClassesDto classesDto;
+    private Long idClass;
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})

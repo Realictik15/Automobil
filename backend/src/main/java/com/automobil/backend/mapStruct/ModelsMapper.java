@@ -17,7 +17,7 @@ public interface ModelsMapper {
 
     @Mappings({
         @Mapping(source = "mark.title", target = "markTitle"),
-        @Mapping(source = "classes", target = "classesDto")
+        @Mapping(source = "classes.idClas", target = "idClass")
     })
  ModelDto toModelDTO(Models model) ;
 
@@ -25,7 +25,7 @@ public interface ModelsMapper {
      List<ModelDto> toModelDTOs(List<Models> models);
     @Mappings({
         @Mapping(target = "mark.title", source = "markTitle"),
-        @Mapping(target = "classes", source = "classesDto")
+        @Mapping(target = "classes.idClas", source = "idClass")
     })
      Models toModels(ModelDto modelDto) ;
 

@@ -5,6 +5,7 @@ import com.automobil.backend.dto.MarksDto;
 import com.automobil.backend.dto.TransmissionsDto;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.service.EnginesService;
+import com.automobil.backend.transfer.AdvertReviewDetails;
 import com.automobil.backend.transfer.Details;
 import com.automobil.backend.transfer.New;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +29,8 @@ public class EnginesComtroller {
     public EnginesComtroller(EnginesService enginesService) {
         this.enginesService = enginesService;
     }
-
-    @JsonView(Details.class)
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<EnginesDto>> getAllEngines() {
         List<EnginesDto> enginesDtos = enginesService.listAll();
@@ -38,8 +40,8 @@ public class EnginesComtroller {
         return new ResponseEntity<>(enginesDtos, HttpStatus.OK);
 
     }
-
-    @JsonView(Details.class)
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<EnginesDto> getEngineByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         if (id == null) {
@@ -47,6 +49,7 @@ public class EnginesComtroller {
         }
         return new ResponseEntity<>(enginesService.getById(id), HttpStatus.OK);
     }
+    @PreAuthorize("hasAuthority('ADMIN')")
     @ExceptionHandler({ConstraintViolationException.class})
     @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
         MediaType.APPLICATION_JSON_VALUE)

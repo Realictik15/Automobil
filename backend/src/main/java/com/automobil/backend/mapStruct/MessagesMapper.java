@@ -4,11 +4,12 @@ import com.automobil.backend.dto.MessagesDto;
 import com.automobil.backend.dto.ModelDto;
 import com.automobil.backend.models.Messages;
 import com.automobil.backend.models.Models;
+import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 import java.util.List;
-
+@Mapper(componentModel = "spring", uses = {AdvertismetMapper.class,CliensMapper.class})
 public interface MessagesMapper {
     @Mappings({
         @Mapping(source = "reviews", target = "reviewsDto"),
