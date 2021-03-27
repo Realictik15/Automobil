@@ -4,6 +4,7 @@ import com.automobil.backend.dto.AdvertismentDto;
 import com.automobil.backend.dto.ClientsDto;
 import com.automobil.backend.dto.ComparisonsDto;
 import com.automobil.backend.dto.MessagesDto;
+import com.automobil.backend.exeption.CLientException;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.models.Advertisments;
 import com.automobil.backend.models.Clients;
@@ -19,7 +20,7 @@ public interface ClientService {
 
     void save(ClientsDto clientsDto);
 
-    void register(ClientsDto clientsDto);
+    void register(ClientsDto clientsDto) throws CLientException;
 
     void update(ClientsDto clientsDto) throws EntityNotFoundException;
 

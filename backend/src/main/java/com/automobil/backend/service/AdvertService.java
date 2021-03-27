@@ -21,7 +21,7 @@ public interface AdvertService {
 
 
     AdvertismentDto getById(Long id) throws EntityNotFoundException;
-
+//TODO: ghtndbj
     Advertisments getByIdAdvert(Long id) throws EntityNotFoundException;
 
     void save(FormAdvert formAdvert, List<String> list) throws EntityNotFoundException, ParseException;

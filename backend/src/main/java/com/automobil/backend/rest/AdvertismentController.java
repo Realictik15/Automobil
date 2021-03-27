@@ -21,6 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/advert")
+@CrossOrigin(origins = " http://localhost:4200")
 public class AdvertismentController {
     private final AdvertService advertService;
 
@@ -50,7 +51,7 @@ public class AdvertismentController {
         return new ResponseEntity<>(advertismentDtos, HttpStatus.OK);
 
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+ //   @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AdvertismentDto>> getAllAvailAdvert() {
@@ -61,7 +62,7 @@ public class AdvertismentController {
         return new ResponseEntity<>(advertismentDtos, HttpStatus.OK);
 
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+ //   @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AdvertismentDto> getAdvertismentById(@PathVariable("id") Long id) throws EntityNotFoundException {

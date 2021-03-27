@@ -53,6 +53,15 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         apiError.setErrors(Collections.singletonList(ex.getMessage()));
         return new ResponseEntity<>(apiError, BAD_REQUEST);
     }
+//    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+//    protected ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex,
+//                                                                      WebRequest request) {
+//        ApiError apiError = new ApiError();
+//        apiError.setMessage(String.format("The parameter '%s' of value '%s' could not be converted to type '%s'",
+//            ex.getName(), ex.getValue(), ex.getRequiredType().getSimpleName()));
+//        apiError.setErrors(Collections.singletonList(ex.getMessage()));
+//        return new ResponseEntity<>(apiError, BAD_REQUEST);
+//    }
 /* НЕ РАБОТАЕТ !!!!!!
     @ExceptionHandler({TransactionSystemException.class})
     public ResponseEntity<Object> handleConstraintViolation(

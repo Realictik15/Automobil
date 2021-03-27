@@ -126,8 +126,8 @@ public class AdvertServiceImpl implements AdvertService {
             }
             byte[] bytes = file.getBytes();
             String id = UUID.randomUUID().toString();
-            String savepath = id + file.getOriginalFilename();
-            Path path = Paths.get(uploadpath + savepath);
+            String savepath =uploadpath+ id + file.getOriginalFilename();
+            Path path = Paths.get(savepath);
             Files.write(path, bytes);
             result.add(savepath);
         }
@@ -135,9 +135,9 @@ public class AdvertServiceImpl implements AdvertService {
     }
 
     public List<String> getImagesFromModel(String path) {
-        int index = path.lastIndexOf('\\');
-        String s = path.substring(index + 1);
-        List<String> res = (Arrays.asList(s.split(",")));
+//        int index = path.lastIndexOf('\\');
+//        String s = path.substring(index + 1);
+        List<String> res = (Arrays.asList(path.split(",")));
         res.forEach(x -> x += uploadpath);
         return res;
     }
@@ -154,7 +154,8 @@ public class AdvertServiceImpl implements AdvertService {
                 s.append(list.get(i)).append(",");
             }
         }
-        advert.setImages(uploadpath + s);
+
+        advert.setImages(s.toString());
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
             advert.setDayofwarranty(format.parse(formAdvert.getDayofwarrantys()));

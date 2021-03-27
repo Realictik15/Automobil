@@ -4,6 +4,7 @@ import com.automobil.backend.dto.AdvertismentDto;
 import com.automobil.backend.dto.ClientsDto;
 import com.automobil.backend.dto.ComparisonsDto;
 import com.automobil.backend.dto.MessagesDto;
+import com.automobil.backend.exeption.CLientException;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.AdvertismetMapper;
 import com.automobil.backend.mapStruct.CliensMapper;
@@ -67,10 +68,10 @@ public class ClientsServiceImpl implements ClientService {
     }
 
     @Override
-    public void register(ClientsDto clientsDto) {
-//        if (userRepo.existsByUsername(signUpRequest.getUsername())) {
-//            throw new UsernameIsAlreadyTaken();
-//        }
+    public void register(ClientsDto clientsDto) throws CLientException {
+        if (clientsRepository.existsByLoginIs(clientsDto.getLogin())>0) {
+            throw new CLientException();
+        }
         Clients client = new Clients();
         client.setFirstName(clientsDto.getFirstName());
         client.setLastName(clientsDto.getLastName());
