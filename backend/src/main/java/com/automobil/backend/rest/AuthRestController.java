@@ -2,6 +2,7 @@ package com.automobil.backend.rest;
 
 import com.automobil.backend.dto.AuthenticationRequestDto;
 import com.automobil.backend.dto.ClientsDto;
+import com.automobil.backend.exeption.CLientException;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.models.Clients;
 import com.automobil.backend.security.jwt.JwtTokenProvider;
@@ -71,7 +72,7 @@ public class AuthRestController {
 
     @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
         MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> registration(@Validated(New.class) @RequestBody ClientsDto clientsDto)  {
+    public ResponseEntity<?> registration(@Validated(New.class) @RequestBody ClientsDto clientsDto) throws CLientException {
         if (clientsDto == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } else {
