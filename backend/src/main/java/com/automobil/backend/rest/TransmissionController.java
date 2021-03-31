@@ -20,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/transmission")
+@CrossOrigin//(origins = " http://localhost:4200")
 public class TransmissionController {
     private final TransmissionService transmissionService;
 

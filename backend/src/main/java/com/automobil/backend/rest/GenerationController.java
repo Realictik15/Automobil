@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/generation")
+@CrossOrigin//(origins = " http://localhost:4200")
 public class GenerationController {
     private final GenerationsService generationsService;
 

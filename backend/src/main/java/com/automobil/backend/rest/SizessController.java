@@ -20,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/sizess")
+@CrossOrigin//(origins = " http://localhost:4200")
 public class SizessController {
     private final SizessService sizessService;
 
