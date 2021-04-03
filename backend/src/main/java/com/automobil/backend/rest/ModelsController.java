@@ -23,7 +23,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/models")
-@CrossOrigin//(origins = " http://localhost:4200")
+//@CrossOrigin//(origins = " http://localhost:4200")
 public class ModelsController {
     private final ModelsService modelsService;
 

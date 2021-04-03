@@ -21,7 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/marks")
-@CrossOrigin//(origins = " http://localhost:4200")
+//@CrossOrigin(origins = "*")//(origins = " http://localhost:4200")
 public class MarksController {
     @Autowired
     private MarksService marksService;

@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/modification")
-@CrossOrigin//(origins = " http://localhost:4200")
+//@CrossOrigin//(origins = " http://localhost:4200")
 public class ModificationController {
     @Autowired
     private ModificationsService modificationsService;

@@ -22,7 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/review")
-@CrossOrigin//(origins = " http://localhost:4200")
+//@CrossOrigin//(origins = " http://localhost:4200")
 public class ReviewsComtroller {
     private final ReviewsService reviewsService;
 

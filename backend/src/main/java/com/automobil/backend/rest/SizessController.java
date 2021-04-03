@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/sizess")
-@CrossOrigin//(origins = " http://localhost:4200")
+//@CrossOrigin//(origins = " http://localhost:4200")
 public class SizessController {
     private final SizessService sizessService;
 
@@ -29,7 +29,7 @@ public class SizessController {
     }
 
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
-    @JsonView(AdvertReviewDetails.class)
+    @JsonView(AdminDetails.class)
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SizessDto> getSizess(@PathVariable("id") Long id) throws EntityNotFoundException {
         if (id == null) {
