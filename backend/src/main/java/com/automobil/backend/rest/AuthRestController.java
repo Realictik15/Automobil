@@ -61,6 +61,11 @@ public class AuthRestController {
             response.put("role", client.getRoles());
             response.put("login", login);
             response.put("token", token);
+            response.put("name", client.getFirstName());
+            response.put("Lname",client.getLastName());
+            response.put("born", client.getBornDay());
+            response.put("emale", client.getEmale());
+            response.put("phone", client.getTelephone());
 
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
