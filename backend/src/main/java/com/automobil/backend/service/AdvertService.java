@@ -16,6 +16,7 @@ public interface AdvertService {
     List<AdvertismentDto> getlistAvalible();
 
     List<AdvertismentDto> getlistAll();
+    List<AdvertismentDto> getListByClass(Long id);
 
     List<AdvertismentDto> getReport(Long id) throws EntityNotFoundException;
 

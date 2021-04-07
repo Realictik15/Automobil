@@ -23,4 +23,10 @@ public interface AdvertisRepository extends JpaRepository<Advertisments, Long> {
         nativeQuery = true
     )
     List<Advertisments> getListAllAvalible();
+
+    @Query(
+        value = Utils.FIND_ADVERT_BY_CLASS,
+        nativeQuery = true
+    )
+    List<Advertisments> getListByClass(@Param("class")Long id);
 }

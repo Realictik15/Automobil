@@ -70,7 +70,10 @@ public class ClientsServiceImpl implements ClientService {
     @Override
     public void register(ClientsDto clientsDto) throws CLientException {
         if (clientsRepository.existsByLoginIs(clientsDto.getLogin())>0) {
-            throw new CLientException();
+            throw new CLientException("login");
+        }
+        if (clientsRepository.existsByEmaleIs(clientsDto.getEmale())>0) {
+            throw new CLientException("emale");
         }
         Clients client = new Clients();
         client.setFirstName(clientsDto.getFirstName());

@@ -27,10 +27,8 @@ public class Utils {
 
     public static final String CHECK_EXIST_LOGIN = "SELECT count(c.login) from clients c where c.login=:login";
 
+    public static final String CHECK_EXIST_EMALE = "SELECT count(c.EMAIL) from clients c where c.EMAIL=:emale";
 
-
-//    public static final String FIND_ENGINE_BY_TYPE_FUREL = "SELECT a.* FROM advertisments a where a.vin = :vin and a.available = 'no'";
-//
-//    public static final String FIND_TRANSMISSION_BY_TYPE = "SELECT a.* FROM advertisments a where a.vin = :vin and a.available = 'no'";
+    public static final String FIND_ADVERT_BY_CLASS = "SELECT * FROM advertisments a WHERE (SELECT m.idclas FROM models m WHERE m.idmodel= a.idmodel) = :class and a.available = 'yes'";
 
 }

@@ -51,6 +51,18 @@ public class AdvertismentController {
         return new ResponseEntity<>(advertismentDtos, HttpStatus.OK);
 
     }
+
+    @JsonView(AdminDetails.class)
+    @GetMapping(value = "class/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<AdvertismentDto>> getAllByClass(@PathVariable("id") Long id) {
+        List<AdvertismentDto> advertismentDtos = advertService.getListByClass(id);
+        if (advertismentDtos.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(advertismentDtos, HttpStatus.OK);
+
+    }
+
  //   @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)

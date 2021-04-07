@@ -12,15 +12,22 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ClientsRepository extends JpaRepository<Clients,Long> {
+public interface ClientsRepository extends JpaRepository<Clients, Long> {
     @Query(
         value = Utils.FIND_CLIENT_BY_LOGIN,
         nativeQuery = true
     )
-    Clients getByLogin(@Param("login")String login);
+    Clients getByLogin(@Param("login") String login);
+
     @Query(
-        value= Utils.CHECK_EXIST_LOGIN,
+        value = Utils.CHECK_EXIST_LOGIN,
         nativeQuery = true
     )
-    Integer existsByLoginIs(@Param("login")String login);
+    Integer existsByLoginIs(@Param("login") String login);
+
+    @Query(
+        value = Utils.CHECK_EXIST_EMALE,
+        nativeQuery = true
+    )
+    Integer existsByEmaleIs(@Param("emale") String emale);
 }

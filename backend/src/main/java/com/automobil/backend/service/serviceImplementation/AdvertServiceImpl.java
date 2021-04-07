@@ -68,6 +68,16 @@ public class AdvertServiceImpl implements AdvertService {
     }
 
     @Override
+    public List<AdvertismentDto> getListByClass(Long id) {
+        List<Advertisments> advertisments = advertisRepository.getListByClass(id);
+        List<AdvertismentDto> advertismentDtos = advertismetMapper.toAdvertismentDTOs(advertisments);
+        for (int i = 0; i < advertismentDtos.size(); i++) {
+            advertismentDtos.get(i).setImagesList((getImagesFromModel(advertisments.get(i).getImages())));
+        }
+        return advertismentDtos;
+    }
+
+    @Override
     public AdvertismentDto getById(Long id) throws EntityNotFoundException {
         Advertisments advertisments = advertisRepository.findById(id).
             orElseThrow(() -> new EntityNotFoundException(id, "Advertisments"));
