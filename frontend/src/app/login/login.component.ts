@@ -1,0 +1,45 @@
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../service/auth.service';
+import {TokenStorageService} from '../service/token-storage.service';
+import {Auth} from '../model/auth';
+
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+  auth: Auth;
+  err = '';
+  loading = false;
+  isLogin = false;
+  name = '';
+
+  constructor(private tokenStorage: TokenStorageService, private authService: AuthService) {
+    this.auth = new Auth();
+  }
+  ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLogin = true;
+      this.name = this.tokenStorage.getUser().name;
+    }
+  }
+  onSubmit(): void {
+    console.log(this.auth);
+    this.loading = true;
+    this.authService.login(this.auth).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.token);
+        console.log(data.token);
+        this.loading = false;
+        this.tokenStorage.saveUser(data);
+        location.href = '/';
+      }, error => {
+        this.err = error.error.message;
+        console.log(error);
+      }
+    );
+    this.err = '';
+  }
+}
