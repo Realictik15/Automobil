@@ -52,15 +52,22 @@
             Нет аккаунта?
           </div>
           <div class="d-flex justify-content-center">
-            <a class="sing" [routerLink]="['/reg']" >Sign Up</a>
+            <a class="sing" [routerLink]="['/reg']">Sign Up</a>
           </div>
         </div>
       </div>
       <ng-template #redi>
-        <div class="ngt">
-          {{name}}, Вы, уже вошли!
+        <div style="margin-left: auto; margin-right: auto; text-align: center">
+          <div class="ngt">
+            {{name}}, Вы, уже вошли!
+          </div>
+          <div style="margin-top: 4%; font-size: 20px">
+           <a  class="otherA" [routerLink]="['/home']">На главную...</a>
+          </div>
+          <img style="width: 600px; height: 300px; margin-top: 3%"
+               src="assets/The-Lord-of-the-Rings-dtf-magazine.jpg">
         </div>
-        <a class="sing" [routerLink]="['/login']">Профиль</a>
+
       </ng-template>
     </div>
   </div>

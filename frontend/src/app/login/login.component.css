@@ -121,3 +121,13 @@ input:focus{
    font-size: 20px;
    color: #2F496E;
  }
+.otherA{
+  font-size: 20px;
+  color: #2F496E;
+
+}
+.otherA:hover{
+  color: #EFB509;
+
+
+}

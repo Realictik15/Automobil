@@ -16,6 +16,7 @@
               </div>
               <input type="text" class="form-control"
                      placeholder="Имя"
+                     pattern="[A-Za-zA-Яа-яЁё]*"
                      required
                      minlength="3"
                      name="name"
@@ -27,6 +28,7 @@
               <div *ngIf="name.errors.minlength">
                 Username must be at least 3 characters
               </div>
+              <div *ngIf="name.errors.pattern">Имя не должно содержать ничего кроме букв</div>
             </div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
