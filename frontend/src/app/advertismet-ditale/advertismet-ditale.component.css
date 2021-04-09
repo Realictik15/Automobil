@@ -1,0 +1,12 @@
+.f{
+  background: #2F496E;
+  height: 500px;
+  width: 500px;
+  /*display: flex;*/
+  margin-right: auto;
+  margin-left: auto;
+}
+.c{
+  height: 100%;
+  width: 100%;
+}

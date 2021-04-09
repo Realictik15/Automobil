@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'adverts/:class', component: AdvertismetsComponent},
   {
-    path: 'adverts/:id', component: AdvertismetDitaleComponent, children:
+    path: 'advert/:id', component: AdvertismetDitaleComponent, children:
       [{path: 'info', component: InfoAdvertComponent}]
   },
   {path: 'login', component: LoginComponent},

@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Advertisment} from '../model/advertisment';
+import {PageAdvert} from '../model/PageAdvert';
 
 const ADVERT_API = 'http://localhost:8881/advert/';
 
@@ -19,6 +20,10 @@ export class AdvertismentServiceService {
 
   getAllAvalibleAdvert(): Observable<Advertisment[]> {
     return this.http.get<Advertisment[]>(ADVERT_API, httpOptions);
+  }
+
+  getAllAvalibleAdvertPage(page: number, size: number): Observable<PageAdvert> {
+    return this.http.get<PageAdvert>(ADVERT_API + 'all' + '?page=' + page + '&size=' + size, httpOptions);
   }
 
   getAllAvalibleAdvertByClass(id: number): Observable<Advertisment[]> {

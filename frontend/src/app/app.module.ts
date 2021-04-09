@@ -19,6 +19,7 @@ import {InfoAdvertComponent} from './info-advert/info-advert.component';
 import {RegistrComponent} from './registr/registr.component';
 import {RewisComponent} from './rewis/rewis.component';
 import {RewisDitaleComponent} from './rewis-ditale/rewis-ditale.component';
+import { ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {RewisDitaleComponent} from './rewis-ditale/rewis-ditale.component';
     RewisDitaleComponent
   ],
   imports: [
+    ScrollingModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
