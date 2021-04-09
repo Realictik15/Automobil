@@ -19,6 +19,8 @@ public class Utils {
 
     public static final String FIND_AVAILABLE_ADS = "SELECT a.* FROM advertisments a where a.available = 'yes'";
 
+    public static final String FIND_AVAILABLE_ADS_COUNT = "SELECT count(a.available) FROM advertisments a where a.available = 'yes'";
+
     public static final String FIND_ADVERTISMENT_REPORT = "SELECT a.* FROM advertisments a where a.vin = :vin and a.available = 'no'";
 
     public static final String FIND_COUNTRY_BY_TILE = "SELECT c.* FROM COUNTRIES c where c.title= :title";

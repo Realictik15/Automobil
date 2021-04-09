@@ -8,6 +8,7 @@ import com.automobil.backend.transfer.*;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -62,6 +63,15 @@ public class AdvertismentController {
         return new ResponseEntity<>(advertismentDtos, HttpStatus.OK);
 
     }
+
+
+    @GetMapping("/all")
+    public Page<AdvertismentDto> listPosts(@RequestParam(defaultValue = "0") int page, @RequestParam("size") int size) {
+        return advertService.getListAllAvaliblePage(page, size);
+
+    }
+
+
 
  //   @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)

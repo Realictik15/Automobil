@@ -5,6 +5,7 @@ import com.automobil.backend.dto.FormAdvert;
 import com.automobil.backend.dto.SizessDto;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.models.Advertisments;
+import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -16,13 +17,17 @@ public interface AdvertService {
     List<AdvertismentDto> getlistAvalible();
 
     List<AdvertismentDto> getlistAll();
+
+    Page<AdvertismentDto> getListAllAvaliblePage(int page, int size);
+
     List<AdvertismentDto> getListByClass(Long id);
 
     List<AdvertismentDto> getReport(Long id) throws EntityNotFoundException;
 
 
     AdvertismentDto getById(Long id) throws EntityNotFoundException;
-//TODO: ghtndbj
+
+    //TODO: ghtndbj
     Advertisments getByIdAdvert(Long id) throws EntityNotFoundException;
 
     void save(FormAdvert formAdvert, List<String> list) throws EntityNotFoundException, ParseException;

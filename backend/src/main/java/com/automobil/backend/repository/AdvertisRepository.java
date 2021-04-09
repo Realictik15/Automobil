@@ -3,6 +3,8 @@ package com.automobil.backend.repository;
 import com.automobil.backend.models.Advertisments;
 import com.automobil.backend.models.Carbody;
 import com.automobil.backend.repository.query.Utils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,7 +19,8 @@ public interface AdvertisRepository extends JpaRepository<Advertisments, Long> {
         value = Utils.FIND_ADVERTISMENT_REPORT,
         nativeQuery = true
     )
-    List<Advertisments> getReportItems(@Param("vin")String vin);
+    List<Advertisments> getReportItems(@Param("vin") String vin);
+
     @Query(
         value = Utils.FIND_AVAILABLE_ADS,
         nativeQuery = true
@@ -28,5 +31,14 @@ public interface AdvertisRepository extends JpaRepository<Advertisments, Long> {
         value = Utils.FIND_ADVERT_BY_CLASS,
         nativeQuery = true
     )
-    List<Advertisments> getListByClass(@Param("class")Long id);
+    List<Advertisments> getListByClass(@Param("class") Long id);
+
+
+    @Query(
+        value = Utils.FIND_AVAILABLE_ADS,
+        countQuery = Utils.FIND_AVAILABLE_ADS_COUNT,
+        nativeQuery = true
+    )
+    Page<Advertisments> getListAllAvaliblePage(Pageable pageable);
+
 }

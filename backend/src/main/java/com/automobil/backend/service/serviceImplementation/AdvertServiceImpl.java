@@ -10,6 +10,9 @@ import com.automobil.backend.repository.*;
 import com.automobil.backend.service.AdvertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class AdvertServiceImpl implements AdvertService {
@@ -65,6 +69,19 @@ public class AdvertServiceImpl implements AdvertService {
             advertismentDtos.get(i).setImagesList((getImagesFromModel(advertisments.get(i).getImages())));
         }
         return advertismentDtos;
+    }
+
+    @Override
+    public Page<AdvertismentDto> getListAllAvaliblePage(int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        Page<Advertisments> advertisments = advertisRepository.getListAllAvaliblePage(pageRequest);
+        int totalElements = (int) advertisments.getTotalElements();
+        List<Advertisments> advertList = advertisments.stream().collect(Collectors.toList());
+        List<AdvertismentDto> advertismentDtoslist = advertismetMapper.toAdvertismentDTOs(advertList);
+        for (int i = 0; i < advertismentDtoslist.size(); i++) {
+            advertismentDtoslist.get(i).setImagesList((getImagesFromModel(advertList.get(i).getImages())));
+        }
+        return new PageImpl<>(advertismentDtoslist, pageRequest, totalElements);
     }
 
     @Override
@@ -136,7 +153,7 @@ public class AdvertServiceImpl implements AdvertService {
             }
             byte[] bytes = file.getBytes();
             String id = UUID.randomUUID().toString();
-            String savepath =uploadpath+ id + file.getOriginalFilename();
+            String savepath = uploadpath + id + file.getOriginalFilename();
             Path path = Paths.get(savepath);
             Files.write(path, bytes);
             result.add(savepath);
