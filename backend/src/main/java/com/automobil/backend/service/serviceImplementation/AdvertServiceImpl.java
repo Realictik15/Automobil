@@ -22,10 +22,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -67,6 +64,8 @@ public class AdvertServiceImpl implements AdvertService {
         List<AdvertismentDto> advertismentDtos = advertismetMapper.toAdvertismentDTOs(advertisments);
         for (int i = 0; i < advertismentDtos.size(); i++) {
             advertismentDtos.get(i).setImagesList((getImagesFromModel(advertisments.get(i).getImages())));
+            advertismentDtos.get(i).setNalog(calculationNalog(advertisments.get(i).getPrice(), advertisments.get(i).getModification().getEngines().getPower()));
+
         }
         return advertismentDtos;
     }
@@ -80,6 +79,7 @@ public class AdvertServiceImpl implements AdvertService {
         List<AdvertismentDto> advertismentDtoslist = advertismetMapper.toAdvertismentDTOs(advertList);
         for (int i = 0; i < advertismentDtoslist.size(); i++) {
             advertismentDtoslist.get(i).setImagesList((getImagesFromModel(advertList.get(i).getImages())));
+            advertismentDtoslist.get(i).setNalog(calculationNalog(advertList.get(i).getPrice(), advertList.get(i).getModification().getEngines().getPower()));
         }
         return new PageImpl<>(advertismentDtoslist, pageRequest, totalElements);
     }
@@ -90,6 +90,8 @@ public class AdvertServiceImpl implements AdvertService {
         List<AdvertismentDto> advertismentDtos = advertismetMapper.toAdvertismentDTOs(advertisments);
         for (int i = 0; i < advertismentDtos.size(); i++) {
             advertismentDtos.get(i).setImagesList((getImagesFromModel(advertisments.get(i).getImages())));
+            advertismentDtos.get(i).setNalog(calculationNalog(advertisments.get(i).getPrice(), advertisments.get(i).getModification().getEngines().getPower()));
+
         }
         return advertismentDtos;
     }
@@ -100,6 +102,7 @@ public class AdvertServiceImpl implements AdvertService {
             orElseThrow(() -> new EntityNotFoundException(id, "Advertisments"));
         AdvertismentDto advertismentDto = advertismetMapper.toAdvertismentDTO(advertisments);
         advertismentDto.setImagesList(getImagesFromModel(advertisments.getImages()));
+        advertismentDto.setNalog(calculationNalog(advertisments.getPrice(), advertisments.getModification().getEngines().getPower()));
         return advertismentDto;
     }
 
@@ -109,6 +112,8 @@ public class AdvertServiceImpl implements AdvertService {
         List<AdvertismentDto> advertismentDtos = advertismetMapper.toAdvertismentDTOs(advertisments);
         for (int i = 0; i < advertismentDtos.size(); i++) {
             advertismentDtos.get(i).setImagesList((getImagesFromModel(advertisments.get(i).getImages())));
+            advertismentDtos.get(i).setNalog(calculationNalog(advertisments.get(i).getPrice(), advertisments.get(i).getModification().getEngines().getPower()));
+
         }
         return advertismentDtos;
     }
@@ -118,10 +123,13 @@ public class AdvertServiceImpl implements AdvertService {
     public List<AdvertismentDto> getReport(Long id) throws EntityNotFoundException {
         Advertisments advertisment = advertisRepository.findById(id).
             orElseThrow(() -> new EntityNotFoundException(id, "Advertisments"));
-
-        return advertismetMapper.toAdvertismentDTOs(advertisRepository.getReportItems(advertisment.getVin()));
+        List<Advertisments> reports = advertisRepository.getReportItems(advertisment.getVin());
+        List<AdvertismentDto> advertismentDtos = advertismetMapper.toAdvertismentDTOs(reports);
+        for (int i = 0; i < advertismentDtos.size(); i++) {
+            advertismentDtos.get(i).setImagesList((getImagesFromModel(reports.get(i).getImages())));
+        }
+        return advertismentDtos;
     }
-
 
     @Override
     public Advertisments getByIdAdvert(Long id) throws EntityNotFoundException {
@@ -162,15 +170,19 @@ public class AdvertServiceImpl implements AdvertService {
     }
 
     public List<String> getImagesFromModel(String path) {
-//        int index = path.lastIndexOf('\\');
-//        String s = path.substring(index + 1);
-        List<String> res = (Arrays.asList(path.split(",")));
-        res.forEach(x -> x += uploadpath);
+        List<String> tmp = (Arrays.asList(path.split(",")));
+        List<String> res = new ArrayList<>();
+        int index;
+        for (String str : tmp) {
+            index = str.indexOf("assets/");
+            res.add(str.substring(index));
+        }
         return res;
     }
 
     @Override
-    public void save(FormAdvert formAdvert, List<String> list) throws EntityNotFoundException, ParseException {
+    public void save(FormAdvert formAdvert, List<String> list) throws
+        EntityNotFoundException, ParseException {
         AdvertismentDto advertismentDto = formAdvertMapper.toAdvertismentDTO(formAdvert);
         Advertisments advert = advertismetMapper.toAdvertisment(advertismentDto);
         StringBuilder s = new StringBuilder();
@@ -213,5 +225,25 @@ public class AdvertServiceImpl implements AdvertService {
         newadvertisments.setSwap(advertismentDto.getSwap());
         newadvertisments.setCommentns(advertismentDto.getCommentns());
         advertisRepository.save(newadvertisments);
+    }
+
+    public Integer calculationNalog(double price, int power) {
+        int nalog = 0;
+        NavigableMap<Integer, Integer> table = new TreeMap<Integer, Integer>();
+        table.put(0, 12);
+        table.put(100, 25);
+        table.put(150, 45);
+        table.put(125, 35);
+        table.put(175, 50);
+        table.put(200, 65);
+        table.put(225, 75);
+        table.put(250, 150);
+
+        if (price >= 3000000) {
+            nalog = (int) (1.1 * power * table.floorEntry(power).getValue());
+        } else {
+            nalog = (int) (power * table.floorEntry(power).getValue());
+        }
+        return nalog;
     }
 }

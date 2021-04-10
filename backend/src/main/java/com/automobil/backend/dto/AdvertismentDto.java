@@ -130,4 +130,8 @@ public class AdvertismentDto {
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private List<String> imagesList;
 
+    @Null(groups = {New.class, Existing.class})
+    @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
+    private Integer nalog;
+
 }
