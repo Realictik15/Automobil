@@ -12,7 +12,7 @@ export class AdvertismetsComponent implements OnInit {
 
   items: Advertisment[];
   pageAdvert: PageAdvert;
-  size = 2;
+  size = 3;
   page = 1;
   selectedPage = 0;
 

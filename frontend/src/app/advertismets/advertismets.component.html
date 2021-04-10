@@ -1,18 +1,31 @@
+<div class="contents">
+  <div class="row no-gutters">
+    <div class="col-sm-8" style="margin-left: 1%; margin-right: auto;">
+      <div *ngFor="let advert of pageAdvert?.content">
+        <div class="card" style="margin-right: auto; margin-left: auto; margin-top: 3%">
+          <h5 class="card-header">{{advert.marksTitle}} {{advert.generationsDto.title}} ({{advert.modificationsDto.title}}) </h5>
+          <div class="card-body">
+            <h5 class="card-title">{{advert.clientsDto.firstName}}</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional
+              content.</p>
+            <a href="#" class="btn btn-primary">Переход куда-нибудь</a>
+            <img class="carimg" src="{{advert.imagesList[0]}}"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3" style="background: red; margin-right: 2%">
+      <div style="background: #F4EADE; margin-right: auto; margin-left: auto;">
+        hsdhshsdhshd
+      </div>
 
-<div *ngFor="let advert of pageAdvert?.content">
-  <div class="card" >
-    <h5 class="card-header">{{advert.modelTitle}}</h5>
-    <div class="card-body">
-      <h5 class="card-title">{{advert.clientsDto.firstName}}</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Переход куда-нибудь</a>
-      <img style="height: 90px;width: 150px" src="{{advert.imagesList[0]}}"/>
     </div>
   </div>
 </div>
 <nav style="text-align: center">
   <ul class="pagination justify-content-center">
-    <li *ngFor="let g of ' '.repeat(pageAdvert?.totalPages).split(''), let i = index " (click)="onSelect(i)"
+    <li *ngFor="let g of ' '.repeat(pageAdvert?.totalPages).split(''), let i = index "
+        (click)="onSelect(i)"
         [class.active]="i == selectedPage" class="page-item">
       <a class="page-link">{{i + 1}}</a></li>
   </ul>

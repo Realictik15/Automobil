@@ -1,0 +1,12 @@
+.contents{
+  height: 100%;
+  width: 100%;
+
+}
+.card:hover{
+  border-color: #2F496E ;
+}
+.carimg{
+  height: 90px;
+  width: 150px
+}
