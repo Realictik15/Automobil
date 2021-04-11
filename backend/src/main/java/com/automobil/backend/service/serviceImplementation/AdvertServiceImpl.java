@@ -175,8 +175,14 @@ public class AdvertServiceImpl implements AdvertService {
         int index;
         for (String str : tmp) {
             index = str.indexOf("assets/");
-            res.add(str.substring(index));
+            if(index!=-1) {
+                res.add(str.substring(index));
+            }
         }
+        if(res.isEmpty()){
+            res.add("assets/default.png");
+        }
+
         return res;
     }
 
@@ -242,7 +248,7 @@ public class AdvertServiceImpl implements AdvertService {
         if (price >= 3000000) {
             nalog = (int) (1.1 * power * table.floorEntry(power).getValue());
         } else {
-            nalog = (int) (power * table.floorEntry(power).getValue());
+            nalog =  (power * table.floorEntry(power).getValue());
         }
         return nalog;
     }

@@ -22,7 +22,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/advert")
-//@CrossOrigin(origins = "*")//(origins = " http://localhost:4200")
 public class AdvertismentController {
     private final AdvertService advertService;
 
@@ -30,6 +29,7 @@ public class AdvertismentController {
     public AdvertismentController(AdvertService advertService) {
         this.advertService = advertService;
     }
+
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @PostMapping(value = "")
     public ResponseEntity<?> saveAdvertisment(@ModelAttribute FormAdvert formAdvert) throws EntityNotFoundException, ParseException, IOException {
@@ -41,6 +41,7 @@ public class AdvertismentController {
             return new ResponseEntity(HttpStatus.CREATED);
         }
     }
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @JsonView(AdminDetails.class)
     @GetMapping(value = "admin/", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -72,8 +73,6 @@ public class AdvertismentController {
     }
 
 
-
- //   @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AdvertismentDto>> getAllAvailAdvert() {
@@ -84,7 +83,8 @@ public class AdvertismentController {
         return new ResponseEntity<>(advertismentDtos, HttpStatus.OK);
 
     }
- //   @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+
+
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AdvertismentDto> getAdvertismentById(@PathVariable("id") Long id) throws EntityNotFoundException {
@@ -93,6 +93,7 @@ public class AdvertismentController {
         }
         return new ResponseEntity<>(advertService.getById(id), HttpStatus.OK);
     }
+
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "{id}/report", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -102,6 +103,7 @@ public class AdvertismentController {
         }
         return new ResponseEntity<>(advertService.getReport(id), HttpStatus.OK);
     }
+
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @PatchMapping(value = "{id}/update", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> patchAdvert(@Validated(Existing.class)@PathVariable("id") Long id, @RequestBody AdvertismentDto advertismentDto) throws EntityNotFoundException, DataIntegrityViolationException {
@@ -115,6 +117,7 @@ public class AdvertismentController {
         return new ResponseEntity(HttpStatus.CREATED);
 
     }
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> deleteAdvert(@PathVariable("id") Long id) throws EntityNotFoundException {
@@ -124,6 +127,7 @@ public class AdvertismentController {
         advertService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @GetMapping(value = "{id}/userdelete")
     public ResponseEntity<?> userDeleteAdvert(@PathVariable("id") Long id) throws EntityNotFoundException, ParseException, IOException {
