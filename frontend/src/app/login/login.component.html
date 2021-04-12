@@ -75,6 +75,7 @@
     <div class="errors_b" style="margin-left: 30%;margin-right: 30%;"
          *ngIf="err; else loadingBlock">
       {{err}}</div>
+
     <ng-template #loadingBlock>
       <p class="load">Ожидайте, соединение с сервером...</p>
     </ng-template>

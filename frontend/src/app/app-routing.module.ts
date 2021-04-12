@@ -12,6 +12,7 @@ import {AddAdvertComponent} from './add-advert/add-advert.component';
 import {CarCompareComponent} from './car-compare/car-compare.component';
 import {RewisComponent} from './rewis/rewis.component';
 import {RewisDitaleComponent} from './rewis-ditale/rewis-ditale.component';
+import {ReportComponent} from './report/report.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
       [{path: 'info', component: InfoAdvertComponent}]
   },
   {path: 'login', component: LoginComponent},
+  {path: 'report/:id', component: ReportComponent},
   {path: 'reg', component: RegistrComponent},
   {path: 'profile', component: ProfilComponent},
   {path: 'admin', component: AdminboardComponent},

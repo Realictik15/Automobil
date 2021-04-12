@@ -10,3 +10,8 @@
   height: 100%;
   width: 100%;
 }
+.carimg{
+  height: 100px;
+  width: 160px;
+  border-radius: 2px;
+}

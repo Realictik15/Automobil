@@ -28,4 +28,5 @@ export class Advertisment{
   sts: bigint;
   commentns: string;
   imagesList: string[];
+  nalog: number;
 }

@@ -1,28 +1,112 @@
 <div class="contents">
   <div class="row no-gutters">
+    <div class="col-sm-8" style="margin-left: 1%; margin-right: auto; ">
+      <div *ngIf="loading">
+        <div class="errors_b" style="margin-left: 30%;margin-right: 30%;"
+             *ngIf="err; else loadingBlock">
+          {{err}}</div>
+      </div>
+      <ng-template #loadingBlock>
+        <p class="load">Ожидайте, соединение с сервером...</p>
+      </ng-template>
+    </div>
     <div class="col-sm-8" style="margin-left: 1%; margin-right: auto;">
       <div *ngFor="let advert of pageAdvert?.content">
-        <div class="card" style="margin-right: auto; margin-left: auto; margin-top: 3%">
-          <h5 class="card-header">{{advert.marksTitle}} {{advert.generationsDto.title}} ({{advert.modificationsDto.title}}) </h5>
-          <div class="card-body">
-            <h5 class="card-title">{{advert.clientsDto.firstName}}</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional
-              content.</p>
-            <a href="#" class="btn btn-primary">Переход куда-нибудь</a>
-            <img class="carimg" src="{{advert.imagesList[0]}}"/>
+        <a target="_blank" [routerLink]="['/advert/'+advert.idAdvert]">
+          <div class=" card"
+               style="margin-right: auto; margin-left: auto; margin-top: 3%; height: 200px">
+
+            <h5 class="card-header">{{advert.marksTitle}} {{advert.generationsDto.title}}
+              ({{advert.modificationsDto.title}}) </h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-2" style="margin-right: 3%">
+                  <img class="carimg" src="{{advert.imagesList[0]}}"/>
+                </div>
+
+                <div class="col-sm-2" style="margin-right: 4%">
+
+                  <div class="row">
+                    <p
+                      class="card-text">{{(advert.modificationsDto.enginesDto.volume / 1000).toFixed(1)}}
+                      л /{{advert.modificationsDto.enginesDto.power}} л.с
+                      /{{advert.modificationsDto.enginesDto.typeFuel}}</p>
+                  </div>
+
+                  <div class="row">
+                    <p
+                      class="card-text">{{advert.modificationsDto.transmissionsDto.driveType| slice:0:1| uppercase
+                      }}{{advert.modificationsDto.transmissionsDto.driveType| slice:1}}</p>
+                  </div>
+
+                  <div class="row">
+                    <p
+                      class="card-text">{{advert.modificationsDto.transmissionsDto.gearBoxDto.title}}</p>
+                  </div>
+
+                  <div class="row">
+                    <p
+                      class="card-text">{{advert.carbodyTitle}} {{advert.modificationsDto.doors}}</p>
+                  </div>
+
+                  <div class="row">
+                    <div *ngIf="advert.broken" class="inaccident">Был в дтп</div>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="row">
+                    <p class="card-text">{{getNumber(advert.price)}} ₽</p>
+                  </div>
+                  <div class="row">
+                    Налог в год:
+                  </div>
+                  <div class="row">
+                    <p class="card-text">от {{getNumber(advert.nalog)}}</p>
+                  </div>
+                  <div class="row">
+                    <div *ngIf="advert.owners < 3"
+                         class="green">Владельцев: {{advert.owners}}</div>
+                  </div>
+                  <div class="row">
+                    <div *ngIf="advert.owners >= 3"
+                         class="red">Владельцев: {{advert.owners}}</div>
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <div class="row">
+                    <p class="card-text">{{advert.buyday| date:"yyyy"}}</p>
+                  </div>
+                </div>
+                <div class="col-sm-1" >
+                  <div class="row">
+                    <p class="card-text" style="margin-right: auto; margin-left: auto">
+                      {{getNumber(advert.mileage)}} км</p>
+                  </div>
+                </div>
+                <div class="col-sm-3" style="margin-left: 1%;">
+                  <a [routerLink]="['/report/'+advert.idAdvert]" class="btn btn-primary one" >Отчёт</a>
+
+                  <button type="submit" (click)="addCompare(advert.idAdvert,user.id)" *ngIf="isLogin" style="margin-left: 25px" class="btn"><img  class="assets1" src="assets/compare1.png"/></button>
+                  <div class="row">
+                    <p class="card-text" style=" margin-left: 65%; margin-top: 25%">
+                      {{advert.city}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
-    <div class="col-sm-3" style="background: red; margin-right: 2%">
+    <div class="col-sm-3" style="background: red; margin-right: 2%; margin-top: 20px">
       <div style="background: #F4EADE; margin-right: auto; margin-left: auto;">
         hsdhshsdhshd
       </div>
-
     </div>
   </div>
 </div>
-<nav style="text-align: center">
+<hr/>
+<nav class="navp">
   <ul class="pagination justify-content-center">
     <li *ngFor="let g of ' '.repeat(pageAdvert?.totalPages).split(''), let i = index "
         (click)="onSelect(i)"

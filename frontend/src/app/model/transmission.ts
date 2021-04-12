@@ -2,7 +2,7 @@ import {GearBox} from './gearBox';
 
 export class Transmission {
   idTrans: bigint;
-  gearBox: GearBox;
+  gearBoxDto: GearBox;
   quantity: number;
   driveType: string;
   brakes: string;

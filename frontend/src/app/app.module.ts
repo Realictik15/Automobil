@@ -20,6 +20,7 @@ import {RegistrComponent} from './registr/registr.component';
 import {RewisComponent} from './rewis/rewis.component';
 import {RewisDitaleComponent} from './rewis-ditale/rewis-ditale.component';
 import { ScrollingModule} from '@angular/cdk/scrolling';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ScrollingModule} from '@angular/cdk/scrolling';
     InfoAdvertComponent,
     RegistrComponent,
     RewisComponent,
-    RewisDitaleComponent
+    RewisDitaleComponent,
+    ReportComponent
   ],
   imports: [
     ScrollingModule,
