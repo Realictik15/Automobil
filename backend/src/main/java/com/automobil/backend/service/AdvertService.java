@@ -1,6 +1,7 @@
 package com.automobil.backend.service;
 
 import com.automobil.backend.dto.AdvertismentDto;
+import com.automobil.backend.dto.FiltersDto;
 import com.automobil.backend.dto.FormAdvert;
 import com.automobil.backend.dto.SizessDto;
 import com.automobil.backend.exeption.EntityNotFoundException;
@@ -21,6 +22,8 @@ public interface AdvertService {
     Page<AdvertismentDto> getListAllAvaliblePage(int page, int size);
 
     List<AdvertismentDto> getListByClass(Long id);
+
+    Page<AdvertismentDto> getListFilters(FiltersDto filtersDto, int page, int size);
 
     List<AdvertismentDto> getReport(Long id) throws EntityNotFoundException;
 

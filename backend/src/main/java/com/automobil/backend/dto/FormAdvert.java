@@ -1,12 +1,8 @@
 package com.automobil.backend.dto;
-
-import com.automobil.backend.transfer.*;
-import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
+
 import java.util.Date;
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package com.automobil.backend.rest;
 
 import com.automobil.backend.dto.AdvertismentDto;
+import com.automobil.backend.dto.FiltersDto;
 import com.automobil.backend.dto.FormAdvert;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.service.AdvertService;
@@ -30,7 +31,7 @@ public class AdvertismentController {
         this.advertService = advertService;
     }
 
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @PostMapping(value = "")
     public ResponseEntity<?> saveAdvertisment(@ModelAttribute FormAdvert formAdvert) throws EntityNotFoundException, ParseException, IOException {
         if (formAdvert == null) {
@@ -69,6 +70,13 @@ public class AdvertismentController {
     @GetMapping("/all")
     public Page<AdvertismentDto> listPosts(@RequestParam(defaultValue = "0") int page, @RequestParam("size") int size) {
         return advertService.getListAllAvaliblePage(page, size);
+
+    }
+
+    @PostMapping(value = "/all/filters", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Page<AdvertismentDto> listPostsFilters(@RequestParam(defaultValue = "0") int page, @RequestParam("size") int size,
+                                                  @RequestBody FiltersDto filtersDto) {
+        return advertService.getListFilters(filtersDto,page, size);
 
     }
 

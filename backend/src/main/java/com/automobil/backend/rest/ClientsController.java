@@ -21,7 +21,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/client")
-//@CrossOrigin//(origins = " http://localhost:4200")
 public class ClientsController {
     private final ClientService clientService;
 
@@ -94,11 +93,12 @@ public class ClientsController {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(clientService.getUserCompareDto(id), HttpStatus.OK);
+        List<ComparisonsDto> l= clientService.getUserCompareDto(id);
+        return new ResponseEntity<>(l, HttpStatus.OK);
     }
 
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
-    @PostMapping(value = "{id}/advertomp/{idAd}", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
+    @GetMapping (value = "/{id}/advertcomp/{idAd}", produces =
         MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addClientComp(@PathVariable("id") Long id, @PathVariable("idAd") Long idAd) throws EntityNotFoundException {
         if (id == null || idAd == null) {

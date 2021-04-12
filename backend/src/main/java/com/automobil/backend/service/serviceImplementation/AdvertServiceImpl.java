@@ -1,6 +1,7 @@
 package com.automobil.backend.service.serviceImplementation;
 
 import com.automobil.backend.dto.AdvertismentDto;
+import com.automobil.backend.dto.FiltersDto;
 import com.automobil.backend.dto.FormAdvert;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.AdvertismetMapper;
@@ -61,13 +62,7 @@ public class AdvertServiceImpl implements AdvertService {
     @Override
     public List<AdvertismentDto> getlistAll() {
         List<Advertisments> advertisments = advertisRepository.findAll();
-        List<AdvertismentDto> advertismentDtos = advertismetMapper.toAdvertismentDTOs(advertisments);
-        for (int i = 0; i < advertismentDtos.size(); i++) {
-            advertismentDtos.get(i).setImagesList((getImagesFromModel(advertisments.get(i).getImages())));
-            advertismentDtos.get(i).setNalog(calculationNalog(advertisments.get(i).getPrice(), advertisments.get(i).getModification().getEngines().getPower()));
-
-        }
-        return advertismentDtos;
+        return advertismetMapper.toAdvertismentDTOs(advertisments);
     }
 
     @Override
@@ -75,47 +70,76 @@ public class AdvertServiceImpl implements AdvertService {
         PageRequest pageRequest = PageRequest.of(page, size);
         Page<Advertisments> advertisments = advertisRepository.getListAllAvaliblePage(pageRequest);
         int totalElements = (int) advertisments.getTotalElements();
-        List<Advertisments> advertList = advertisments.stream().collect(Collectors.toList());
-        List<AdvertismentDto> advertismentDtoslist = advertismetMapper.toAdvertismentDTOs(advertList);
-        for (int i = 0; i < advertismentDtoslist.size(); i++) {
-            advertismentDtoslist.get(i).setImagesList((getImagesFromModel(advertList.get(i).getImages())));
-            advertismentDtoslist.get(i).setNalog(calculationNalog(advertList.get(i).getPrice(), advertList.get(i).getModification().getEngines().getPower()));
-        }
-        return new PageImpl<>(advertismentDtoslist, pageRequest, totalElements);
+        return new PageImpl<>(advertisments.stream().map(advertismetMapper::toAdvertismentDTO).collect(Collectors.toList()), pageRequest, totalElements);
     }
+
+    public Page<AdvertismentDto> getListAllFilPage(int page, int size, FiltersDto filtersDto) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        Page<Advertisments> advertisments = advertisRepository.getListAllAvaliblePage(pageRequest);
+        int totalElements = (int) advertisments.getTotalElements();
+        return new PageImpl<>(advertisments.stream().map(advertismetMapper::toAdvertismentDTO).collect(Collectors.toList()), pageRequest, totalElements);
+    }
+
 
     @Override
     public List<AdvertismentDto> getListByClass(Long id) {
         List<Advertisments> advertisments = advertisRepository.getListByClass(id);
-        List<AdvertismentDto> advertismentDtos = advertismetMapper.toAdvertismentDTOs(advertisments);
-        for (int i = 0; i < advertismentDtos.size(); i++) {
-            advertismentDtos.get(i).setImagesList((getImagesFromModel(advertisments.get(i).getImages())));
-            advertismentDtos.get(i).setNalog(calculationNalog(advertisments.get(i).getPrice(), advertisments.get(i).getModification().getEngines().getPower()));
+        return advertismetMapper.toAdvertismentDTOs(advertisments);
+    }
 
+    @Override
+    public Page<AdvertismentDto> getListFilters(FiltersDto filtersDto, int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+
+       if( filtersDto.getCarBody()==null){
+           filtersDto.setCarBody("all");
+       }
+        if(filtersDto.getMileage()==null){
+            filtersDto.setMileage(-1);
         }
-        return advertismentDtos;
+        if(filtersDto.getMark()==null){
+            filtersDto.setMark("all");
+        }
+        if(filtersDto.getModel()==null){
+            filtersDto.setModel("all");
+        }
+       if( filtersDto.getDateEnd()==null){
+           String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+           filtersDto.setDateEnd(date);
+       }
+        if(filtersDto.getDateStart()==null){
+            filtersDto.setDateStart("1900-01-01");
+        }
+        if (filtersDto.getPriceStart()==null){
+            filtersDto.setPriceStart(0L);
+        }
+        if(filtersDto.getPriceEnd()==null){
+            filtersDto.setPriceEnd((long) -1);
+        }
+        if(filtersDto.getGearBox()==null){
+            filtersDto.setGearBox("all");
+        }
+        Page<Advertisments> advertisments = advertisRepository.getListFilters(pageRequest,filtersDto.getMileage(),
+            filtersDto.getMark(),filtersDto.getModel(),filtersDto.getCarBody(),filtersDto.getDateStart(),filtersDto.getDateEnd(),
+            filtersDto.getPriceStart(),filtersDto.getPriceEnd(),filtersDto.getGearBox());
+
+        int totalElements = (int) advertisments.getTotalElements();
+        return new PageImpl<>(advertisments.stream().map(advertismetMapper::toAdvertismentDTO).collect(Collectors.toList()), pageRequest, totalElements);
+ //  return null;
     }
 
     @Override
     public AdvertismentDto getById(Long id) throws EntityNotFoundException {
         Advertisments advertisments = advertisRepository.findById(id).
             orElseThrow(() -> new EntityNotFoundException(id, "Advertisments"));
-        AdvertismentDto advertismentDto = advertismetMapper.toAdvertismentDTO(advertisments);
-        advertismentDto.setImagesList(getImagesFromModel(advertisments.getImages()));
-        advertismentDto.setNalog(calculationNalog(advertisments.getPrice(), advertisments.getModification().getEngines().getPower()));
-        return advertismentDto;
+        return advertismetMapper.toAdvertismentDTO(advertisments);
     }
+
 
     @Override
     public List<AdvertismentDto> getlistAvalible() {
         List<Advertisments> advertisments = advertisRepository.getListAllAvalible();
-        List<AdvertismentDto> advertismentDtos = advertismetMapper.toAdvertismentDTOs(advertisments);
-        for (int i = 0; i < advertismentDtos.size(); i++) {
-            advertismentDtos.get(i).setImagesList((getImagesFromModel(advertisments.get(i).getImages())));
-            advertismentDtos.get(i).setNalog(calculationNalog(advertisments.get(i).getPrice(), advertisments.get(i).getModification().getEngines().getPower()));
-
-        }
-        return advertismentDtos;
+        return advertismetMapper.toAdvertismentDTOs(advertisments);
     }
 
 
@@ -124,11 +148,8 @@ public class AdvertServiceImpl implements AdvertService {
         Advertisments advertisment = advertisRepository.findById(id).
             orElseThrow(() -> new EntityNotFoundException(id, "Advertisments"));
         List<Advertisments> reports = advertisRepository.getReportItems(advertisment.getVin());
-        List<AdvertismentDto> advertismentDtos = advertismetMapper.toAdvertismentDTOs(reports);
-        for (int i = 0; i < advertismentDtos.size(); i++) {
-            advertismentDtos.get(i).setImagesList((getImagesFromModel(reports.get(i).getImages())));
-        }
-        return advertismentDtos;
+
+        return advertismetMapper.toAdvertismentDTOs(reports);
     }
 
     @Override
@@ -169,23 +190,6 @@ public class AdvertServiceImpl implements AdvertService {
         return result;
     }
 
-    public List<String> getImagesFromModel(String path) {
-        List<String> tmp = (Arrays.asList(path.split(",")));
-        List<String> res = new ArrayList<>();
-        int index;
-        for (String str : tmp) {
-            index = str.indexOf("assets/");
-            if(index!=-1) {
-                res.add(str.substring(index));
-            }
-        }
-        if(res.isEmpty()){
-            res.add("assets/default.png");
-        }
-
-        return res;
-    }
-
     @Override
     public void save(FormAdvert formAdvert, List<String> list) throws
         EntityNotFoundException, ParseException {
@@ -212,6 +216,7 @@ public class AdvertServiceImpl implements AdvertService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         advert.setClients(clientsRepository.findById(formAdvert.getClientsId()).orElseThrow(EntityNotFoundException::new));
         advert.setCarbody(carbodyRepository.getCarBodyByTitle(formAdvert.getCarbodyTitle()).orElseThrow(EntityNotFoundException::new));
         advert.setMark(marksRepository.getMarkByTitle(formAdvert.getMarksTitle()).orElseThrow(EntityNotFoundException::new));
@@ -233,23 +238,4 @@ public class AdvertServiceImpl implements AdvertService {
         advertisRepository.save(newadvertisments);
     }
 
-    public Integer calculationNalog(double price, int power) {
-        int nalog = 0;
-        NavigableMap<Integer, Integer> table = new TreeMap<Integer, Integer>();
-        table.put(0, 12);
-        table.put(100, 25);
-        table.put(150, 45);
-        table.put(125, 35);
-        table.put(175, 50);
-        table.put(200, 65);
-        table.put(225, 75);
-        table.put(250, 150);
-
-        if (price >= 3000000) {
-            nalog = (int) (1.1 * power * table.floorEntry(power).getValue());
-        } else {
-            nalog =  (power * table.floorEntry(power).getValue());
-        }
-        return nalog;
-    }
 }

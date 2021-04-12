@@ -26,6 +26,6 @@ public class ComparisonsDto {
     @Null(groups = {Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private AdvertismentDto advertismentDto;
-
+    @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private Long idClient;
 }

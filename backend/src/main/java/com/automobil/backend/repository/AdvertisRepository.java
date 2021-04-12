@@ -1,5 +1,6 @@
 package com.automobil.backend.repository;
 
+import com.automobil.backend.dto.FiltersDto;
 import com.automobil.backend.models.Advertisments;
 import com.automobil.backend.models.Carbody;
 import com.automobil.backend.repository.query.Utils;
@@ -41,4 +42,11 @@ public interface AdvertisRepository extends JpaRepository<Advertisments, Long> {
     )
     Page<Advertisments> getListAllAvaliblePage(Pageable pageable);
 
+    @Query(
+        value = Utils.FILTERS,
+        countQuery = Utils.FILTERS_COUNT,
+        nativeQuery = true
+    )
+    Page<Advertisments> getListFilters(Pageable pageable, @Param("mileage") Integer mileage, @Param("mark") String mark, @Param("model") String model, @Param("carbody") String carBody,
+                                      @Param("sdate") String sdate, @Param("edate") String edate, @Param("sprice") Long sprice,@Param("eprice") Long eprice,@Param("gear") String gearBox);
 }
