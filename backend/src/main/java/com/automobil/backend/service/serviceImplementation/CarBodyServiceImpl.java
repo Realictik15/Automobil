@@ -3,12 +3,15 @@ package com.automobil.backend.service.serviceImplementation;
 import com.automobil.backend.dto.CarbodyDto;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.CarbodyMapper;
+import com.automobil.backend.models.Carbody;
 import com.automobil.backend.repository.CarbodyRepository;
 import com.automobil.backend.service.CarBodyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarBodyServiceImpl implements CarBodyService {
@@ -30,7 +33,7 @@ public class CarBodyServiceImpl implements CarBodyService {
 
     @Override
     public List<CarbodyDto> getListCarBody() {
-        return carbodyMapper.toCarBodyDTOs(carbodyRepository.findAll());
+        return carbodyMapper.toCarBodyDTOs(carbodyRepository.findAll().stream().sorted(Comparator.comparing(Carbody::getTitle)).collect(Collectors.toList()));
     }
 
 

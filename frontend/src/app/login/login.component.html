@@ -1,4 +1,4 @@
-<div>
+<div style="margin-top: 7%">
   <div class="container">
     <div class="d-flex justify-content-center h-100">
       <div class="card" *ngIf="!isLogin; else redi">
@@ -21,9 +21,11 @@
                      required
                      minlength="4"
                      name="login"
-                     #login="ngModel">
+                     #login="ngModel"
+              >
             </div>
             <div class="errors" *ngIf="login.invalid && login.touched">
+
               <div *ngIf="login.errors.minlength">Логин должен быть больше 3 символов</div>
               <div *ngIf="login.errors.required">Введите логин</div>
             </div>
@@ -78,6 +80,11 @@
 
     <ng-template #loadingBlock>
       <p class="load">Ожидайте, соединение с сервером...</p>
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
     </ng-template>
   </div>
 

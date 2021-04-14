@@ -104,11 +104,11 @@ public class AdvertServiceImpl implements AdvertService {
             filtersDto.setModel("all");
         }
        if( filtersDto.getDateEnd()==null){
-           String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+           String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
            filtersDto.setDateEnd(date);
        }
         if(filtersDto.getDateStart()==null){
-            filtersDto.setDateStart("1900-01-01");
+            filtersDto.setDateStart("01/01/1900");
         }
         if (filtersDto.getPriceStart()==null){
             filtersDto.setPriceStart(0L);

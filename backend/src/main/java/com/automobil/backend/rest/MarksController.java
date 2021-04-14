@@ -26,7 +26,7 @@ public class MarksController {
     @Autowired
     private MarksService marksService;
 
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<MarksDto>> getAllMarks() {
@@ -37,7 +37,7 @@ public class MarksController {
         return new ResponseEntity<>(marksDtos, HttpStatus.OK);
 
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+
     @JsonView(Details.class)
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MarksDto> getMarkByID(@PathVariable("id") Long id) throws EntityNotFoundException {
@@ -46,7 +46,8 @@ public class MarksController {
         }
         return new ResponseEntity<>(marksService.getById(id), HttpStatus.OK);
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+
+
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "title/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MarksDto> getMarkByTitle(@PathVariable("title") String title) throws EntityNotFoundException {
@@ -56,7 +57,7 @@ public class MarksController {
         Marks marks = marksService.getMarkByTitle(title);
         return new ResponseEntity<>(marksService.toMarksDTO(marks), HttpStatus.OK);
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "{id}/models", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ModelDto>> getAllModelsFormMark(@PathVariable("id") Long id) throws EntityNotFoundException {

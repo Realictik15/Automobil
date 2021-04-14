@@ -3,6 +3,8 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Advertisment} from '../model/advertisment';
 import {PageAdvert} from '../model/PageAdvert';
+import {Filter} from '../model/filter';
+
 
 const ADVERT_API = 'http://localhost:8881/advert/';
 
@@ -56,6 +58,11 @@ export class AdvertismentServiceService {
 
   // TODO: change
   postAdvert(advert: Advertisment): Observable<any> {
-    return this.http.post<any>(ADVERT_API, advert); // , httpOptions);
+    return this.http.post<any>(ADVERT_API, advert , httpOptions);
+  }
+
+  postAdvertFilters(filters: Filter, page: number, size: number): Observable<any> {
+    console.log(filters);
+    return this.http.post<any>(ADVERT_API + 'all/filters' + '?page=' + page + '&size=' + size, filters, httpOptions);
   }
 }

@@ -6,13 +6,16 @@ import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.MarksMapper;
 import com.automobil.backend.mapStruct.ModelsMapper;
 import com.automobil.backend.models.Marks;
+import com.automobil.backend.models.Models;
 import com.automobil.backend.repository.CountriesRepository;
 import com.automobil.backend.repository.MarksRepository;
 import com.automobil.backend.service.MarksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MarksServiceImpl implements MarksService {
@@ -33,7 +36,7 @@ public class MarksServiceImpl implements MarksService {
     @Override
     public List<MarksDto> listAll() {
 
-        return marksMapper.toMarksDTOs(marksRepository.findAll());
+        return marksMapper.toMarksDTOs(marksRepository.findAll().stream().sorted(Comparator.comparing(Marks::getTitle)).collect(Collectors.toList()));
     }
 
     @Override
@@ -71,7 +74,7 @@ public class MarksServiceImpl implements MarksService {
     @Override
     public List<ModelDto> getListModels(Long id) throws EntityNotFoundException {
         Marks marks = marksRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id, "Marks"));
-        return modelsMapper.toModelDTOs(marks.getModels());
+        return modelsMapper.toModelDTOs(marks.getModels().stream().sorted(Comparator.comparing(Models::getTitle)).collect(Collectors.toList()));
     }
 }
 

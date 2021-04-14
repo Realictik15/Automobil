@@ -5,19 +5,31 @@
         <div class="errors_b" style="margin-left: 30%;margin-right: 30%;"
              *ngIf="err; else loadingBlock">
           {{err}}</div>
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
       </div>
       <ng-template #loadingBlock>
         <p class="load">Ожидайте, соединение с сервером...</p>
       </ng-template>
     </div>
     <div class="col-sm-8" style="margin-left: 1%; margin-right: auto;">
+      <div *ngIf="pageAdvert?.totalElements; else other">
       <div *ngFor="let advert of pageAdvert?.content">
-        <a target="_blank" [routerLink]="['/advert/'+advert.idAdvert]">
-          <div class=" card"
-               style="margin-right: auto; margin-left: auto; margin-top: 3%; height: 200px">
 
-            <h5 class="card-header">{{advert.marksTitle}} {{advert.generationsDto.title}}
-              ({{advert.modificationsDto.title}}) </h5>
+
+        <div class=" card"
+             style="margin-right: auto; margin-left: auto; margin-top: 3%; height: 200px">
+
+          <h5 class="card-header">{{advert.marksTitle}} {{advert.generationsDto.title}}
+            ({{advert.modificationsDto.title}})
+            <button type="submit" (click)="addCompare(advert.idAdvert,user.id)" *ngIf="isLogin"
+                    style="position: absolute;right: 0; background:none; border: none ">
+              <img class="assets1" src="assets/compare1.png"/></button>
+          </h5>
+          <a target="_blank" [routerLink]="['/advert/'+advert.idAdvert]">
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-2" style="margin-right: 3%">
@@ -63,6 +75,28 @@
                   <div class="row">
                     <p class="card-text">от {{getNumber(advert.nalog)}}</p>
                   </div>
+
+                </div>
+                <div class="col-sm-1">
+                  <div class="row">
+                    <p class="card-text">{{advert.buyday| date:"yyyy"}}</p>
+
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <div class="row">
+                    <p class="card-text" style="margin-right: auto; margin-left: auto">
+                      {{getNumber(advert.mileage)}} км</p>
+
+                  </div>
+                </div>
+                <div class="col-sm-3" style="margin-left: 1%;">
+
+                  <div class="row">
+                    <a [routerLink]="['/report/'+advert.idAdvert]"
+                       class="btn btn-primary one">Отчёт</a>
+                  </div>
+
                   <div class="row">
                     <div *ngIf="advert.owners < 3"
                          class="green">Владельцев: {{advert.owners}}</div>
@@ -71,36 +105,165 @@
                     <div *ngIf="advert.owners >= 3"
                          class="red">Владельцев: {{advert.owners}}</div>
                   </div>
-                </div>
-                <div class="col-sm-1">
-                  <div class="row">
-                    <p class="card-text">{{advert.buyday| date:"yyyy"}}</p>
-                  </div>
-                </div>
-                <div class="col-sm-1" >
-                  <div class="row">
-                    <p class="card-text" style="margin-right: auto; margin-left: auto">
-                      {{getNumber(advert.mileage)}} км</p>
-                  </div>
-                </div>
-                <div class="col-sm-3" style="margin-left: 1%;">
-                  <a [routerLink]="['/report/'+advert.idAdvert]" class="btn btn-primary one" >Отчёт</a>
 
-                  <button type="submit" (click)="addCompare(advert.idAdvert,user.id)" *ngIf="isLogin" style="margin-left: 25px" class="btn"><img  class="assets1" src="assets/compare1.png"/></button>
                   <div class="row">
-                    <p class="card-text" style=" margin-left: 65%; margin-top: 25%">
+                    <p class="card-text" style=" margin-left: 65%; margin-top: 1%">
                       {{advert.city}}</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
+
       </div>
+      </div>
+      <ng-template #other>
+        По таким фильтрам объявлений не найдено
+      </ng-template>
     </div>
-    <div class="col-sm-3" style="background: red; margin-right: 2%; margin-top: 20px">
-      <div style="background: #F4EADE; margin-right: auto; margin-left: auto;">
-        hsdhshsdhshd
+    <div class="col-sm-3 ">
+      <div class="row">
+        <form class="filter" (ngSubmit)="onSubmit()" #filterForm="ngForm">
+          <div class="cont">
+            <div class="row">
+              <div class="col-sm-1 sel">Марка</div>
+              <div class="col-sm-9">
+                <select class="custom-select s"
+                        name="sel"
+                        [(ngModel)]="tmp"
+                        #sel="ngModel"
+                        (change)='select(sel.value)'
+
+                >
+                  <option *ngFor="let mark of  arrMarks" [ngValue]="mark">{{mark.title}}</option>
+
+                </select>
+              </div>
+            </div>
+            <hr/>
+            <div class="row">
+              <div class="col-sm-1 sel">Модель</div>
+              <div class="col-sm-9">
+                <select class="custom-select s"
+                        *ngIf="tmp?.idMark; else dis"
+                        name="mod"
+                        [(ngModel)]="filter.model"
+                        #mod="ngModel">
+                  <option *ngFor="let model of arrModel"
+                          value="{{model.title}}">{{model.title}}</option>
+                </select>
+                <ng-template #dis>
+                  <select disabled class="custom-select s"></select>
+                </ng-template>
+
+              </div>
+            </div>
+            <hr/>
+            <div class="row">
+              <div class="col-sm-5">Кузов</div>
+              <div class="col-sm-5 ">Коробка</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5">
+                <select class="custom-select s"
+                        name="carb"
+                        [(ngModel)]="filter.carBody"
+                        #carb="ngModel"
+                >
+                  <option *ngFor="let carbody of  arrCarBody"
+                          [ngValue]="carbody.title">{{carbody.title}}</option>
+                </select>
+              </div>
+              <div class="col-sm-5">
+                <select class="custom-select s"
+                        name="gear"
+                        [(ngModel)]="filter.gearBox"
+                        #gear="ngModel"
+                >
+                  <option *ngFor="let gear of  arrGear" [ngValue]="gear.title">{{gear.title}}</option>
+
+                </select>
+              </div>
+            </div>
+            <hr/>
+            <div class="row">
+              <div class="col-sm-4">Дата от</div>
+              <div class="col-sm-4" style="margin-left: 6px">Дата до</div>
+            </div>
+            <div class="row" style="margin-left: -3px">
+
+              <select
+                class="custom-select da"
+                name="startD"
+                [(ngModel)]="filter.dateStart"
+                #startD="ngModel"
+                onfocus='this.size=4;'
+                onblur='this.size=1;'
+                onchange='this.size=1; this.blur();'>
+                <option *ngFor="let item of date" [ngValue]="'01/01/'+item">{{item}}</option>
+
+              </select>
+
+              <select
+                class="custom-select da"
+                name="endD"
+                [(ngModel)]="filter.dateEnd"
+                #endD="ngModel"
+                onfocus='this.size=4;'
+                onblur='this.size=1;'
+                onchange='this.size=1; this.blur();'>
+                <option *ngFor="let item of date" [ngValue]="'01/01/'+item">{{item}}</option>
+              </select>
+            </div>
+            <hr/>
+            <div class="row">
+              <div class="col-sm-4">Пробег до
+              </div>
+              <div class="col-sm-8">
+                <input class="form-control"
+                       type="text"
+                       onkeyup="this.value = this.value.replace(/[^\d]/,'');"
+                       required
+                       name="mil"
+                       [(ngModel)]="filter.mileage"
+                       #mil="ngModel">
+              </div>
+            </div>
+            <hr/>
+            <div class="row">
+              <div class="col-sm-4">Цена от до
+              </div>
+              <div class="col-sm-4">
+                <input class="form-control"
+                       type="text"
+                       onkeyup="this.value = this.value.replace(/[^\d]/,'');"
+                       required
+                       name="min"
+                       [(ngModel)]="filter.priceStart"
+                       #min="ngModel">
+              </div>
+              <div class="col-sm-4">
+                <input class="form-control"
+                       type="text"
+                       onkeyup="this.value = this.value.replace(/[^\d]/,'');"
+                       required
+                       name="max"
+                       [(ngModel)]="filter.priceEndL"
+                       #max="ngModel">
+              </div>
+            </div>
+            <hr/>
+            <div class="row">
+              <div style="margin-right: auto;margin-left: auto">
+                <button type="submit" class="btn btn-primary b">Показать</button>
+                <button type="submit" (click)="filterForm.reset()" class="btn btn-primary b r">Сбросить</button>
+
+              </div>
+            </div>
+          </div>
+
+        </form>
       </div>
     </div>
   </div>
@@ -113,5 +276,6 @@
         [class.active]="i == selectedPage" class="page-item">
       <a class="page-link">{{i + 1}}</a></li>
   </ul>
+
 </nav>
 

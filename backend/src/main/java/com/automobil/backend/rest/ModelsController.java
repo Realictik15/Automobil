@@ -23,7 +23,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/models")
-//@CrossOrigin//(origins = " http://localhost:4200")
 public class ModelsController {
     private final ModelsService modelsService;
 
@@ -32,7 +31,7 @@ public class ModelsController {
         this.modelsService = modelsService;
     }
 
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ModelDto>> getAllModels() {
@@ -43,7 +42,7 @@ public class ModelsController {
         return new ResponseEntity<>(modelDtos, HttpStatus.OK);
 
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(Details.class)
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ModelDto> getModelByID(@PathVariable("id") Long id) throws EntityNotFoundException {
@@ -52,7 +51,7 @@ public class ModelsController {
         }
         return new ResponseEntity<>(modelsService.getById(id), HttpStatus.OK);
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(Details.class)
     @GetMapping(value = "title/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ModelDto> getModelByTitle(@PathVariable("title") String title) throws EntityNotFoundException {
@@ -62,7 +61,7 @@ public class ModelsController {
         Models model = modelsService.getModelByTitle(title);
         return new ResponseEntity<>(modelsService.toModelDTO(model), HttpStatus.OK);
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(Details.class)
     @GetMapping(value = "{id}/generetions", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<GenerationsDto>> getAllGenerationFromModel(@PathVariable("id") Long id) throws EntityNotFoundException {

@@ -15,16 +15,22 @@ export class LoginComponent implements OnInit {
   loading = false;
   isLogin = false;
   name = '';
+  flag = true;
 
   constructor(private tokenStorage: TokenStorageService, private authService: AuthService) {
     this.auth = new Auth();
   }
+
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLogin = true;
       this.name = this.tokenStorage.getUser().name;
     }
+    if (!(this.err === '')) {
+      this.flag = false;
+    }
   }
+
   onSubmit(): void {
     console.log(this.auth);
     this.loading = true;

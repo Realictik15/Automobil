@@ -34,11 +34,11 @@ public class Utils {
     public static final String FIND_ADVERT_BY_CLASS = "SELECT * FROM advertisments a WHERE (SELECT m.idclas FROM models m WHERE m.idmodel= a.idmodel) = :class and a.available = 'yes'";
 
    public static final String FILTERS="select a.* from advertisments a where a.available='yes' and (a.mileage<=:mileage or :mileage = -1) and (a.price>=:sprice and (a.price <:eprice or :eprice=-1)) and (a.idmark=(select m.idmark from marks m where(m.title=:mark)) or :mark='all') and (a.idmodel=(select mo.idmodel from models mo where(mo.title=:model)) or :model='all') and" +
-        "(a.idcarbody=(select c.idcarbody from carbody c where(c.title=:carbody)) or :carbody='all') and (a.buyday >= TO_DATE (:sdate, 'yyyy-mm-dd') and a.buyday <TO_DATE (:edate, 'yyyy-mm-dd')) and" +
+        "(a.idcarbody=(select c.idcarbody from carbody c where(c.title=:carbody)) or :carbody='all') and (a.buyday >= to_date(:sdate, 'dd/mm/yyyy') and a.buyday <to_date(:edate, 'dd/mm/yyyy')) and" +
          "((select g.idgear from gearboxes g where g.title=:gear)=(select g.idgear from modifications m join transmissions t on t.idtrans=m.idtrans join gearboxes g on t.idgear=g.idgear where m.idmodif= a.idmodif) or :gear='all') order by a.idadvert ";
 
  public static final String FILTERS_COUNT="select count(a.available) from advertisments a where a.available='yes' and (a.mileage<=:mileage or :mileage = -1)and (a.price>=:sprice and (a.price <:eprice or :eprice=-1)) and (a.idmark=(select m.idmark from marks m where(m.title=:mark)) or :mark='all') and (a.idmodel=(select mo.idmodel from models mo where(mo.title=:model)) or :model='all') and" +
-        "(a.idcarbody=(select c.idcarbody from carbody c where(c.title=:carbody)) or :carbody='all') and (a.buyday >= TO_DATE (:sdate, 'yyyy-mm-dd') and a.buyday <TO_DATE (:edate, 'yyyy-mm-dd')) and" +
+        "(a.idcarbody=(select c.idcarbody from carbody c where(c.title=:carbody)) or :carbody='all') and (a.buyday >= to_date(:sdate, 'dd/mm/yyyy') and a.buyday <to_date(:edate, 'dd/mm/yyyy')) and" +
         "((select g.idgear from gearboxes g where g.title=:gear)=(select g.idgear from modifications m join transmissions t on t.idtrans=m.idtrans join gearboxes g on t.idgear=g.idgear where m.idmodif= a.idmodif) or :gear='all') ";
 
 }

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import {AppRoutingModule} from './app-routing.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {authInterceptorProviders} from './AuthInterceptor/AuthInterceptor';
 import {LoginComponent} from './login/login.component';

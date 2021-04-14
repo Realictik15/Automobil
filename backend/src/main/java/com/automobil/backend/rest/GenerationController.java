@@ -25,7 +25,7 @@ public class GenerationController {
     public GenerationController(GenerationsService generationsService) {
         this.generationsService = generationsService;
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<GenerationsDto>> getAllGeneration() {

@@ -16,7 +16,7 @@ export class ClientsService {
   }
 
   postCompare(idUser: bigint, idAdvert: bigint): Observable<any> {
-    return this.http.post<any>(USER_API + idUser + '/advertcomp/' + idAdvert, {id: idUser, idAd: idAdvert},
+    return this.http.get<any>(USER_API + idUser + '/advertcomp/' + idAdvert,
       httpOptions);
   }
 }

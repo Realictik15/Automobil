@@ -24,7 +24,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/carbody")
-//@CrossOrigin//(origins = " http://localhost:4200")
 public class CarBodyController {
     private final CarBodyService carBodyService;
 
@@ -32,7 +31,7 @@ public class CarBodyController {
     public CarBodyController(CarBodyService carBodyService) {
         this.carBodyService = carBodyService;
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @JsonView(AdminDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CarbodyDto>> getAllCarBody() {
