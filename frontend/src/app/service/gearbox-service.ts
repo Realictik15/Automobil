@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {GearBox} from '../model/gearBox';
 
-const USER_API = 'http://localhost:8881/gear';
+const GEAR_API = 'http://localhost:8881/gear';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -17,10 +17,10 @@ export class GearboxService {
   }
 
   getGearBoxes(): Observable<GearBox[]> {
-    return this.http.get<GearBox[]>(USER_API, httpOptions);
+    return this.http.get<GearBox[]>(GEAR_API, httpOptions);
   }
 
   getGearBox(id: bigint): Observable<GearBox> {
-    return this.http.get<GearBox>(USER_API + '/' + id, httpOptions);
+    return this.http.get<GearBox>(GEAR_API + '/' + id, httpOptions);
   }
 }

@@ -16,7 +16,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/modification")
-//@CrossOrigin//(origins = " http://localhost:4200")
 public class ModificationController {
     @Autowired
     private ModificationsService modificationsService;
@@ -51,6 +50,7 @@ public class ModificationController {
         }
         return new ResponseEntity<>(modificationsService.getById(id), HttpStatus.OK);
     }
+
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(Details.class)
     @GetMapping(value = "{id}/engin", produces = MediaType.APPLICATION_JSON_VALUE)

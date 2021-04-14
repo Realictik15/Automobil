@@ -1,1 +1,35 @@
-<p>profil works!</p>
+<div class="contents">
+  <div *ngIf="!isLogin;else prof">
+    <div class="nolog">Вы не вошли всистему</div>
+    <div style="text-align: center; margin-top: 1%; color: #2F496E; font-size: 15px">Следуйте за
+      кнопками ниже
+    </div>
+    <hr/>
+
+    <div class="row no-gutters">
+      <div class="col l">
+
+        <div class="cont">
+          <div
+            style="text-align: center; margin-top: 1%;margin-bottom: 1%; color: #2F496E; font-size: 15px">
+            Нет аккаутнта
+          </div>
+          <a [routerLink]="['/reg']"
+             class="btn btn-primary one">Зарегистрироваться</a>
+        </div>
+        <div class="cont">
+          <div
+            style="text-align: center; margin-top: 1%;margin-bottom: 1%; color: #2F496E; font-size: 15px">
+            Есть аккаунт
+          </div>
+          <a [routerLink]="['/login']"
+             class="btn btn-primary one">Войти</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <ng-template #prof>
+
+  </ng-template>
+</div>

@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Carbody} from '../model/carbody';
 
-const USER_API = 'http://localhost:8881/carbody/';
+const CARB_API = 'http://localhost:8881/carbody/';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -17,14 +17,14 @@ export class CarbodyService {
   }
 
   getAllCarBodies(): Observable<Carbody[]> {
-    return this.http.get<Carbody[]>(USER_API, httpOptions);
+    return this.http.get<Carbody[]>(CARB_API, httpOptions);
   }
 
   getCarBody(id: bigint): Observable<Carbody> {
-    return this.http.get<Carbody>(USER_API + id, httpOptions);
+    return this.http.get<Carbody>(CARB_API + id, httpOptions);
   }
 
   getBodyByTitle(title: string): Observable<Carbody> {
-    return this.http.get<Carbody>(USER_API + title + '/title', httpOptions);
+    return this.http.get<Carbody>(CARB_API + title + '/title', httpOptions);
   }
 }

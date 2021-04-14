@@ -1,7 +1,5 @@
 package com.automobil.backend.rest;
 
-import com.automobil.backend.dto.AdvertismentDto;
-import com.automobil.backend.dto.FormAdvert;
 import com.automobil.backend.dto.MessagesDto;
 import com.automobil.backend.dto.ReviewsDto;
 import com.automobil.backend.exeption.EntityNotFoundException;
@@ -22,7 +20,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/review")
-//@CrossOrigin//(origins = " http://localhost:4200")
 public class ReviewsComtroller {
     private final ReviewsService reviewsService;
 

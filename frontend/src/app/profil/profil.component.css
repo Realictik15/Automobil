@@ -1,0 +1,22 @@
+.nolog{
+  margin-top: 7%;
+  margin-left: 35%;
+  margin-right: 35%;
+  background: white;
+  text-align: center;
+  color: #AF1C1C;
+  font-size: 20px;
+ border:solid 1px #AF1C1C;
+  border-radius: 3px;
+}
+.contents {
+  height: 100%;
+  width: 100%;
+}
+.l{
+
+  text-align: center;
+}
+.cont{
+  margin-top: 3%;
+}

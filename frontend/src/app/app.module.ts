@@ -21,6 +21,7 @@ import {RewisComponent} from './rewis/rewis.component';
 import {RewisDitaleComponent} from './rewis-ditale/rewis-ditale.component';
 import { ScrollingModule} from '@angular/cdk/scrolling';
 import { ReportComponent } from './report/report.component';
+import {ProfilComponent} from './profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ReportComponent } from './report/report.component';
     RegistrComponent,
     RewisComponent,
     RewisDitaleComponent,
-    ReportComponent
+    ReportComponent,
+    ProfilComponent
   ],
   imports: [
     ScrollingModule,
