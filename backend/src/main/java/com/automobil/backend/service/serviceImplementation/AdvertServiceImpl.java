@@ -230,8 +230,7 @@ public class AdvertServiceImpl implements AdvertService {
         } catch (ParseException | AdvertExeption e) {
             e.printStackTrace();
         }
-
-//        advertisRepository.save(advert);
+        advertisRepository.save(advert);
     }
 
     @Override
