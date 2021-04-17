@@ -1,45 +1,77 @@
-<!--    <div class="col-sm-8" style="margin-left: 1%; margin-right: auto; ">-->
-<!--    </div>-->
-
-
 <div class="contents">
   <div class="custcont">
-  <div class="row no-gutters bac"style="background: aqua">
-    <div class="col tit " style="background: #2F496E">
-      <div class="row " style="background: #591212">
-        <div class="col" style="background: white;">
-          <div class="col-sm-4" style="background: red;">
-            <p>{{advert.marksTitle}} {{advert.generationsDto.title}}
-              ({{advert.modificationsDto.title}})
-          </div>
-
-        <div class="col-sm-4" style="background: #3e8e41">
-          {{advert.price}}
-        </div>
-      </div>
-    </div>
-
     <div class="row">
-      <div class="container">
-        <div class="mySlides" *ngFor="let h of advert.imagesList,let i = index" #notification>
-          <div class="numbertext">{{i + 1}}/{{advert.imagesList.length}}</div>
-          <img [src]="h" style="width:480px;height: 305px">
+      <div class="col-sm-7 tit ">
+        <div class="texts">{{advert.marksTitle}} {{advert.generationsDto.title}}</div>
+        <div style="font-size: 13px">Номер объявления №{{advert.idAdvert}}</div>
+      </div>
+      <div class="col-sm-3 tit" style="margin-left: 75px; text-align: right">
+        <p class="texts"> {{getNumber(advert.price)}} ₽ </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 tit">
+        <div>
+          <button>tmp</button>
+          <button>tmp</button>
         </div>
-        <a class="prev" (click)="plusSlides(-1)">❮</a>
-        <a class="next" (click)="plusSlides(1)">❯</a>
-        <div class="row" style="margin-top: 1%">
-          <div class="column" *ngFor="let h of advert?.imagesList,let i = index">
-            <img class="demo cursor" [src]="h" style="width:100%;height: 100%; "
-                 (click)="currentSlide(i+1)"
-                 alt="The Woods">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col tit">
+        <div class="bac">
+          <div class="row">
+            <div class="col-sm-2" style="margin: 10px 15px">
+              <div>Продавец: {{advert.clientsDto.firstName}} </div>
+            </div>
+            <div class="col-3"
+                 style="margin-left: 40% ;margin-top: 10px;margin-bottom: 10px;font-size: 15px;">
+              <div>{{advert.city}}, {{advert.place}}</div>
+            </div>
+            <div class="tel" style="margin-left: 2%">
+              <div class="col-1">
+                <div>{{advert.clientsDto.telephone}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3" style="font-size: 13px;margin: 0 15px 6px;">
+              Колличество объявлений этого пользователя: {{advert.clientsDto.countOfAdvert}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 3%;">
+      <div class="col-sm-4 tit">
+        <div class="bac">
+          <div class="row"  style="margin-left:15px">
+          <div class="col-sm-5" ></div>
+          <div class="col-sm-5">dsds</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div class="container">
+          <div class="mySlides" *ngFor="let h of advert.imagesList,let i = index" #notification>
+            <div class="numbertext">{{i + 1}}/{{advert.imagesList.length}}</div>
+            <img [src]="h" style="width:480px;height: 305px">
+          </div>
+          <a class="prev" (click)="plusSlides(-1)">❮</a>
+          <a class="next" (click)="plusSlides(1)">❯</a>
+          <div class="row" style="margin-top: 1%">
+            <div class="column" *ngFor="let h of advert?.imagesList,let i = index">
+              <img class="demo cursor" [src]="h" style="width:100%;height: 100%; "
+                   (click)="currentSlide(i+1)"
+                   alt="The Woods">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-  </div>
-</div>
+
 
 <!--<div>-->
 <!--  <p>{{advert?.marksTitle}}</p>-->

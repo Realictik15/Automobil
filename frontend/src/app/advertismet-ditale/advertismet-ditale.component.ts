@@ -64,6 +64,11 @@ export class AdvertismetDitaleComponent implements OnInit, AfterViewChecked {
     dots[this.slideIndex - 1].className += ' active';
 
   }
+  getNumber(price: number): string {
+    const rez = Math.round(price);
+    const outrez = (rez + '').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+    return outrez;
+  }
 
 
 }

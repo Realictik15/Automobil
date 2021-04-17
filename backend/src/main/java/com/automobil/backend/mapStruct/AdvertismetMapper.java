@@ -76,6 +76,7 @@ public abstract class AdvertismetMapper {
         advertismentDto.setCommentns(advertisments.getCommentns());
         advertismentDto.setNalog(calculationNalog(advertisments.getPrice(),advertisments.getModification().getEngines().getPower()));
         advertismentDto.setImagesList(setListImg(advertisments.getImages()));
+        advertismentDto.getClientsDto().setCountOfAdvert(advertisments.getClients().getAdvertisments().size());
 
         return advertismentDto;
     }

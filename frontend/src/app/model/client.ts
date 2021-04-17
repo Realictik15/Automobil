@@ -9,4 +9,5 @@ export class Client{
   emale: string;
   telephone: bigint;
   driveExp: number;
+  countOfAdvert: number;
 }

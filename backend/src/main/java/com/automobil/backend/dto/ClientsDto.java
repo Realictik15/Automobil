@@ -60,5 +60,8 @@ public class ClientsDto {
     @JsonView({Details.class, AdminDetails.class})
     private Integer driveExp;
 
+    @JsonView({Details.class, AdminDetails.class,AdvertReviewDetails.class})
+    private Integer countOfAdvert;
+
 
 }

@@ -35,7 +35,7 @@ export class AdvertismetsComponent implements OnInit {
   pageAdvert: PageAdvert;
   size = 3;
   page = 1;
-  compFlag=true;
+  compFlag = true;
   isClass = true;
   selectedPage = 0;
   err = '';
@@ -43,6 +43,7 @@ export class AdvertismetsComponent implements OnInit {
   isLogin = false;
   cout: number;
   c = 0;
+  arrId: bigint[] = [];
 
   constructor(private adverdServ: AdvertismentServiceService, private tokenStorage: TokenStorageService,
               private clientServ: ClientsService, private mark: MarkServiceService, private carBody: CarbodyService,
@@ -60,6 +61,7 @@ export class AdvertismetsComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLogin = true;
       this.user = this.tokenStorage.getUser();
+      this.getUserCompareId();
     }
   }
 
@@ -71,12 +73,22 @@ export class AdvertismetsComponent implements OnInit {
     }
   }
 
-  checkCompare(id: bigint): void {
-this.clientServ.getClientCompare(this.tokenStorage.getUser().id).subscribe(
-  data=>{
+  checkComp(id: bigint): void {
 
   }
-)
+
+  getUserCompareId(): void {
+    this.clientServ.getClientCompare(this.tokenStorage.getUser().id).subscribe(
+      data => {
+        console.log(data);
+        for (let i = 0; i < data.length; i++) {
+          console.log(data[i].advertismentDto.idAdvert);
+          this.arrId.push(data[i].advertismentDto.idAdvert);
+
+        }
+        console.log(this.arrId);
+      }
+    );
   }
 
   onSelect(page: number): void {
@@ -133,13 +145,23 @@ this.clientServ.getClientCompare(this.tokenStorage.getUser().id).subscribe(
   }
 
   addCompare(idAdvert: bigint, id: bigint): void {
-    this.clientServ.postCompare(id, idAdvert).subscribe(data => {
-        console.log('success');
-      }, error => {
-        this.err = error.error.message;
-        console.log(error);
+    let flag = true;
+    for (let i = 0; i < this.arrId.length; i++) {
+      if (this.arrId[i] === idAdvert) {
+        flag = false;
+        alert('Это объявление уже добавлено!');
       }
-    );
+    }
+    if (flag) {
+      this.clientServ.postCompare(id, idAdvert).subscribe(data => {
+          console.log('success');
+          window.location.reload();
+        }, error => {
+          this.err = error.error.message;
+          console.log(error);
+        }
+      );
+    }
   }
 
   getMarks(): void {

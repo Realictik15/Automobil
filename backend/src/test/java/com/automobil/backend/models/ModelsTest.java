@@ -56,16 +56,31 @@ public class ModelsTest {
         List<String> s = new ArrayList<>();
         for (String str : res) {
             index = str.indexOf("assets/");
-            if(index!=-1) {
+            if (index != -1) {
                 s.add(str.substring(index));
             }
         }
         System.out.println(s);
     }
+
     @Test
     void dateTest() throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         System.out.println(date);
+    }
+
+    @Test
+    void dataTest() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            Date tmp = format.parse("2018-06-01");
+            if (tmp.before(format.parse("2019-01-01"))&&tmp.after(format.parse("2018-01-01"))) {
+                System.out.println("snmfhgjh");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

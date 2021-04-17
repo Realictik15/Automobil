@@ -3,10 +3,12 @@ package com.automobil.backend.service.serviceImplementation;
 import com.automobil.backend.dto.AdvertismentDto;
 import com.automobil.backend.dto.FiltersDto;
 import com.automobil.backend.dto.FormAdvert;
+import com.automobil.backend.exeption.AdvertExeption;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.AdvertismetMapper;
 import com.automobil.backend.mapStruct.FormAdvertMapper;
 import com.automobil.backend.models.Advertisments;
+import com.automobil.backend.models.Generations;
 import com.automobil.backend.repository.*;
 import com.automobil.backend.service.AdvertService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -203,8 +205,14 @@ public class AdvertServiceImpl implements AdvertService {
                 s.append(list.get(i)).append(",");
             }
         }
-
         advert.setImages(s.toString());
+        advert.setClients(clientsRepository.findById(formAdvert.getClientsId()).orElseThrow(EntityNotFoundException::new));
+        advert.setCarbody(carbodyRepository.getCarBodyByTitle(formAdvert.getCarbodyTitle()).orElseThrow(EntityNotFoundException::new));
+        advert.setMark(marksRepository.getMarkByTitle(formAdvert.getMarksTitle()).orElseThrow(EntityNotFoundException::new));
+        advert.setModel(modelsRepository.getModelsByTitle(formAdvert.getModelTitle()).orElseThrow(EntityNotFoundException::new));
+        Generations gen=generationsRepository.findById(formAdvert.getGenerationsId()).orElseThrow(EntityNotFoundException::new);
+        advert.setGenerations(gen);
+        advert.setModification(modificationsRepository.findById(formAdvert.getModificationsId()).orElseThrow(EntityNotFoundException::new));
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
             advert.setDayofwarranty(format.parse(formAdvert.getDayofwarrantys()));
@@ -212,18 +220,18 @@ public class AdvertServiceImpl implements AdvertService {
             e.printStackTrace();
         }
         try {
-            advert.setBuyday(format.parse(formAdvert.getBuydays()));
-        } catch (ParseException e) {
+            Date tmp = format.parse(formAdvert.getBuydays());
+            if(tmp.before(gen.getYearEndDate())&&tmp.after(gen.getYearStartDate())){
+                advert.setBuyday(tmp);
+
+            }else {
+              throw new AdvertExeption("the year goes beyond the machine generation");
+            }
+        } catch (ParseException | AdvertExeption e) {
             e.printStackTrace();
         }
 
-        advert.setClients(clientsRepository.findById(formAdvert.getClientsId()).orElseThrow(EntityNotFoundException::new));
-        advert.setCarbody(carbodyRepository.getCarBodyByTitle(formAdvert.getCarbodyTitle()).orElseThrow(EntityNotFoundException::new));
-        advert.setMark(marksRepository.getMarkByTitle(formAdvert.getMarksTitle()).orElseThrow(EntityNotFoundException::new));
-        advert.setModel(modelsRepository.getModelsByTitle(formAdvert.getModelTitle()).orElseThrow(EntityNotFoundException::new));
-        advert.setGenerations(generationsRepository.findById(formAdvert.getGenerationsId()).orElseThrow(EntityNotFoundException::new));
-        advert.setModification(modificationsRepository.findById(formAdvert.getModificationsId()).orElseThrow(EntityNotFoundException::new));
-        advertisRepository.save(advert);
+//        advertisRepository.save(advert);
     }
 
     @Override
