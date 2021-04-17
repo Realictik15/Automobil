@@ -22,7 +22,7 @@ public interface ClientService {
 
     void register(ClientsDto clientsDto) throws CLientException;
 
-    void update(ClientsDto clientsDto) throws EntityNotFoundException;
+    void update(ClientsDto clientsDto) throws EntityNotFoundException, CLientException;
 
     List<AdvertismentDto> getUserAdvert(Long id) throws EntityNotFoundException;
 

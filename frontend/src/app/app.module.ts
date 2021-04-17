@@ -22,6 +22,7 @@ import {RewisDitaleComponent} from './rewis-ditale/rewis-ditale.component';
 import { ScrollingModule} from '@angular/cdk/scrolling';
 import { ReportComponent } from './report/report.component';
 import {ProfilComponent} from './profil/profil.component';
+import { EditAdvertComponent } from './edit-advert/edit-advert.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {ProfilComponent} from './profil/profil.component';
     RewisComponent,
     RewisDitaleComponent,
     ReportComponent,
-    ProfilComponent
+    ProfilComponent,
+    EditAdvertComponent
   ],
   imports: [
     ScrollingModule,

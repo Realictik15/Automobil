@@ -16,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClientsServiceImpl implements ClientService {
@@ -90,7 +92,11 @@ public class ClientsServiceImpl implements ClientService {
     }
 
     @Override
-    public void update(ClientsDto clientsDto) throws EntityNotFoundException {
+    public void update(ClientsDto clientsDto) throws EntityNotFoundException, CLientException {
+
+        if (clientsRepository.existsByEmaleIs(clientsDto.getEmale())>0) {
+            throw new CLientException("emale");
+        }
         Clients newClient = clientsRepository.findById(clientsDto.getIdUser()).orElseThrow(EntityNotFoundException::new);
         newClient.setFirstName(clientsDto.getFirstName());
         newClient.setLastName(clientsDto.getLastName());
@@ -118,7 +124,7 @@ public class ClientsServiceImpl implements ClientService {
     @Override
     public List<AdvertismentDto> getUserAdvert(Long id) throws EntityNotFoundException {
         return advertismetMapper.toAdvertismentDTOs(clientsRepository.findById(id).
-            orElseThrow(() -> new EntityNotFoundException(id, "Clients")).getAdvertisments());
+            orElseThrow(() -> new EntityNotFoundException(id, "Clients")).getAdvertisments().stream().filter(a->a.getAvailable().length()==3).sorted(Comparator.comparing(Advertisments::getIdAdvert)).collect(Collectors.toList()));
     }
 
     @Override

@@ -30,8 +30,9 @@ export class ClientsService {
     return this.http.post<void>(USER_API, cl, httpOptions);
   }
 
-  patchClient(cl: Client, id: bigint): Observable<void> {
-    return this.http.patch<void>(USER_API + id + '/client', cl, httpOptions);
+  patchClient(cl: Client, id: bigint): Observable<any> {
+    console.log('dsd');
+    return this.http.patch<any>(USER_API + 1 + '/client', cl);
   }
 
   getClientAdvert(idUser: bigint): Observable<Advertisment[]> {

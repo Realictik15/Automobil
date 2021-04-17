@@ -48,7 +48,7 @@ export class AdvertismentServiceService {
     return this.http.delete<any>(ADVERT_API + id, httpOptions);
   }
 
-  userDelete(id: number): Observable<any> {
+  userDelete(id: bigint): Observable<any> {
     return this.http.get<any>(ADVERT_API + id + '/userdelete', httpOptions);
   }
 

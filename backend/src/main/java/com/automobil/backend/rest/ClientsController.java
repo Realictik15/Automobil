@@ -1,6 +1,7 @@
 package com.automobil.backend.rest;
 
 import com.automobil.backend.dto.*;
+import com.automobil.backend.exeption.CLientException;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.mapStruct.ModelsMapper;
 import com.automobil.backend.models.Clients;
@@ -8,6 +9,7 @@ import com.automobil.backend.models.Models;
 import com.automobil.backend.service.*;
 import com.automobil.backend.transfer.*;
 import com.fasterxml.jackson.annotation.JsonView;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -41,7 +43,7 @@ public class ClientsController {
     }
 
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
-    @JsonView(AdvertReviewDetails.class)
+    @JsonView(Details.class)
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClientsDto> getClientByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         if (id == null) {
@@ -62,9 +64,10 @@ public class ClientsController {
         }
     }
 
+
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @PatchMapping(value = "{id}/client", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> patchClient(@Validated(Existing.class) @PathVariable("id") Long id, @RequestBody ClientsDto clientsDto) throws EntityNotFoundException, DataIntegrityViolationException {
+    public ResponseEntity<?> patchClient(@Validated(Existing.class) @PathVariable("id") Long id, @RequestBody ClientsDto clientsDto) throws DataIntegrityViolationException, CLientException, EntityNotFoundException {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

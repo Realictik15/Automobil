@@ -35,6 +35,7 @@ export class AdvertismetsComponent implements OnInit {
   pageAdvert: PageAdvert;
   size = 3;
   page = 1;
+  compFlag=true;
   isClass = true;
   selectedPage = 0;
   err = '';
@@ -68,6 +69,14 @@ export class AdvertismetsComponent implements OnInit {
     for (let i = 1; i < this.cout - 1900; i++) {
       this.date[i] = this.cout - i;
     }
+  }
+
+  checkCompare(id: bigint): void {
+this.clientServ.getClientCompare(this.tokenStorage.getUser().id).subscribe(
+  data=>{
+
+  }
+)
   }
 
   onSelect(page: number): void {
@@ -154,6 +163,7 @@ export class AdvertismetsComponent implements OnInit {
       this.err = error.message;
     });
   }
+
   getGearBox(): void {
     this.gear.getGearBoxes().subscribe(data => {
       this.arrGear = data;
@@ -161,6 +171,7 @@ export class AdvertismetsComponent implements OnInit {
       this.err = error.message;
     });
   }
+
   select(value: Mark): void {
     this.getModels(value.idMark);
   }

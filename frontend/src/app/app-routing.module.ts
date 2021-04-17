@@ -13,6 +13,7 @@ import {CarCompareComponent} from './car-compare/car-compare.component';
 import {RewisComponent} from './rewis/rewis.component';
 import {RewisDitaleComponent} from './rewis-ditale/rewis-ditale.component';
 import {ReportComponent} from './report/report.component';
+import {EditAdvertComponent} from './edit-advert/edit-advert.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'add/car', component: AddAdvertComponent},
   {path: 'compare', component: CarCompareComponent},
   {path: 'reviews', component: RewisComponent},
-  {path: 'reviews/:id', component: RewisDitaleComponent}
+  {path: 'reviews/:id', component: RewisDitaleComponent},
+  {path: 'profile/edit/advert/:id', component: EditAdvertComponent}
 
 ];
 

@@ -35,12 +35,12 @@ public class ClientsDto {
     private String lastName;
 
     @NotNull(groups = {New.class, Existing.class})
-    @JsonView({AdminDetails.class})
+    @JsonView({Details.class, AdminDetails.class})
     private Date bornDay;
 
     @NotNull(groups = {New.class})
     @Null(groups = {Existing.class})
-    @JsonView({AdminDetails.class})
+    @JsonView({Details.class, AdminDetails.class})
     private String login;
 
     @NotNull(groups = {New.class})
@@ -53,7 +53,7 @@ public class ClientsDto {
     private String emale;
 
     @NotNull(groups = {New.class, Existing.class})
-    @JsonView({Details.class, AdminDetails.class})
+    @JsonView({Details.class, AdminDetails.class,AdvertReviewDetails.class})
     private Long telephone;
 
     @NotNull(groups = {New.class, Existing.class})

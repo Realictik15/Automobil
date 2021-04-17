@@ -30,6 +30,156 @@
 
   </div>
   <ng-template #prof>
+    <div class="row no-gutters">
+      <div class="col-sm-8">
+        <div class="row" style="margin-bottom: 5%">
+          <form class="formu" (ngSubmit)="onSubmit()" #userForm="ngForm">
+            <div class="cont">
+              <div class="row">
+                <div class="col-sm-3">
+                  <input
+                    class="form-control inp"
+                    placeholder="Имя"
+                    type="text"
+                    name="firstName"
+                    required
+                    minlength="4"
+                    [(ngModel)]="client.firstName"
+                    #firstName="ngModel"
+                  >
+                </div>
+                <div class="col-sm-3">
+                  <input class="form-control inp"
+                         placeholder="Фамилия"
+                         type="text"
+                         name="lastName"
+                         #lastName="ngModel"
+                         required
+                         minlength="4"
+                         [(ngModel)]="client.lastName"
+                  >
+                </div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-control inp">{{client?.bornDay| date :'yyyy-MM-dd'}}
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <input class="form-control inp"
+                         placeholder="Email"
+                         type="email"
+                         required
+                         email
+                         name="email"
+                         #email="ngModel"
+                         [(ngModel)]="client.emale">
+                </div>
+                <div class="col-sm-3">
+                  <input class="form-control inp"
+                         placeholder="Телефон"
+                         type="number"
+                         required
+                         name="phone"
+                         #phone="ngModel"
+                         [(ngModel)]="client.telephone">
+                </div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col-sm-3">
+                  <input class="form-control inp"
+                         placeholder="Опыт вождения"
+                         type="number"
+                         required
+                         name="exp"
+                         #exp="ngModel"
+                         [(ngModel)]="client.driveExp">
+                </div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-control inp"> {{client?.login}}</div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-control inp"> {{user.role}}</div>
+                </div>
+                <!--                <div class="col-sm-3">-->
+
+                <!--                </div>-->
+                <div class="col-sm-6" style="text-align: center">
+                  <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid">
+                    Изменить
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row" style="margin-left: 4%">
+
+          <!--          <div *ngIf="adverts?.length>0; else other">-->
+          <div>
+            <div *ngFor="let advert of adverts">
+
+              <div class=" card"
+                   style=" margin-top: 3%; height: 200px;width: 700px">
+
+                <h5 class="card-header">Обявление №{{advert.idAdvert}}
+                </h5>
+
+                <div class="card-body">
+                  <div class="row">
+                    <a target="_blank" [routerLink]="['/advert/'+advert.idAdvert]">
+                      <div class="col-sm-2" style="margin-right: 11%">
+                        <img class="carimg" src="{{advert.imagesList[0]}}"/>
+                      </div>
+                    </a>
+
+                    <div class="col-sm-8">
+                      <div class="row">
+                        {{advert.marksTitle}} {{advert.generationsDto.title}}
+                        ({{advert.modificationsDto.title}})
+                      </div>
+                      <div class="row" style="margin-top: 7%">
+                        <div class="col-sm-3" style="margin-left: 50%">
+                          <button class="btn btn-danger" (click)="userDelete(advert.idAdvert)">
+                            Удалить
+                          </button>
+                        </div>
+                        <div class="col-sm-3">
+                          <a class="btn btn-warning lin"
+                             [routerLink]="['/profile/edit/advert/'+advert.idAdvert]">Изменить
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-sm-2" *ngIf="!mem;else m">
+        <button class="btn btn-danger" style="margin-left: 100%; margin-top: 10%" (click)="show()">Mem??</button>
+      </div>
+      <ng-template #m>
+
+        <div class="col-sm-2">
+          <div class="row">
+            <button class="btn btn-danger" (click)="show()">Mem??</button>
+          </div>
+          <div class="row">
+            <img width="400px" src="assets/mem.jpg"></div>
+        </div>
+      </ng-template>
+    </div>
+
 
   </ng-template>
 </div>
