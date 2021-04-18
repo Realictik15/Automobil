@@ -25,7 +25,7 @@ public class GenerationController {
     public GenerationController(GenerationsService generationsService) {
         this.generationsService = generationsService;
     }
-//    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<GenerationsDto>> getAllGeneration() {
@@ -36,7 +36,7 @@ public class GenerationController {
         return new ResponseEntity<>(generationsDtos, HttpStatus.OK);
 
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+
     @JsonView(Details.class)
     @GetMapping(value = "{id}/size", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<SizessDto>> getAllSizesGeneration(@PathVariable("id") Long id) throws EntityNotFoundException {
@@ -47,7 +47,7 @@ public class GenerationController {
         return new ResponseEntity<>(siz, HttpStatus.OK);
 
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "{id}/modification", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ModificationsDto>> getModificationByGen(@PathVariable("id") Long id) throws EntityNotFoundException {
@@ -56,6 +56,7 @@ public class GenerationController {
         }
         return new ResponseEntity<>(generationsService.getModificationByGen(id), HttpStatus.OK);
     }
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
         MediaType.APPLICATION_JSON_VALUE)
@@ -67,7 +68,7 @@ public class GenerationController {
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+
     @JsonView(Details.class)
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenerationsDto> getGenerationByID(@PathVariable("id") Long id) throws EntityNotFoundException {

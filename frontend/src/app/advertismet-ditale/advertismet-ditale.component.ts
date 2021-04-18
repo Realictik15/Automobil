@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, QueryList, ViewChildren, AfterViewChecked
 import {AdvertismentServiceService} from '../service/advertisment-service.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Advertisment} from '../model/advertisment';
+import {TokenStorageService} from '../service/token-storage.service';
 
 
 @Component({
@@ -17,11 +18,14 @@ export class AdvertismetDitaleComponent implements OnInit, AfterViewChecked {
   slides: HTMLCollectionOf<HTMLElement>;
   dots: HTMLCollectionOf<HTMLElement>;
 
-  constructor(private adverdServ: AdvertismentServiceService, private route: ActivatedRoute) {
+  constructor(private adverdServ: AdvertismentServiceService, private route: ActivatedRoute, private tokenStorage: TokenStorageService) {
 
   }
 
   ngOnInit(): void {
+    this.tokenStorage.getToken();
+
+
     this.route.params.subscribe((params: Params) => {
       this.id = params.id;
     });
@@ -64,6 +68,7 @@ export class AdvertismetDitaleComponent implements OnInit, AfterViewChecked {
     dots[this.slideIndex - 1].className += ' active';
 
   }
+
   getNumber(price: number): string {
     const rez = Math.round(price);
     const outrez = (rez + '').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');

@@ -14,6 +14,7 @@ import {RewisComponent} from './rewis/rewis.component';
 import {RewisDitaleComponent} from './rewis-ditale/rewis-ditale.component';
 import {ReportComponent} from './report/report.component';
 import {EditAdvertComponent} from './edit-advert/edit-advert.component';
+import {CharacteristicsComponent} from './characteristics/characteristics.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'compare', component: CarCompareComponent},
   {path: 'reviews', component: RewisComponent},
   {path: 'reviews/:id', component: RewisDitaleComponent},
+  {path: 'ttx/gen/:id/carb/:title', component: CharacteristicsComponent},
   {path: 'profile/edit/advert/:id', component: EditAdvertComponent}
 
 ];

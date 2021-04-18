@@ -45,61 +45,95 @@
     <div class="row" style="margin-top: 3%;">
       <div class="col-sm-4 tit">
         <div class="bac">
-          <div class="row" style="margin-left:15px">
-          <div class="col-sm-5" >Год выпуска:</div>
-          <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">Год выпуска:</div>
+            <div class="col-sm-5">{{advert.buyday|date:"yyyy"}}</div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Пробег:</div>
-            <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">Пробег:</div>
+            <div class="col-sm-5">{{getNumber(advert.mileage)}}</div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Год выпуска:</div>
-            <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">Кузов:</div>
+            <div class="col-sm-5">{{advert.carbodyTitle}}</div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Год выпуска:</div>
-            <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">Количество дверей:</div>
+            <div class="col-sm-5">{{advert.modificationsDto.doors}}</div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Год выпуска:</div>
-            <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">Цвет:</div>
+            <div class="col-sm-5">{{advert.colour}}</div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Год выпуска:</div>
-            <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">Двигатель:</div>
+            <div class="col-sm-5">{{(advert.modificationsDto.enginesDto.volume / 1000).toFixed(1)}}
+              л /{{advert.modificationsDto.enginesDto.power}} л.с
+            </div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Год выпуска:</div>
-            <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">Топливо:</div>
+            <div class="col-sm-5">{{advert.modificationsDto.enginesDto.typeFuel}}</div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Год выпуска:</div>
-            <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">Налог:</div>
+            <div class="col-sm-5">{{getNumber(advert.nalog)}}</div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Год выпуска:</div>
-            <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">Коробка:</div>
+            <div
+              class="col-sm-5">{{advert.modificationsDto.transmissionsDto.gearBoxDto.title}}</div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Год выпуска:</div>
-            <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">Привод:</div>
+            <div class="col-sm-5">{{advert.modificationsDto.transmissionsDto.driveType}}</div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Год выпуска:</div>
-            <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px"
+               *ngIf="!advert.broken;else br">
+            <div class="col-sm-5">Состояние:</div>
+            <div class="col-sm-5">ремонта не требует</div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Год выпуска:</div>
-            <div class="col-sm-5">dsds</div>
+          <ng-template #br>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Состояние:</div>
+              <div class="col-sm-5">Был в дтп</div>
+            </div>
+          </ng-template>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">Владельцы:</div>
+            <div class="col-sm-5">{{advert.owners}}</div>
           </div>
-          <div class="row" style="margin-left:15px">
-            <div class="col-sm-5" >Год выпуска:</div>
-            <div class="col-sm-5">dsds</div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px"
+               *ngIf="advert.pts==1;else pts">
+            <div class="col-sm-5">ПТС:</div>
+            <div class="col-sm-5">Оригинал</div>
+          </div>
+          <ng-template #pts>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">ПТС:</div>
+              <div class="col-sm-5">Дубликат</div>
+            </div>
+          </ng-template>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px"
+               *ngIf="advert.dayofwarranty">
+            <div class="col-sm-5">На гарантии до:</div>
+            <div class="col-sm-5">{{advert.dayofwarranty|date:"yyyy"}}</div>
+          </div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px" *ngIf="advert.swap">
+            <div class="col-sm-5">Обмен:</div>
+            <div class="col-sm-5">Возможен</div>
+          </div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">VIN:</div>
+            <div class="col-sm-5">{{advert.vin}}</div>
+          </div>
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+            <div class="col-sm-5">СТС:</div>
+            <div class="col-sm-5">{{advert.sts}}</div>
           </div>
         </div>
       </div>
-      <div class="col-sm-7">
+      <div class="col-sm-7" style="margin-top: 5px">
         <div class="container">
           <div class="mySlides" *ngFor="let h of advert.imagesList,let i = index" #notification>
             <div class="numbertext">{{i + 1}}/{{advert.imagesList.length}}</div>
@@ -117,15 +151,34 @@
         </div>
       </div>
     </div>
+    <div class="row" >
+      <div class="col-sm-4 tit">
+
+        <div class="bac">
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+
+            <div class="col-sm-10" style="text-align: center"><a
+              [routerLink]="['/ttx/gen/'+advert.generationsDto.idGen+'/carb/'+advert.carbodyTitle]">Характеристики
+              модели</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7" style="margin-top: 5px">
+        <div class="bac" style="margin-bottom: 5px">
+          <div class="row" style="margin-left:15px; margin-bottom: 3px">
+
+            <div class="col-sm-10" style="text-align: center;">
+              <div style="font-weight: 500">Комментарий продавца</div>
+              <div class="comment">{{advert.commentns}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 5px"></div>
   </div>
 </div>
 
 
-<!--<div>-->
-<!--  <p>{{advert?.marksTitle}}</p>-->
-<!--  <p>{{advert.modelTitle}}</p>-->
-<!--  <p>{{advert.price}}</p>-->
-<!--  <p>{{advert.idAdvert}}</p>-->
-<!--  <img class="carimg" src="{{advert.imagesList[0]}}"/>-->
 
-<!--</div>-->

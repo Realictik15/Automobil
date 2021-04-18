@@ -23,6 +23,7 @@ import { ScrollingModule} from '@angular/cdk/scrolling';
 import { ReportComponent } from './report/report.component';
 import {ProfilComponent} from './profil/profil.component';
 import { EditAdvertComponent } from './edit-advert/edit-advert.component';
+import { CharacteristicsComponent } from './characteristics/characteristics.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { EditAdvertComponent } from './edit-advert/edit-advert.component';
     RewisDitaleComponent,
     ReportComponent,
     ProfilComponent,
-    EditAdvertComponent
+    EditAdvertComponent,
+    CharacteristicsComponent
   ],
   imports: [
     ScrollingModule,

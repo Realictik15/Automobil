@@ -57,7 +57,7 @@ public class SizessController {
         sizessService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "/generations/{idgen}/carbody/{idcarbody}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SizessDto> getSizessByTwoId(@PathVariable("idgen") Long idgen,

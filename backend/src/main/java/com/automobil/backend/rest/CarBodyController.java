@@ -42,7 +42,7 @@ public class CarBodyController {
         return new ResponseEntity<>(carbodyDtos, HttpStatus.OK);
     }
     @JsonView(AdminDetails.class)
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CarbodyDto> getCarBodyByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         if (id == null) {
@@ -50,7 +50,7 @@ public class CarBodyController {
         }
         return new ResponseEntity<>(carBodyService.getCarBody(id), HttpStatus.OK);
     }
-    @PreAuthorize(" hasAuthority('ADMIN')")
+
     @JsonView(AdminDetails.class)
     @GetMapping(value = "title/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CarbodyDto> getCarBodyByTitle(@PathVariable("title") String title) throws EntityNotFoundException {

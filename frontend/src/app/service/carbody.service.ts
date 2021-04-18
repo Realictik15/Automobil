@@ -25,6 +25,6 @@ export class CarbodyService {
   }
 
   getBodyByTitle(title: string): Observable<Carbody> {
-    return this.http.get<Carbody>(CARB_API + title + '/title', httpOptions);
+    return this.http.get<Carbody>(CARB_API + 'title/' + title, httpOptions);
   }
 }

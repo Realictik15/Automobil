@@ -23,8 +23,8 @@ export class SizesService {
     return this.http.get<Sizes>(SIZE_API + '/' + id, httpOptions);
   }
 
-  getSizeByidCarbodyAndGen(idC: bigint, idG: bigint): Observable<Generation> {
-    return this.http.get<Generation>(SIZE_API + '/generations/' + idC + '/carbody/' + idG, httpOptions);
+  getSizeByidCarbodyAndGen(idC: bigint, idG: bigint): Observable<Sizes> {
+    return this.http.get<Sizes>(SIZE_API + '/generations/' + idG + '/carbody/' + idC, httpOptions);
   }
 
   deleteGet(id: bigint): Observable<any> {
