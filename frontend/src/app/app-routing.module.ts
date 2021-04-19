@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'compare', component: CarCompareComponent},
   {path: 'reviews', component: RewisComponent},
   {path: 'reviews/:id', component: RewisDitaleComponent},
-  {path: 'ttx/gen/:id/carb/:title', component: CharacteristicsComponent},
+  {path: 'ttx/gen/:id/carb/:title/modif/:idm', component: CharacteristicsComponent},
   {path: 'profile/edit/advert/:id', component: EditAdvertComponent}
 
 ];

@@ -18,10 +18,15 @@ export class CharacteristicsComponent implements OnInit {
   id: bigint;
   generation: Generation;
   modifications: Modification[];
+  curentModif: Modification;
   carbody: Carbody;
   size: Sizes;
   title: string;
+  idcur: bigint;
   err = '';
+  arrimg = ['assets/q50_tech_full.jpg', 'assets/qx50_tech_full.jpg', 'assets/b5_1.jpg', 'assets/xet.jpg'];
+  img: string;
+  arrClass=[false,false,false,false];
 
   constructor(private route: ActivatedRoute, private genSev: GenerationsService, private sizeSev: SizesService, private carBodySev: CarbodyService) {
   }
@@ -30,10 +35,43 @@ export class CharacteristicsComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = params.id;
       this.title = params.title;
+      this.idcur = params.idm;
+      this.getGeneration();
+      this.getModifArr();
+      this.getBodyByTitle();
+      this.setImg();
     });
-    this.getGeneration();
-    this.getModifArr();
-    this.getBodyByTitle();
+
+
+  }
+
+  setImg() {
+    switch (this.title) {
+      case 'Седан': {
+        this.img = this.arrimg[0];
+        this.arrClass[0]=true;
+        break;
+      }
+      case 'Внедорожник': {
+        this.img = this.arrimg[1];
+        this.arrClass[1]=true;
+        break;
+      }
+      case 'Универсал': {
+        this.img = this.arrimg[2];
+        this.arrClass[2]=true;
+        break;
+      }
+      case 'Хэтчбек': {
+        this.img = this.arrimg[3];
+        this.arrClass[2]=true;
+        break;
+      }
+      default:
+        this.img = this.arrimg[0];
+        this.arrClass[0]=true;
+        break;
+    }
 
   }
 
@@ -47,17 +85,18 @@ export class CharacteristicsComponent implements OnInit {
   }
 
   getModifArr(): void {
+    console.log(this.idcur);
     this.genSev.getModifByGen(this.id).subscribe(data => {
       this.modifications = data;
-      console.log(this.modifications);
+      this.curentModif = this.modifications.filter(item => item.idModif == this.idcur)[0];
     }, error => {
       this.err = error.error.message;
       console.log(error);
     });
   }
 
-  getBodyByTitle():void{
-
+  getBodyByTitle(): void {
+    console.log(this.idcur);
     this.carBodySev.getBodyByTitle(this.title).subscribe(data => {
 
       this.carbody = data;
@@ -69,10 +108,11 @@ export class CharacteristicsComponent implements OnInit {
     });
   }
 
-  getSize():void{
+  getSize(): void {
+    console.log(this.idcur);
     this.sizeSev.getSizeByidCarbodyAndGen(this.carbody.idCarBody, this.id).subscribe(data => {
       this.size = data;
-      console.log( this.size);
+      console.log(this.size);
     }, error => {
       this.err = error.error.message;
       console.log(error);

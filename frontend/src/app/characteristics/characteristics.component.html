@@ -1,1 +1,344 @@
-<p>characteristics works!</p>
+<div class="cont">
+  <div class="custcont">
+    <div class="row">
+      <div class="col-sm-5 tit">
+        <h5 class="card-title t">{{generation.title}} > {{title}}
+          > {{generation.yearStartDate| date:"yyyy"}}
+          — {{generation.yearEndDate == null ? 'н.в.' : generation.yearEndDate |date:"yyyy"}}</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 tit">
+        <div class="bac">
+          <p style="font-weight: 500;margin-left: 15px">Модификации</p>
+          <div *ngFor=" let modif of modifications" class="mod">
+            <div *ngIf="modif.idModif==curentModif.idModif;else m">
+              <a
+                [routerLink]="['/ttx/gen/'+generation.idGen+'/carb/'+title+'/modif/'+modif.idModif]">
+                <div class="first">
+                  <div style="margin-left: 10px">{{modif.title| slice:12}}
+                    ({{modif.enginesDto.power}}
+                    л.с) {{modif.transmissionsDto.gearBoxDto.title |lowercase}}</div>
+                </div>
+              </a>
+            </div>
+            <ng-template #m>
+              <a
+                [routerLink]="['/ttx/gen/'+generation.idGen+'/carb/'+title+'/modif/'+modif.idModif]">
+                <div class="second">
+                  <div style="margin-left: 10px">{{modif.title| slice:12}}
+                    ({{modif.enginesDto.power}}
+                    л.с) {{modif.transmissionsDto.gearBoxDto.title |lowercase}}</div>
+                </div>
+              </a>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7 tit bac">
+        <div class="row">
+          <div class="col-sm-7 v">
+            <img
+              [class]="{'carsimg':arrClass[0],'carsimg-suv':arrClass[1],'carsimg-uni':arrClass[2]}"
+              [src]="img">
+            <div
+              [class]="{'bottom-bot':arrClass[0],'bottom-bot-1':arrClass[1],'bottom-bot-2':arrClass[2]}"> {{size.lenght}}</div>
+            <div
+              [class]="{'bottom-left':arrClass[0],'bottom-left-1':arrClass[1],'bottom-left-2':arrClass[2]}"> {{size.hight}}</div>
+            <div
+              [class]="{'bottom-right':arrClass[0],'bottom-right-1':arrClass[1],'bottom-right-2':arrClass[2]}"> {{size.clearance}}</div>
+          </div>
+          <div class="col-sm-5">
+            <h5 style="margin-bottom: -20px">Основные характеристики</h5>
+            <div class="row" style="margin-top: 30px">
+              <div class="col-sm-5">
+                <div class="custrow">
+                  <div class="titleinch">Объем</div>
+                  {{(curentModif.enginesDto.volume / 1000).toFixed(1)}}
+                </div>
+                <div class="custrow">
+                  <div class="titleinch">Мощность</div>
+                  {{curentModif.enginesDto.power}} л.с
+                </div>
+                <div class="custrow">
+                  <div class="titleinch">Коробка</div>
+                  {{curentModif.transmissionsDto.gearBoxDto.title|lowercase}}
+                </div>
+                <div class="custrow">
+                  <div class="titleinch">Тип двигателя</div>
+                  {{curentModif.enginesDto.typeFuel}}
+                </div>
+              </div>
+              <div class="col-sm-5" style="margin-left: 20px">
+                <div class="custrow">
+                  <div class="titleinch">Привод</div>
+                  {{curentModif.transmissionsDto.driveType}}
+                </div>
+                <div class="custrow">
+                  <div class="titleinch">Разгон</div>
+                  {{curentModif.enginesDto.acceliration}} c.
+                </div>
+                <div class="custrow">
+                  <div class="titleinch">Расход</div>
+                  {{curentModif.enginesDto.fuelConsum}} л
+                </div>
+                <div class="custrow">
+                  <div class="titleinch">Двигатель</div>
+                  {{curentModif.enginesDto.typeEng}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="row">
+          <div class="col-sm-5" style="margin-left: 30px">
+            <h5>Общая информация</h5>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Страна марки</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch">добавить сервис</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Класс автомобиля</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{generation.classOfCar}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Количество дверей</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{curentModif.doors}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Количество мест</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{curentModif.sits}}</div>
+              </div>
+            </div>
+
+
+
+            <h5 style="margin-top: 10px">Размеры</h5>
+
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Длина</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{size.lenght}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Ширина</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{size.widht}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Высота</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{size.hight}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Колёсная база</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{size.wheelbase}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Клиренс</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{size.clearance}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Размер колёс</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch">R{{size.wheelsSize}}</div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Полная масса, кг</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{size.weight}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Объем багажника</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{size.trunkWight}}</div>
+              </div>
+            </div>
+
+
+
+            <h5 style="margin-top: 15px">Трансмиссия</h5>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Коробка передач</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{curentModif.transmissionsDto.gearBoxDto.title}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Количество передач</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{curentModif.transmissionsDto.quantity}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Тип привода</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{curentModif.transmissionsDto.driveType}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Тип передней подвески</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{curentModif.transmissionsDto.suspension}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Объем багажника</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{size.trunkWight}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Объем багажника</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{size.trunkWight}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-5">
+            <h5>Эксплуатационные показатели</h5>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Разгон до 100 км/ч, с</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{curentModif.enginesDto.acceliration}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Расход топлива, л</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{curentModif.enginesDto.fuelConsum}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Экологический класс</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch">Euro {{curentModif.enginesDto.euroType}}</div>
+              </div>
+            </div>
+            <h5 style="margin-top: 15px">Двигатель</h5>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Тип двигателя</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch">{{curentModif.enginesDto.typeFuel}}</div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Расположение двигателя</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch">{{curentModif.enginesDto.locations}}</div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Объем двигателя, см³</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch">{{curentModif.enginesDto.volume}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Тип наддува</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch">{{curentModif.enginesDto.typeEng}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-6">
+                <div class="titleinch">Максимальный крутящий момент, Н*м</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch">{{curentModif.enginesDto.torque}}</div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-7">
+                <div class="titleinch">Расположение цилиндров</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch">{{curentModif.enginesDto.disposCyl}}</div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 5px">
+              <div class="col-sm-7">
+                <div class="titleinch">Количество цилиндров</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch">{{curentModif.enginesDto.cylinders}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
