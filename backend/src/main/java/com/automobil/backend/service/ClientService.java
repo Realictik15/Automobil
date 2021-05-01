@@ -8,6 +8,7 @@ import com.automobil.backend.exeption.CLientException;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.models.Advertisments;
 import com.automobil.backend.models.Clients;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -26,7 +27,9 @@ public interface ClientService {
 
     List<AdvertismentDto> getUserAdvert(Long id) throws EntityNotFoundException;
 
-    List<ComparisonsDto> getUserCompareDto(Long id) throws EntityNotFoundException;
+    Page<ComparisonsDto> getUserPageCompareDto(Long id, Integer page, Integer size) throws EntityNotFoundException;
+
+    List<ComparisonsDto> getUserListCompareDto(Long id) throws EntityNotFoundException;
 
     void saveUserCompare(Long idClient, Long idAdvert) throws EntityNotFoundException;
 

@@ -19,7 +19,7 @@ public class ComparisonsDto {
 
     @Null(groups = {New.class}, message = "The field must be empty")
     @NotNull(groups = {Existing.class})
-    @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
+    @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class} )
     private Long idCompar;
 
     @NotNull(groups = {New.class})

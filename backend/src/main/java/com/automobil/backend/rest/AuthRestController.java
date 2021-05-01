@@ -69,11 +69,12 @@ public class AuthRestController {
 
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
+            System.out.println(e.toString());
             throw new BadCredentialsException("Invalid username or password");
         }
     }
 
-    @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
+    @PostMapping(value = "/reg", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
         MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> registration(@Validated(New.class) @RequestBody ClientsDto clientsDto) throws CLientException {
         if (clientsDto == null) {

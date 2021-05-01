@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -81,6 +82,16 @@ public class ClientsController {
 
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
+    @GetMapping(value = "{id}/compareList", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ComparisonsDto>> getAllCompareList(@PathVariable("id") Long id) throws EntityNotFoundException {
+        if(id==null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(clientService.getUserListCompareDto(id), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "{id}/advert", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AdvertismentDto>> getClientAdvert(@PathVariable("id") Long id) throws EntityNotFoundException {
         if (id == null) {
@@ -92,16 +103,15 @@ public class ClientsController {
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "{id}/compare", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<ComparisonsDto>> getClientCompareDto(@PathVariable("id") Long id) throws EntityNotFoundException {
+    public ResponseEntity<Page<ComparisonsDto>> getClientCompareDtoPage(@PathVariable("id") Long id, @RequestParam Integer page, @RequestParam Integer size) throws EntityNotFoundException {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        List<ComparisonsDto> l= clientService.getUserCompareDto(id);
-        return new ResponseEntity<>(l, HttpStatus.OK);
+        return new ResponseEntity<>(clientService.getUserPageCompareDto(id, page, size), HttpStatus.OK);
     }
 
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
-    @GetMapping (value = "/{id}/advertcomp/{idAd}", produces =
+    @GetMapping(value = "/{id}/advertcomp/{idAd}", produces =
         MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addClientComp(@PathVariable("id") Long id, @PathVariable("idAd") Long idAd) throws EntityNotFoundException {
         if (id == null || idAd == null) {

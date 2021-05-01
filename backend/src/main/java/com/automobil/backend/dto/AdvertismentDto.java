@@ -2,6 +2,7 @@ package com.automobil.backend.dto;
 
 import com.automobil.backend.models.Carbody;
 import com.automobil.backend.transfer.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.*;
 
@@ -104,11 +105,12 @@ public class AdvertismentDto {
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Europe/Moscow")
     private Date buyday;
 
-    @NotNull(groups = {New.class})
-    @Null(groups = {Existing.class})
+//   @NotNull(groups = {New.class,Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Europe/Moscow")
     private Date dayofwarranty;
 
     @NotNull(groups = {New.class})
@@ -116,8 +118,7 @@ public class AdvertismentDto {
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private String vin;
 
-    @NotNull(groups = {New.class})
-    @Null(groups = {Existing.class})
+    @NotNull(groups = {New.class,Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private Long sts;
 
@@ -125,12 +126,12 @@ public class AdvertismentDto {
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private String commentns;
 
-    @NotNull(groups = {New.class})
-    @Null(groups = {Existing.class})
+    @NotNull(groups = {New.class,Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private List<String> imagesList;
 
-    @Null(groups = {New.class, Existing.class})
+    @Null(groups = {New.class})
+    @NotNull(groups = {Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
     private Integer nalog;
 

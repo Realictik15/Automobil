@@ -2,6 +2,7 @@ package com.automobil.backend.dto;
 
 import com.automobil.backend.models.Roles;
 import com.automobil.backend.transfer.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,6 +37,7 @@ public class ClientsDto {
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class})
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Europe/Moscow")
     private Date bornDay;
 
     @NotNull(groups = {New.class})

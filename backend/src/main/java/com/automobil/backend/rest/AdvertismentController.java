@@ -31,7 +31,7 @@ public class AdvertismentController {
         this.advertService = advertService;
     }
 
-//    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @PostMapping(value = "")
     public ResponseEntity<?> saveAdvertisment(@ModelAttribute FormAdvert formAdvert) throws EntityNotFoundException, ParseException, IOException {
         if (formAdvert == null) {
@@ -66,17 +66,22 @@ public class AdvertismentController {
 
     }
 
-
+    @JsonView(AdvertReviewDetails.class)
     @GetMapping("/all")
-    public Page<AdvertismentDto> listPosts(@RequestParam(defaultValue = "0") int page, @RequestParam("size") int size) {
-        return advertService.getListAllAvaliblePage(page, size);
+    public ResponseEntity<Page<AdvertismentDto>> listPosts(@RequestParam(defaultValue = "0") Integer page, @RequestParam(value = "size", defaultValue = "5") Integer size) {
+        Page<AdvertismentDto> adverPage = advertService.getListAllAvaliblePage(page, size);
+        if (adverPage.getTotalElements() < 0) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(adverPage, HttpStatus.OK);
 
     }
 
+    @JsonView(AdvertReviewDetails.class)
     @PostMapping(value = "/all/filters", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Page<AdvertismentDto> listPostsFilters(@RequestParam(defaultValue = "0") int page, @RequestParam("size") int size,
+    public Page<AdvertismentDto> listPostsFilters(@RequestParam(defaultValue = "0") Integer page, @RequestParam(value = "size", defaultValue = "5") Integer size,
                                                   @RequestBody FiltersDto filtersDto) {
-        return advertService.getListFilters(filtersDto,page, size);
+        return advertService.getListFilters(filtersDto, page, size);
 
     }
 
@@ -114,7 +119,7 @@ public class AdvertismentController {
 
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @PatchMapping(value = "{id}/update", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> patchAdvert(@Validated(Existing.class)@PathVariable("id") Long id, @RequestBody AdvertismentDto advertismentDto) throws EntityNotFoundException, DataIntegrityViolationException {
+    public ResponseEntity<?> patchAdvert(@PathVariable("id") Long id, @Validated(Existing.class) @RequestBody AdvertismentDto advertismentDto) throws EntityNotFoundException, DataIntegrityViolationException {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
