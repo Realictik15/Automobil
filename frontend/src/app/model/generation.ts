@@ -2,8 +2,8 @@ export class Generation{
   idGen: bigint;
   modelTitle: string;
   title: string;
-  yearStartDate: Date;
-  yearEndDate: Date;
+  yearStartDate: string;
+  yearEndDate: string;
   classOfCar: string;
   image: string;
 }

@@ -61,7 +61,7 @@ export class AdvertismetsComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLogin = true;
       this.user = this.tokenStorage.getUser();
-      this.getUserCompareId();
+       this.getUserCompareId();
     }
   }
 
@@ -82,11 +82,8 @@ export class AdvertismetsComponent implements OnInit {
       data => {
         console.log(data);
         for (let i = 0; i < data.length; i++) {
-          console.log(data[i].advertismentDto.idAdvert);
           this.arrId.push(data[i].advertismentDto.idAdvert);
-
         }
-        console.log(this.arrId);
       }
     );
   }

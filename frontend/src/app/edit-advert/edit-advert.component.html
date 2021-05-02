@@ -1,1 +1,237 @@
-<p>edit-advert works!</p>
+<div class="contents">
+  <div class="custcont">
+    <form (ngSubmit)="onSubmit()" #editForm="ngForm" *ngIf="isLogin;else el">
+      <div class="row">
+        <div class="col-sm-7 tit ">
+          <div class="texts">{{advert?.marksTitle}} {{advert?.generationsDto?.title}}</div>
+          <div style="font-size: 13px">Номер объявления №{{advert?.idAdvert}}</div>
+        </div>
+        <div class="col-sm-3 tit" style="margin-left: 75px; text-align: right">
+          <input type="text" class="form-control texts"
+                 placeholder="Цена"
+                 [(ngModel)]="editAdvert.price"
+                 required
+                 onkeyup="this.value = this.value.replace(/[^\d]/,'');"
+                 name="price"
+                 #price="ngModel">
+          <!--          <p class="texts"> {{getNumber(advert?.price)}} ₽ </p>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col tit">
+          <div class="bac">
+            <div class="row">
+              <div class="col-sm-2" style="margin: 10px 15px;">
+                <div>Продавец: {{advert.clientsDto.firstName}} </div>
+              </div>
+              <div class="col-sm-5"
+                   style="margin-left: 10% ;margin-top: 10px;margin-bottom: 10px;font-size: 15px;">
+                <div class="row">
+                  <div class="col-sm-5">
+                  <input type="text" class="form-control"
+                         placeholder="Город"
+                         [(ngModel)]="editAdvert.city"
+                         required
+                         name="city"
+                         #city="ngModel">
+                  </div>
+                  <div class="col-sm-5">
+                  <input type="text" class="form-control"
+                         placeholder="Место осмотра"
+                         [(ngModel)]="editAdvert.place"
+                         required
+                         name="place"
+                         #place="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="tel" style="margin-left: 2%">
+
+                  <input type="text" class="form-control"
+                         placeholder="Телефон"
+                         [(ngModel)]="editAdvert.phone"
+                         onkeyup="this.value = this.value.replace(/[^\d]/,'');"
+                         required
+                         name="phone"
+                         #phone="ngModel">
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3" style="font-size: 13px;margin: 0 15px 6px;">
+                Колличество объявлений этого пользователя: {{advert.clientsDto.countOfAdvert}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 3%;">
+        <div class="col-sm-4 tit">
+          <div class="bac">
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Год выпуска:</div>
+              <div class="col-sm-5">{{advert.buyday|date:"yyyy"}}</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Пробег:</div>
+              <div class="col-sm-5">
+              <input type="text" class="form-control"
+                     placeholder="Пробег"
+                     [(ngModel)]="editAdvert.mileage"
+                     onkeyup="this.value = this.value.replace(/[^\d]/,'');"
+                     required
+                     name="mileage"
+                     #mileage="ngModel">
+              </div>
+
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Кузов:</div>
+              <div class="col-sm-5">{{advert.carbodyTitle}}</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Количество дверей:</div>
+              <div class="col-sm-5">{{advert.modificationsDto.doors}}</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Цвет:</div>
+              <div class="col-sm-5">{{advert.colour}}</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Двигатель:</div>
+              <div
+                class="col-sm-5">{{(advert.modificationsDto.enginesDto.volume / 1000).toFixed(1)}}
+                л /{{advert.modificationsDto.enginesDto.power}} л.с
+              </div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Топливо:</div>
+              <div class="col-sm-5">{{advert.modificationsDto.enginesDto.typeFuel}}</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Налог:</div>
+              <div class="col-sm-5">{{getNumber(advert.nalog)}}</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Коробка:</div>
+              <div
+                class="col-sm-5">{{advert.modificationsDto.transmissionsDto.gearBoxDto.title}}</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Привод:</div>
+              <div class="col-sm-5">{{advert.modificationsDto.transmissionsDto.driveType}}</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px"
+                 *ngIf="!advert.broken;else br">
+              <div class="col-sm-5">Состояние:</div>
+              <div class="col-sm-5">ремонта не требует</div>
+            </div>
+            <ng-template #br>
+              <div class="row" style="margin-left:15px; margin-bottom: 3px">
+                <div class="col-sm-5">Состояние:</div>
+                <div class="col-sm-5">Был в дтп</div>
+              </div>
+            </ng-template>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">Владельцы:</div>
+              <div class="col-sm-5">{{advert.owners}}</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px"
+                 *ngIf="advert.pts==1;else pts">
+              <div class="col-sm-5">ПТС:</div>
+              <div class="col-sm-5">Оригинал</div>
+            </div>
+            <ng-template #pts>
+              <div class="row" style="margin-left:15px; margin-bottom: 3px">
+                <div class="col-sm-5">ПТС:</div>
+                <div class="col-sm-5">Дубликат</div>
+              </div>
+            </ng-template>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px"
+                 *ngIf="advert.dayofwarranty">
+              <div class="col-sm-5">На гарантии до:</div>
+              <div class="col-sm-5">{{advert.dayofwarranty|date:"yyyy"}}</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px" *ngIf="advert.swap">
+              <div class="col-sm-5">Обмен:</div>
+              <div class="col-sm-5">Возможен</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">VIN:</div>
+              <div class="col-sm-5">{{advert.vin}}</div>
+            </div>
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+              <div class="col-sm-5">СТС:</div>
+              <div class="col-sm-5">{{advert.sts}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7" style="margin-top: 5px">
+          <div class="container">
+            <div class="mySlides" *ngFor="let h of advert.imagesList,let i = index" #notification>
+              <div class="numbertext">{{i + 1}}/{{advert.imagesList.length}}</div>
+              <img [src]="h" style="width:480px;height: 305px">
+            </div>
+            <a class="prev" (click)="plusSlides(-1)">❮</a>
+            <a class="next" (click)="plusSlides(1)">❯</a>
+            <div class="row" style="margin-top: 1%">
+              <div class="column" *ngFor="let h of advert?.imagesList,let i = index">
+                <img class="demo cursor" [src]="h" style="width:100%;height: 100%; "
+                     (click)="currentSlide(i+1)"
+                     alt="The Woods">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 tit">
+
+          <div class="bac">
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+
+              <div class="col-sm-10" style="text-align: center"><a
+                [routerLink]="['/ttx/gen/'+advert.generationsDto.idGen+'/carb/'+advert.carbodyTitle+'/modif/'+advert.modificationsDto.idModif]">Характеристики
+                модели</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7" style="margin-top: 5px">
+          <div class="bac" style="margin-bottom: 5px">
+            <div class="row" style="margin-left:15px; margin-bottom: 3px">
+
+              <div class="col-sm-10" style="text-align: center;">
+                <div style="font-weight: 500">Комментарий продавца</div>
+                <textarea type="text" class="form-control comm"
+                          [(ngModel)]="editAdvert.commentns"
+                          required
+                          name="commentns"
+                          #commentns="ngModel"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 5px"></div>
+      <div class="row">
+        <div style="margin-right: auto; margin-left: auto">
+          <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary b">Создать
+          </button>
+          <button type="submit" (click)="editForm.reset()" class="btn btn-primary b r">
+            Сбросить
+          </button>
+        </div>
+      </div>
+    </form>
+    <ng-template #el >
+      <div style="margin-left:45%">
+           У вас нет доступа
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+
+

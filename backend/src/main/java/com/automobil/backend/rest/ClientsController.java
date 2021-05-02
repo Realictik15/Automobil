@@ -103,7 +103,7 @@ public class ClientsController {
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "{id}/compare", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Page<ComparisonsDto>> getClientCompareDtoPage(@PathVariable("id") Long id, @RequestParam Integer page, @RequestParam Integer size) throws EntityNotFoundException {
+    public ResponseEntity<Page<ComparisonsDto>> getClientCompareDtoPage(@PathVariable("id") Long id, @RequestParam(value = "page",defaultValue = "0") Integer page, @RequestParam(value = "size") Integer size) throws EntityNotFoundException {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

@@ -11,7 +11,6 @@ import {TokenStorageService} from '../service/token-storage.service';
   styleUrls: ['./advertismet-ditale.component.css']
 })
 export class AdvertismetDitaleComponent implements OnInit, AfterViewChecked {
-  @ViewChildren('notification') private _notificationsElements: QueryList<ElementRef>;
   advert: Advertisment;
   slideIndex = 1;
   id: number;
@@ -19,7 +18,6 @@ export class AdvertismetDitaleComponent implements OnInit, AfterViewChecked {
   dots: HTMLCollectionOf<HTMLElement>;
 
   constructor(private adverdServ: AdvertismentServiceService, private route: ActivatedRoute, private tokenStorage: TokenStorageService) {
-
   }
 
   ngOnInit(): void {
@@ -49,7 +47,6 @@ export class AdvertismetDitaleComponent implements OnInit, AfterViewChecked {
   }
 
   showSlides(n) {
-    debugger
     this.slides = document.getElementsByClassName('mySlides') as HTMLCollectionOf<HTMLElement>;
     const dots = document.getElementsByClassName('demo') as HTMLCollectionOf<HTMLElement>;
     if (n > this.slides.length) {

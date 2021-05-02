@@ -26,7 +26,9 @@ export class CharacteristicsComponent implements OnInit {
   err = '';
   arrimg = ['assets/q50_tech_full.jpg', 'assets/qx50_tech_full.jpg', 'assets/b5_1.jpg', 'assets/xet.jpg'];
   img: string;
-  arrClass=[false,false,false,false];
+  listSusp: string[];
+  listBrakes: string[];
+  arrClass = [false, false, false, false];
 
   constructor(private route: ActivatedRoute, private genSev: GenerationsService, private sizeSev: SizesService, private carBodySev: CarbodyService) {
   }
@@ -49,27 +51,27 @@ export class CharacteristicsComponent implements OnInit {
     switch (this.title) {
       case 'Седан': {
         this.img = this.arrimg[0];
-        this.arrClass[0]=true;
+        this.arrClass[0] = true;
         break;
       }
       case 'Внедорожник': {
         this.img = this.arrimg[1];
-        this.arrClass[1]=true;
+        this.arrClass[1] = true;
         break;
       }
       case 'Универсал': {
         this.img = this.arrimg[2];
-        this.arrClass[2]=true;
+        this.arrClass[2] = true;
         break;
       }
       case 'Хэтчбек': {
         this.img = this.arrimg[3];
-        this.arrClass[2]=true;
+        this.arrClass[2] = true;
         break;
       }
       default:
         this.img = this.arrimg[0];
-        this.arrClass[0]=true;
+        this.arrClass[0] = true;
         break;
     }
 
@@ -78,6 +80,7 @@ export class CharacteristicsComponent implements OnInit {
   getGeneration(): void {
     this.genSev.getGen(this.id).subscribe(data => {
       this.generation = data;
+      console.log(data)
     }, error => {
       this.err = error.error.message;
       console.log(error);
@@ -88,7 +91,9 @@ export class CharacteristicsComponent implements OnInit {
     console.log(this.idcur);
     this.genSev.getModifByGen(this.id).subscribe(data => {
       this.modifications = data;
+      console.log(data)
       this.curentModif = this.modifications.filter(item => item.idModif == this.idcur)[0];
+      this.psrsing();
     }, error => {
       this.err = error.error.message;
       console.log(error);
@@ -117,5 +122,10 @@ export class CharacteristicsComponent implements OnInit {
       this.err = error.error.message;
       console.log(error);
     });
+  }
+
+  psrsing(): void {
+    this.listSusp = this.curentModif.transmissionsDto.suspension.split('/');
+    this.listBrakes = this.curentModif.transmissionsDto.brakes.split('/');
   }
 }

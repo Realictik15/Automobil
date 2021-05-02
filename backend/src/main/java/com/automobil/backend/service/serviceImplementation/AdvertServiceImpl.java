@@ -149,6 +149,7 @@ public class AdvertServiceImpl implements AdvertService {
     @Override
     public List<AdvertismentDto> getlistAvalible() {
         List<Advertisments> advertisments = advertisRepository.getListAllAvalible();
+        LOGGER.info("Received list available adverts count:{}", advertisments.size());
         return advertismetMapper.toAdvertismentDTOs(advertisments);
     }
 

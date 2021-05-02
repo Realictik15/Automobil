@@ -27,7 +27,7 @@ public interface ClientService {
 
     List<AdvertismentDto> getUserAdvert(Long id) throws EntityNotFoundException;
 
-    Page<ComparisonsDto> getUserPageCompareDto(Long id, Integer page, Integer size) throws EntityNotFoundException;
+    Page<ComparisonsDto> getUserPageCompareDto(Long id, int page, int size) throws EntityNotFoundException;
 
     List<ComparisonsDto> getUserListCompareDto(Long id) throws EntityNotFoundException;
 

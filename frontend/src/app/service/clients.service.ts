@@ -4,6 +4,8 @@ import {Observable} from 'rxjs';
 import {Client} from '../model/client';
 import {Advertisment} from '../model/advertisment';
 import {Compare} from '../model/compare';
+import {PageCompare} from '../model/PageCompare';
+import {PageAdvert} from '../model/PageAdvert';
 
 const USER_API = 'http://localhost:8881/client/';
 const httpOptions = {
@@ -39,8 +41,12 @@ export class ClientsService {
     return this.http.get<Advertisment[]>(USER_API + idUser + '/advert', httpOptions);
   }
 
+  getClientComparepage(idUser: bigint, page: number, size: number): Observable<PageCompare> {
+    return this.http.get<PageCompare>(USER_API + idUser + '/compare' + '?page=' + page + '&size=' + size, httpOptions);
+  }
+
   getClientCompare(idUser: bigint): Observable<Compare[]> {
-    return this.http.get<Compare[]>(USER_API + idUser + '/compare', httpOptions);
+    return this.http.get<Compare[]>(USER_API + idUser + '/compareList', httpOptions);
   }
 
   deleteClient(idUser: bigint): Observable<void> {

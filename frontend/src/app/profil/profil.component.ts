@@ -6,6 +6,7 @@ import {ClientsService} from '../service/clients.service';
 import {Client} from '../model/client';
 import {Advertisment} from '../model/advertisment';
 import {AdvertismentServiceService} from '../service/advertisment-service.service';
+import {nullSafeIsEquivalent} from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -64,4 +65,23 @@ export class ProfilComponent implements OnInit {
   show(): void {
     this.mem = !this.mem;
   }
+
+  update(advert: Advertisment, s: string) {
+    advert.available = s;
+    advert.carbodyTitle = null;
+    advert.clientsDto = null;
+    advert.marksTitle = null;
+    advert.modelTitle = null;
+    advert.generationsDto = null;
+    advert.modificationsDto = null;
+    advert.broken = null;
+    advert.pts = null;
+    advert.vin = null;
+    console.log(advert);
+    this.advertSev.patchAdvert(advert, advert.idAdvert).subscribe(data => {
+      location.href = '/profile';
+    });
+
+  }
+
 }

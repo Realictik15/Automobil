@@ -2,6 +2,7 @@ package com.automobil.backend.dto;
 
 import com.automobil.backend.models.*;
 import com.automobil.backend.transfer.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,10 +33,12 @@ public class GenerationsDto {
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class,AdvertReviewDetails.class})
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Europe/Moscow")
     private Date yearStartDate;
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class,AdvertReviewDetails.class})
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Europe/Moscow")
     private Date yearEndDate;
 
     @NotNull(groups = {New.class, Existing.class})

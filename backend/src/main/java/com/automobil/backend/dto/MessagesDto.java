@@ -3,6 +3,7 @@ package com.automobil.backend.dto;
 import com.automobil.backend.models.Clients;
 import com.automobil.backend.models.Reviews;
 import com.automobil.backend.transfer.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,5 +37,6 @@ public class MessagesDto {
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class, AdvertReviewDetails.class})
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Europe/Moscow")
     private Date dateSend;
 }

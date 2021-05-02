@@ -2,9 +2,9 @@
   <div class="custcont">
     <div class="row">
       <div class="col-sm-5 tit">
-        <h5 class="card-title t">{{generation.title}} > {{title}}
-          > {{generation.yearStartDate| date:"yyyy"}}
-          — {{generation.yearEndDate == null ? 'н.в.' : generation.yearEndDate |date:"yyyy"}}</h5>
+        <h5 class="card-title t">{{generation?.title}} > {{title}}
+          > {{generation?.yearStartDate| date:"yyyy"}}
+          — {{generation?.yearEndDate == null ? 'н.в.' : generation.yearEndDate |date:"yyyy"}}</h5>
       </div>
     </div>
     <div class="row">
@@ -42,9 +42,9 @@
               [class]="{'carsimg':arrClass[0],'carsimg-suv':arrClass[1],'carsimg-uni':arrClass[2]}"
               [src]="img">
             <div
-              [class]="{'bottom-bot':arrClass[0],'bottom-bot-1':arrClass[1],'bottom-bot-2':arrClass[2]}"> {{size.lenght}}</div>
+              [class]="{'bottom-bot':arrClass[0],'bottom-bot-1':arrClass[1],'bottom-bot-2':arrClass[2]}"> {{size?.lenght}}</div>
             <div
-              [class]="{'bottom-left':arrClass[0],'bottom-left-1':arrClass[1],'bottom-left-2':arrClass[2]}"> {{size.hight}}</div>
+              [class]="{'bottom-left':arrClass[0],'bottom-left-1':arrClass[1],'bottom-left-2':arrClass[2]}"> {{size?.hight}}</div>
             <div
               [class]="{'bottom-right':arrClass[0],'bottom-right-1':arrClass[1],'bottom-right-2':arrClass[2]}"> {{size.clearance}}</div>
           </div>
@@ -229,23 +229,31 @@
                 <div class="titleinch">Тип передней подвески</div>
               </div>
               <div class="col-sm-5">
-                <div class="continch"> {{curentModif.transmissionsDto.suspension}}</div>
+                <div class="continch"> {{listSusp[0]}}</div>
               </div>
             </div>
             <div class="row" style="margin-bottom: 5px">
               <div class="col-sm-6">
-                <div class="titleinch">Объем багажника</div>
+                <div class="titleinch">Тип задней подвески</div>
               </div>
               <div class="col-sm-5">
-                <div class="continch"> {{size.trunkWight}}</div>
+                <div class="continch"> {{listSusp[1]}}</div>
               </div>
             </div>
             <div class="row" style="margin-bottom: 5px">
               <div class="col-sm-6">
-                <div class="titleinch">Объем багажника</div>
+                <div class="titleinch">Передние тормоза</div>
               </div>
               <div class="col-sm-5">
-                <div class="continch"> {{size.trunkWight}}</div>
+                <div class="continch"> {{listBrakes[0]}}</div>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 15px;">
+              <div class="col-sm-6">
+                <div class="titleinch">Задние тормоза</div>
+              </div>
+              <div class="col-sm-5">
+                <div class="continch"> {{listBrakes[1]}}</div>
               </div>
             </div>
           </div>

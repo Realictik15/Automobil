@@ -44,7 +44,7 @@ export class AdvertismentServiceService {
     return this.http.get<Advertisment[]>(ADVERT_API + id + '/report', httpOptions);
   }
 
-  deleteAdvert(id: number): Observable<any> {
+  deleteAdvert(id: bigint): Observable<any> {
     return this.http.delete<any>(ADVERT_API + id, httpOptions);
   }
 
@@ -52,13 +52,13 @@ export class AdvertismentServiceService {
     return this.http.get<any>(ADVERT_API + id + '/userdelete', httpOptions);
   }
 
-  patchAdvert(advert: Advertisment, id: number): Observable<any> {
+  patchAdvert(advert: Advertisment, id: bigint): Observable<any> {
     return this.http.patch<any>(ADVERT_API + id + '/update', advert, httpOptions);
   }
 
-  // TODO: change
-  postAdvert(advert: Advertisment): Observable<any> {
-    return this.http.post<any>(ADVERT_API, advert , httpOptions);
+
+  postAdvert(form:FormData): Observable<any> {
+    return this.http.post<any>('http://localhost:8881/advert/', form );
   }
 
   postAdvertFilters(filters: Filter, page: number, size: number): Observable<any> {

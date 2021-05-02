@@ -123,21 +123,24 @@ public class ClientsServiceImpl implements ClientService {
     @Override
     public List<ComparisonsDto> getUserListCompareDto(Long id) throws EntityNotFoundException {
         Clients client = clientsRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id, "Clients"));
+
         return comparisonsMapper.toComparisonsDTOs(client.getComparisons());
     }
 
     @Override
-    public Page<ComparisonsDto> getUserPageCompareDto(Long id, Integer page, Integer size) throws EntityNotFoundException {
-        Clients client = clientsRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id, "Clients"));
+    public Page<ComparisonsDto> getUserPageCompareDto(Long id, int page, int size) throws EntityNotFoundException {
         PageRequest pageRequest = PageRequest.of(page, size);
-        List<ComparisonsDto> list = comparisonsMapper.toComparisonsDTOs(client.getComparisons());
-        System.out.println(list.size());
+        Clients client = clientsRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id, "Clients"));
+        List<ComparisonsDto> list = comparisonsMapper.toComparisonsDTOs(client.getComparisons()).stream().sorted(Comparator.comparing(a -> a.getAdvertismentDto().getIdAdvert())).collect(Collectors.toList());
+        int start = (int) pageRequest.getOffset();
+        int end = (Math.min((start + pageRequest.getPageSize()), list.size()));
         LOGGER.info("Received page with user compare page:{},size:{},elements:{}", page, size, list.size());
-        return new PageImpl<>(list, pageRequest, list.size());
+        return new PageImpl<>(list.subList(start, end), pageRequest, list.size());
     }
 
     @Override
     public List<AdvertismentDto> getUserAdvert(Long id) throws EntityNotFoundException {
+        LOGGER.info("Receiving adverts by user id:{}", id);
         return advertismetMapper.toAdvertismentDTOs(clientsRepository.findById(id).
             orElseThrow(() -> new EntityNotFoundException(id, "Clients")).getAdvertisments().stream().sorted(Comparator.comparing(Advertisments::getIdAdvert)).collect(Collectors.toList()));
     }
@@ -164,7 +167,7 @@ public class ClientsServiceImpl implements ClientService {
 
     @Override
     public void deleteCompare(Long id) {
-        clientsRepository.deleteById(id);
+        comparisonsRepository.deleteById(id);
         LOGGER.info("Compare with id {} deleted", id);
     }
 

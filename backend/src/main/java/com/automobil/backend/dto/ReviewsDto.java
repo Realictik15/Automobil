@@ -2,6 +2,7 @@ package com.automobil.backend.dto;
 
 import com.automobil.backend.models.Messages;
 import com.automobil.backend.transfer.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -52,6 +53,7 @@ public class ReviewsDto {
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({AdminDetails.class, AdvertReviewDetails.class})
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Europe/Moscow")
     private Date daterel;
 
     @NotNull(groups = {New.class, Existing.class})

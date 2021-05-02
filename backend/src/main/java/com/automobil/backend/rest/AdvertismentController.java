@@ -55,7 +55,7 @@ public class AdvertismentController {
 
     }
 
-    @JsonView(AdminDetails.class)
+    @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "class/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AdvertismentDto>> getAllByClass(@PathVariable("id") Long id) {
         List<AdvertismentDto> advertismentDtos = advertService.getListByClass(id);

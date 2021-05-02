@@ -1,0 +1,68 @@
+.custcont {
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .125);
+  width: auto;
+  height: auto;
+  margin: 5%;
+}
+
+.cont {
+  height: 100%;
+  width: 100%;
+}
+
+.tit {
+  margin: 5px 50px;
+
+}
+
+.bac {
+  border-radius: 2px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .135);
+}
+
+.mod {
+  margin: 10px;
+}
+
+.t {
+  margin: 15px;
+}
+
+.first {
+  background: #00000014;
+  border-radius: 3px;
+  border: 1px solid #00000060;
+}
+
+.second {
+  background: white;
+}
+
+.title{
+  text-align: center;
+  font-size: 20px;
+  color: #2F496E;
+}
+.b{
+  margin: 15px;
+}
+.r{
+  background: #ff1a1ac0;
+  border-color: #ff1a1ac0;
+}
+.sel{
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-left: 20px;
+  color: #2F496E;
+
+}
+.errors{
+  font-size: 17px;
+  color: #AF1C1C;
+  background: #ffffff;
+}
+

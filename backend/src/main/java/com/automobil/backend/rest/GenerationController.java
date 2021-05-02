@@ -14,6 +14,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -75,17 +76,21 @@ public class GenerationController {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(generationsService.getById(id), HttpStatus.OK);
+        GenerationsDto g=generationsService.getById(id);
+
+        return new ResponseEntity<>(g, HttpStatus.OK);
     }
+
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "{id}/carbody", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CarbodyDto>> getCarBodyByIDGeneration(@PathVariable("id") Long id) throws EntityNotFoundException {
-        if (id == null) {
+        if (id == null ) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(generationsService.getListCarBodyByGenenerationId(id), HttpStatus.OK);
     }
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> deleteGenaration(@PathVariable("id") Long id) throws EntityNotFoundException {

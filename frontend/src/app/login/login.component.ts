@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         console.log(data.token);
         this.loading = false;
         this.tokenStorage.saveUser(data);
-        location.href = '/';
+        location.href = '/profile';
       }, error => {
         this.err = error.error.message;
         console.log(error);

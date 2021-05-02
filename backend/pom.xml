@@ -12,44 +12,44 @@
     <artifactId>backend</artifactId>
 
 
-        <profiles>
-            <profile>
-                <id>Qulice</id>
-                <properties>
-                    <qulice.version>0.18.19</qulice.version>
-                    <qulice.ext.version>1.0-SNAPSHOT</qulice.ext.version>
-                </properties>
+    <profiles>
+        <profile>
+            <id>Qulice</id>
+            <properties>
+                <qulice.version>0.18.19</qulice.version>
+                <qulice.ext.version>1.0-SNAPSHOT</qulice.ext.version>
+            </properties>
 
-                <build>
-                    <plugins>
+            <build>
+                <plugins>
 
-                        <plugin>
-                            <groupId>com.qulice</groupId>
-                            <artifactId>qulice-maven-plugin</artifactId>
-                            <version>${qulice.version}</version>
-                            <configuration>
-                                <license>LICENSE.txt</license>
-                            </configuration>
+                    <plugin>
+                        <groupId>com.qulice</groupId>
+                        <artifactId>qulice-maven-plugin</artifactId>
+                        <version>${qulice.version}</version>
+                        <configuration>
+                            <license>LICENSE.txt</license>
+                        </configuration>
 
-                            <dependencies>
-                                <dependency>
-                                    <groupId>org.example</groupId>
-                                    <artifactId>qulice</artifactId>
-                                    <version>${qulice.ext.version}</version>
-                                </dependency>
-                            </dependencies>
-                            <executions>
-                                <execution>
-                                    <goals>
-                                        <goal>check</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
-                    </plugins>
-                </build>
-            </profile>
-        </profiles>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.example</groupId>
+                                <artifactId>qulice</artifactId>
+                                <version>${qulice.ext.version}</version>
+                            </dependency>
+                        </dependencies>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -84,11 +84,25 @@
             <version>${spring.v}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>${spring.v}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>${spring.v}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.1-jre</version>
         </dependency>
 
         <dependency>

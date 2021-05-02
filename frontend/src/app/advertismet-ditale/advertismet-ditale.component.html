@@ -2,11 +2,11 @@
   <div class="custcont">
     <div class="row">
       <div class="col-sm-7 tit ">
-        <div class="texts">{{advert.marksTitle}} {{advert.generationsDto.title}}</div>
-        <div style="font-size: 13px">Номер объявления №{{advert.idAdvert}}</div>
+        <div class="texts">{{advert?.marksTitle}} {{advert?.generationsDto?.title}}</div>
+        <div style="font-size: 13px">Номер объявления №{{advert?.idAdvert}}</div>
       </div>
       <div class="col-sm-3 tit" style="margin-left: 75px; text-align: right">
-        <p class="texts"> {{getNumber(advert.price)}} ₽ </p>
+        <p class="texts"> {{getNumber(advert?.price)}} ₽ </p>
       </div>
     </div>
     <div class="row">

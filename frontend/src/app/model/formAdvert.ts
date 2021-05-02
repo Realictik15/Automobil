@@ -1,33 +1,33 @@
 import {Client} from './client';
 import {Generation} from './generation';
 import {Modification} from './modification';
+import {Mark} from './mark';
+import {Model} from './model';
 
-export class Advertisment{
-  idAdvert: bigint;
+export class FormAdvert{
   carbodyTitle: string;
-  clientsDto: Client;
-  marksTitle: string;
-  modelTitle: string;
-  generationsDto: Generation;
-  modificationsDto: Modification;
+  clientId: bigint;
+  mark: Mark;
+  model: Model;
+  generations: Generation;
+  modifications: Modification;
   available: string;
   price: number;
   colour: string;
   mileage: number;
-  broken: number;
+  broken: boolean;
   city: string;
   place: string;
   phone: bigint;
-  swap: number;
-  pts: number;
+  swap: boolean;
+  pts: boolean;
   owners: number;
   gosnumber: string;
-  buyday: Date;
+  buyday: number;
   dayofwarranty: Date;
   vin: string;
   sts: bigint;
   commentns: string;
-  imagesList: string[];
-  nalog: number;
-  
+  files: File[]=[];
+
 }

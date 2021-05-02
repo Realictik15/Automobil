@@ -36,6 +36,7 @@
               </div>
               <input type="text" class="form-control"
                      placeholder="Фамилия"
+                     pattern="[A-Za-zA-Яа-яЁё]*"
                      required
                      name="LastName"
                      [(ngModel)]="client.lastName"
@@ -103,6 +104,7 @@
               </div>
               <input type="text" class="form-control"
                      placeholder="89009009090"
+                     onkeyup="this.value = this.value.replace(/[^\d]/,'');"
                      required
                      minlength="11"
                      maxlength="11"

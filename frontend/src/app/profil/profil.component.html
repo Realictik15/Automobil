@@ -128,8 +128,19 @@
               <div class=" card"
                    style=" margin-top: 3%; height: 200px;width: 700px">
 
-                <h5 class="card-header">Обявление №{{advert.idAdvert}}
-                </h5>
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <h5>Обявление №{{advert.idAdvert}}
+                      </h5>
+                    </div>
+                    <div class="col-sm-5" style="margin-left: 15%;">
+                      <div *ngIf="advert.available=='no'" style="margin-left:50%;color: #AF1C1C">
+                        Снят с продажи
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 <div class="card-body">
                   <div class="row">
@@ -141,11 +152,26 @@
 
                     <div class="col-sm-8">
                       <div class="row">
-                        {{advert.marksTitle}} {{advert.generationsDto.title}}
-                        ({{advert.modificationsDto.title}})
+                        <div>
+                          {{advert.marksTitle}} {{advert.generationsDto.title}}
+                          ({{advert.modificationsDto.title}})
+                        </div>
+
                       </div>
                       <div class="row" style="margin-top: 7%">
-                        <div class="col-sm-3" style="margin-left: 50%">
+                        <div class="col-sm-5" style="margin-left: 8%;">
+
+                          <button  *ngIf="advert.available=='no';else el" class="btn btn-primary" (click)="update(advert,'yes')">
+                            Активировать
+                          </button>
+                          <ng-template #el>
+                            <button class="btn btn-danger" (click)="update(advert,'no')">
+                              Снять машину
+                            </button>
+                          </ng-template>
+
+                        </div>
+                        <div class="col-sm-3" >
                           <button class="btn btn-danger" (click)="userDelete(advert.idAdvert)">
                             Удалить
                           </button>
@@ -166,7 +192,9 @@
 
       </div>
       <div class="col-sm-2" *ngIf="!mem;else m">
-        <button class="btn btn-danger" style="margin-left: 100%; margin-top: 10%" (click)="show()">Mem??</button>
+        <button class="btn btn-danger" style="margin-left: 100%; margin-top: 10%" (click)="show()">
+          Mem??
+        </button>
       </div>
       <ng-template #m>
 
