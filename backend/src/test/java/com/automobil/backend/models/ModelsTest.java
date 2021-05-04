@@ -1,12 +1,18 @@
 package com.automobil.backend.models;
 
+
+import com.automobil.backend.api.Pars.Parser;
 import com.automobil.backend.dto.ClassesDto;
 import com.automobil.backend.dto.ModelDto;
 import com.automobil.backend.mapStruct.ModelsMapper;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
-import javax.management.relation.Role;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -24,11 +30,6 @@ public class ModelsTest {
         assertEquals(modelDto.getMarkTitle(), models.getMark().getTitle());
     }
 
-    @Test
-    void usr() {
-        Roles r = Roles.USER;
-        System.out.println(r.name());
-    }
 
     @Test
     void calculationNalog() {
@@ -75,9 +76,9 @@ public class ModelsTest {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            Date tmp = format.parse("2018-06-01");
-            if (tmp.before(format.parse("2019-01-01"))&&tmp.after(format.parse("2018-01-01"))) {
-                System.out.println("snmfhgjh");
+            Date tmp = format.parse("2018-01-01");
+            if ((tmp.before(format.parse("2018-01-01")) || tmp.equals(format.parse("2018-01-01"))) && tmp.after(format.parse("2014-01-01"))) {
+                System.out.println(tmp);
             }
         } catch (ParseException e) {
             e.printStackTrace();
