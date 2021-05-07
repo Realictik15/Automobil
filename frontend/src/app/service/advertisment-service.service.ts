@@ -40,8 +40,8 @@ export class AdvertismentServiceService {
     return this.http.get<Advertisment>(ADVERT_API + id, httpOptions);
   }
 
-  getReport(id: number): Observable<Advertisment[]> {
-    return this.http.get<Advertisment[]>(ADVERT_API + id + '/report', httpOptions);
+  getReport(id: number,vin:string): Observable<Advertisment[]> {
+    return this.http.get<Advertisment[]>(ADVERT_API + id + '/report'+vin, httpOptions);
   }
 
   deleteAdvert(id: bigint): Observable<any> {

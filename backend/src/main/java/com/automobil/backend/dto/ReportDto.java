@@ -15,6 +15,6 @@ public class ReportDto {
     private Integer mileage;
     private String lastDiagnostic;
     private List<RestrictoinApi> restrictoins;
-    private boolean taxi;
+    private List<AdvertismentDto> advertismentDto;
 
 }

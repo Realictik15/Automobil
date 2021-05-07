@@ -1,8 +1,11 @@
 package com.automobil.backend.rest;
 
+import com.automobil.backend.api.ApiService;
+import com.automobil.backend.api.ReportApi;
 import com.automobil.backend.dto.AdvertismentDto;
 import com.automobil.backend.dto.FiltersDto;
 import com.automobil.backend.dto.FormAdvert;
+import com.automobil.backend.dto.ReportDto;
 import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.service.AdvertService;
 import com.automobil.backend.transfer.*;
@@ -25,10 +28,12 @@ import java.util.List;
 @RequestMapping("/advert")
 public class AdvertismentController {
     private final AdvertService advertService;
+    private final ApiService apiService;
 
     @Autowired
-    public AdvertismentController(AdvertService advertService) {
+    public AdvertismentController(AdvertService advertService, ApiService apiService) {
         this.advertService = advertService;
+        this.apiService = apiService;
     }
 
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
@@ -109,12 +114,14 @@ public class AdvertismentController {
 
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
-    @GetMapping(value = "{id}/report", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<AdvertismentDto>> getReport(@PathVariable("id") Long id) throws EntityNotFoundException {
-        if (id == null) {
+    @GetMapping(value = "{id}/report/{vin}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ReportDto> getReport(@PathVariable("id") Long id, @PathVariable("vin") String vin) throws EntityNotFoundException {
+        if (id == null && vin.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(advertService.getReport(id), HttpStatus.OK);
+        ReportDto reportDto = apiService.getGibddInfo(vin);
+        reportDto.setAdvertismentDto(advertService.getReport(id));
+        return new ResponseEntity<>(reportDto, HttpStatus.OK);
     }
 
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
