@@ -12,8 +12,9 @@ import com.automobil.backend.models.Generations;
 import com.automobil.backend.repository.*;
 import com.automobil.backend.security.JwtUserDetailsService;
 import com.automobil.backend.service.AdvertService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -33,7 +34,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class AdvertServiceImpl implements AdvertService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(AdvertServiceImpl.class);
+    private static final Logger LOGGER = LogManager.getLogger(AdvertServiceImpl.class.getName());
     @Value("${upload.path}")
     private String uploadpath;
 

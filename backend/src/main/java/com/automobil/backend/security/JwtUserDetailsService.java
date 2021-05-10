@@ -4,18 +4,19 @@ import com.automobil.backend.models.Clients;
 import com.automobil.backend.security.jwt.JwtUser;
 import com.automobil.backend.security.jwt.JwtUserFactory;
 import com.automobil.backend.service.ClientService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.slf4j.Logger;
-import org.slf4j.*;
+
 @Service
 
 public class JwtUserDetailsService implements UserDetailsService {
     private final ClientService clientService;
-    private static final Logger LOGGER = LoggerFactory.getLogger(JwtUserDetailsService.class);
+    private static final Logger LOGGER = LogManager.getLogger(JwtUserDetailsService.class.getName());
     @Autowired
     public JwtUserDetailsService(ClientService clientService) {
         this.clientService = clientService;

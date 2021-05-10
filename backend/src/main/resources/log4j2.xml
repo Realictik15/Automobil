@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" monitorInterval="30" shutdownHook="disable">
+
+    <!-- Logging Properties -->
+    <Properties>
+        <Property name="LOG_PATTERN">[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+        </Property>
+        <Property name="APP_LOG_ROOT">C:/Users/Artem/IdeaProjects/Automobil/log</Property>
+    </Properties>
+
+    <Appenders>
+
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <RollingFile createOnDemand="true" name="apiLog" fileName="${APP_LOG_ROOT}/app-api.log"
+                     filePattern="${APP_LOG_ROOT}/app-api-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="19500KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+
+        <RollingFile createOnDemand="true" name="serviceLog"
+                     fileName="${APP_LOG_ROOT}/app-service.log"
+                     filePattern="${APP_LOG_ROOT}/app-service-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="19500KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+
+        <RollingFile createOnDemand="true" name="securityLog"
+                     fileName="${APP_LOG_ROOT}/app-security.log"
+                     filePattern="${APP_LOG_ROOT}/app-security-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="19500KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+
+        <RollingFile createOnDemand="true" name="restLog" fileName="${APP_LOG_ROOT}/app-rest.log"
+                     filePattern="${APP_LOG_ROOT}/app-rest-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="19500KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+
+        <RollingFile createOnDemand="true" name="exceptionLog"
+                     fileName="${APP_LOG_ROOT}/app-exception.log"
+                     filePattern="${APP_LOG_ROOT}/app-exception-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="19500KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.automobil.backend" additivity="false" level="info">
+            <AppenderRef ref="apiLog"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="com.automobil.backend.security" additivity="false" level="info">
+            <AppenderRef ref="securityLog"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="com.automobil.backend.service" additivity="false" level="info">
+            <AppenderRef ref="serviceLog"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="com.automobil.backend.rest" additivity="false" level="info">
+            <AppenderRef ref="restLog"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="com.automobil.backend.exeption" additivity="false" level="info">
+            <AppenderRef ref="exceptionLog"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+    </Loggers>
+
+</Configuration>

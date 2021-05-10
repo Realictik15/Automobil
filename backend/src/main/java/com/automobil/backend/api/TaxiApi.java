@@ -24,20 +24,19 @@ public class TaxiApi {
     }
 
 
-    @Cacheable("number")
-    public boolean getGibddInfo(String number) {
-        LOGGER.info("Receiving data from an external api:{}, number:{} ", GIBDD_API_BASE_URL, number);
-        String taxi = webClient.get()
-            .uri("VehicleNumber eq " + number + "&api_key=" + TAXI_TOKEN)
-            .retrieve()
-            .bodyToMono(String.class).block();
-        if(taxi.isEmpty()){
-            return false;
-        }else {
-            return true;
-        }
-
-    }
+//    @Cacheable("number")
+//    public boolean getTaxiInfo(String number) {
+//        LOGGER.info("Receiving data from an external api:{}, number:{} ", GIBDD_API_BASE_URL, number);
+//        String taxi = webClient.get()
+//            .uri("VehicleNumber eq T142РН197&api_key=" + TAXI_TOKEN)
+//            .retrieve()
+//            .bodyToMono(String.class).block();
+//        if(taxi.isEmpty()){
+//            return false;
+//        }else {
+//            return true;
+//        }
+//    }
 
 
 }

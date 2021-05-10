@@ -2,13 +2,14 @@ package com.automobil.backend.api;
 
 import com.automobil.backend.api.Pars.Parser;
 import com.automobil.backend.dto.ReportDto;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-
 @Service
 public class ApiServiceImpl implements ApiService {
+    private static final Logger LOGGER= LogManager.getLogger(ApiServiceImpl.class.getName());
     private final ReportApi reportApi;
     private final TaxiApi taxiApi;
     private final Parser parser;
@@ -26,6 +27,7 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public ReportDto getGibddInfo(String vin){
+        LOGGER.info("in getTaxiInfo vin{}",vin);
         String json = reportApi.getGibddInfo(vin);
         return parser.parseGibdd(json);
     }
@@ -37,6 +39,7 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public boolean workInTaxi(String number) {
-        return taxiApi.getGibddInfo(number);
+//        return  taxiApi.getTaxiInfo(number);
+      return false;
     }
 }

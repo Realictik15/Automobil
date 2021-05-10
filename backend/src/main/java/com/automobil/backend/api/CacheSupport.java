@@ -1,11 +1,10 @@
 package com.automobil.backend.api;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -16,13 +15,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Component
 public class CacheSupport {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ReportApi.class);
+    private static final Logger LOGGER = LogManager.getLogger(CacheSupport.class.getName());
     private final CacheManager cacheCongig;
 
     public CacheSupport(CacheManager cacheCongig) {
@@ -31,15 +29,15 @@ public class CacheSupport {
 
     @PreDestroy
     public void saveCache() throws IOException {
-        LOGGER.info("in predestroy");
         FileWriter fileWriter = new FileWriter("C:\\Users\\Artem\\Desktop\\cache.txt", false);
         fileWriter.write(getCache());
         fileWriter.close();
+        LOGGER.info("in PreDestroy");
     }
 
     @PostConstruct
     public void loadingCache() throws IOException {
-        LOGGER.info("dsds");
+        LOGGER.info("in postconstruct");
         Cache invoices = (Cache) cacheCongig.getCache("vin");
         String text = new String(Files.readAllBytes(Paths.get("C:\\Users\\Artem\\Desktop\\cache.txt")), StandardCharsets.UTF_8);
         String json = text;

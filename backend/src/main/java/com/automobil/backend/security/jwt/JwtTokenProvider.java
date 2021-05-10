@@ -1,7 +1,10 @@
 package com.automobil.backend.security.jwt;
 
 import com.automobil.backend.models.Roles;
+import com.automobil.backend.security.JwtUserDetailsService;
 import io.jsonwebtoken.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +25,7 @@ import java.util.List;
 
 @Component
 public class JwtTokenProvider {
+    private static final Logger LOGGER = LogManager.getLogger(JwtTokenProvider.class.getName());
     @Value("${jwt.token.secret}")
     private String secret;
 
@@ -51,7 +55,7 @@ public class JwtTokenProvider {
 
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
-
+        LOGGER.info("create token");
         return Jwts.builder()//
             .setClaims(claims)//
             .setIssuedAt(now)//
