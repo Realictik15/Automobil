@@ -84,4 +84,8 @@ export class ProfilComponent implements OnInit {
 
   }
 
+  Delete(idAdvert: bigint) {
+    this.advertSev.deleteAdvert(idAdvert).subscribe();
+    location.href = '/profile';
+  }
 }

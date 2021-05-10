@@ -4,20 +4,16 @@
       <div class="col-sm-7 tit ">
         <div class="texts">{{advert?.marksTitle}} {{advert?.generationsDto?.title}}</div>
         <div style="font-size: 13px">Номер объявления №{{advert?.idAdvert}}</div>
+        <div *ngIf="advert.available=='no'">
+          <div style="font-size: 20px;font-weight: 500;color: #AF1C1C;margin-top: 10px">Это объявление снято с продажи</div>
+        </div>
       </div>
       <div class="col-sm-3 tit" style="margin-left: 75px; text-align: right">
         <p class="texts"> {{getNumber(advert?.price)}} ₽ </p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-2 tit">
-        <div>
-          <button>tmp</button>
-          <button>tmp</button>
-        </div>
-      </div>
-    </div>
-    <div class="row">
+    <div *ngIf="advert.available!='no'">
+    <div class="row" style="margin-top: 10px">
       <div class="col tit">
         <div class="bac">
           <div class="row">
@@ -41,6 +37,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
     <div class="row" style="margin-top: 3%;">
       <div class="col-sm-4 tit">
@@ -151,7 +148,7 @@
         </div>
       </div>
     </div>
-    <div class="row" >
+    <div class="row">
       <div class="col-sm-4 tit">
 
         <div class="bac">

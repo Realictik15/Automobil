@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Advertisment} from '../model/advertisment';
 import {PageAdvert} from '../model/PageAdvert';
 import {Filter} from '../model/filter';
+import {Report} from '../model/Report';
 
 
 const ADVERT_API = 'http://localhost:8881/advert/';
@@ -40,8 +41,8 @@ export class AdvertismentServiceService {
     return this.http.get<Advertisment>(ADVERT_API + id, httpOptions);
   }
 
-  getReport(id: number,vin:string): Observable<Advertisment[]> {
-    return this.http.get<Advertisment[]>(ADVERT_API + id + '/report'+vin, httpOptions);
+  getReport(id: bigint,vin:string): Observable<Report> {
+    return this.http.get<Report>(ADVERT_API + id + '/report/'+vin, httpOptions);
   }
 
   deleteAdvert(id: bigint): Observable<any> {

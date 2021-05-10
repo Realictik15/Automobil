@@ -10,6 +10,8 @@ import com.automobil.backend.exeption.EntityNotFoundException;
 import com.automobil.backend.service.AdvertService;
 import com.automobil.backend.transfer.*;
 import com.fasterxml.jackson.annotation.JsonView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -27,6 +29,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/advert")
 public class AdvertismentController {
+    private static final Logger LOGGER = LogManager.getLogger(AdvertismentController.class.getName());
     private final AdvertService advertService;
     private final ApiService apiService;
 
@@ -121,6 +124,7 @@ public class AdvertismentController {
         }
         ReportDto reportDto = apiService.getGibddInfo(vin);
         reportDto.setAdvertismentDto(advertService.getReport(id));
+        LOGGER.info("received report id:{}, vin:{}",id,vin);
         return new ResponseEntity<>(reportDto, HttpStatus.OK);
     }
 

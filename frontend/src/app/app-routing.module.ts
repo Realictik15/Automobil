@@ -24,7 +24,7 @@ const routes: Routes = [
       [{path: 'info', component: InfoAdvertComponent}]
   },
   {path: 'login', component: LoginComponent},
-  {path: 'report/:id', component: ReportComponent},
+  {path: 'report/:id/vin/:vin', component: ReportComponent},
   {path: 'reg', component: RegistrComponent},
   {path: 'profile', component: ProfilComponent},
   {path: 'admin', component: AdminboardComponent},

@@ -1,160 +1,180 @@
 <div *ngIf="login;else el">
-  <div class="contents">
-    <div class="custcont">
-      <div class="row" style="margin-left: 5px;">
-        <div class="col-2" style="text-align: right">
-          <div class="custrow" style="margin-top: 366px">
-            <h5>Характеристики</h5>
-          </div>
-          <div class="custrow">
-            Пробег
-          </div>
-          <div class="custrow">
-            Количество владельцев
-          </div>
-          <div class="custrow">
-            Птс
-          </div>
-          <div class="custrow">
-            Цвет
-          </div>
-          <div class="custrow">
-            <h5> Основные</h5>
-          </div>
-          <div class="custrow">
-            Объем двигателя
-          </div>
-          <div class="custrow">
-            Тип двигателя
-          </div>
-          <div class="custrow">
-            Мощность двигателя
-          </div>
-          <div class="custrow">
-            Коробка передач
-          </div>
-          <div class="custrow">
-            Количество передач
-          </div>
-          <div class="custrow">
-            Привод
-          </div>
-          <div class="custrow">
-            Разгон до 100 км/ч
-          </div>
-          <div class="custrow">
-            Расход топлива
-          </div>
-          <div class="custrow">
-          </div>
-          <div class="custrow">
-            Тип кузова
-          </div>
-          <div class="custrow">
-            Расположение двигателя
-          </div>
-          <div class="custrow">
-            Тип наддува
-          </div>
-          <div class="custrow">
-            Крутящий момент
-          </div>
-          <div class="custrow">
-            Количество цилиндров
-          </div>
-        </div>
-        <div class="col-3 co"
-             *ngFor="let compare of comparePage?.content"  >
-          <div class="custtit">
-            <button class="btn btn-danger" (click)="delete(compare.idCompar)">Удалить</button>
-          </div>
-          <div class="custrow">
-            <img class="img" [src]="compare.advertismentDto.imagesList[0]">
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.marksTitle}}, {{compare.advertismentDto.generationsDto.title}}
-          </div>
-          <div class="custrow">
-            <h5>{{getNumber(compare.advertismentDto.price)}}</h5>
-          </div>
-          <div class="custrow">
-            <a [routerLink]="['/advert/'+compare.advertismentDto.idAdvert]">Обявление</a>
-          </div>
-          <div class="custrow">
-            <hr/>
-          </div>
-          <div class="custrow">
-            {{getNumber(compare.advertismentDto.mileage)}}
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.owners}}
-          </div>
-          <div class="custrow">
-            <div *ngIf="compare.advertismentDto.pts;else el">
-              Оригинал
+  <div *ngIf="comparePage.content[0]?.idCompar;else no">
+    <div class="contents">
+      <div class="custcont">
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-2" style="text-align: right">
+            <div class="custrow" style="margin-top: 366px">
+              <h5>Характеристики</h5>
             </div>
-            <ng-template #el>
-              Дубликат
-            </ng-template>
+            <div class="custrow">
+              Пробег
+            </div>
+            <div class="custrow">
+              Количество владельцев
+            </div>
+            <div class="custrow">
+              Птс
+            </div>
+            <div class="custrow">
+              Цвет
+            </div>
+            <div class="custrow">
+              <h5> Основные</h5>
+            </div>
+            <div class="custrow">
+              Объем двигателя
+            </div>
+            <div class="custrow">
+              Тип двигателя
+            </div>
+            <div class="custrow">
+              Мощность двигателя
+            </div>
+            <div class="custrow">
+              Коробка передач
+            </div>
+            <div class="custrow">
+              Количество передач
+            </div>
+            <div class="custrow">
+              Привод
+            </div>
+            <div class="custrow">
+              Разгон до 100 км/ч
+            </div>
+            <div class="custrow">
+              Расход топлива
+            </div>
+            <div class="custrow">
+            </div>
+            <div class="custrow">
+              Тип кузова
+            </div>
+            <div class="custrow">
+              Расположение двигателя
+            </div>
+            <div class="custrow">
+              Тип наддува
+            </div>
+            <div class="custrow">
+              Крутящий момент
+            </div>
+            <div class="custrow">
+              Количество цилиндров
+            </div>
           </div>
-          <div class="custrow">
-            {{compare.advertismentDto.colour}}
-          </div>
-          <div class="custrow" style="margin-top: 25px">
-            <hr/>
-          </div>
-          <div class="custrow">
-            {{(compare.advertismentDto.modificationsDto.enginesDto.volume / 1000).toFixed(1)}} л
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.modificationsDto.enginesDto.typeFuel}}
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.modificationsDto.enginesDto.power}} л.с
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.modificationsDto.transmissionsDto.gearBoxDto.title}}
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.modificationsDto.transmissionsDto.quantity}}
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.modificationsDto.transmissionsDto.driveType}}
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.modificationsDto.enginesDto.acceliration}} c
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.modificationsDto.enginesDto.fuelConsum}} л
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.carbodyTitle}}
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.modificationsDto.enginesDto.locations}}
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.modificationsDto.enginesDto.typeEng}}
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.modificationsDto.enginesDto.torque}} H*m
-          </div>
-          <div class="custrow">
-            {{compare.advertismentDto.modificationsDto.enginesDto.cylinders}}
+          <div class="col-3 co"
+               *ngFor="let compare of comparePage?.content">
+            <div class="custtit">
+              <button class="btn btn-danger" (click)="delete(compare.idCompar)">Удалить</button>
+            </div>
+            <div class="custrow">
+              <img class="img" [src]="compare.advertismentDto.imagesList[0]">
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.marksTitle}}
+              , {{compare.advertismentDto.generationsDto.title}}
+            </div>
+            <div class="custrow">
+              <h5>{{getNumber(compare.advertismentDto.price)}}</h5>
+            </div>
+            <div class="custrow">
+              <a [routerLink]="['/advert/'+compare.advertismentDto.idAdvert]">Обявление</a>
+            </div>
+            <div class="custrow">
+              <hr/>
+            </div>
+            <div class="custrow">
+              {{getNumber(compare.advertismentDto.mileage)}}
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.owners}}
+            </div>
+            <div class="custrow">
+              <div *ngIf="compare.advertismentDto.pts;else el">
+                Оригинал
+              </div>
+              <ng-template #el>
+                Дубликат
+              </ng-template>
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.colour}}
+            </div>
+            <div class="custrow" style="margin-top: 25px">
+              <hr/>
+            </div>
+            <div class="custrow">
+              {{(compare.advertismentDto.modificationsDto.enginesDto.volume / 1000).toFixed(1)}} л
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.modificationsDto.enginesDto.typeFuel}}
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.modificationsDto.enginesDto.power}} л.с
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.modificationsDto.transmissionsDto.gearBoxDto.title}}
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.modificationsDto.transmissionsDto.quantity}}
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.modificationsDto.transmissionsDto.driveType}}
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.modificationsDto.enginesDto.acceliration}} c
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.modificationsDto.enginesDto.fuelConsum}} л
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.carbodyTitle}}
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.modificationsDto.enginesDto.locations}}
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.modificationsDto.enginesDto.typeEng}}
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.modificationsDto.enginesDto.torque}} H*m
+            </div>
+            <div class="custrow">
+              {{compare.advertismentDto.modificationsDto.enginesDto.cylinders}}
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <nav class="navp">
+      <ul class="pagination justify-content-center">
+        <li *ngFor="let g of ' '.repeat(comparePage?.totalPages).split(''), let i = index "
+            (click)="onSelect(i)"
+            [class.active]="i == selectedPage" class="page-item">
+          <a class="page-link">{{i + 1}}</a></li>
+      </ul>
+    </nav>
   </div>
-  <nav class="navp">
-    <ul class="pagination justify-content-center">
-      <li *ngFor="let g of ' '.repeat(comparePage?.totalPages).split(''), let i = index "
-          (click)="onSelect(i)"
-          [class.active]="i == selectedPage" class="page-item">
-        <a class="page-link">{{i + 1}}</a></li>
-    </ul>
-  </nav>
+  <ng-template #no>
+    <div class="contents">
+      <div class="custcont">
+        <div class="row">
+          <div class="col" style="text-align: center;margin-top: 10px">
+            У вас нет машин в сравнеии, добавьте машины
+          </div>
+        </div>
+        <div class="row" style="margin-top: 35px;">
+          <div class="col" style="text-align: center;margin-bottom: 10px">
+            <a [routerLink]="['/adverts/cars']" class="btn btn-primary">На главную</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </div>
+
 <ng-template #el>
 
   <div class="contents">

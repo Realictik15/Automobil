@@ -171,11 +171,20 @@
                           </ng-template>
 
                         </div>
+                        <div *ngIf="user.role!='ADMIN';else role">
                         <div class="col-sm-3" >
                           <button class="btn btn-danger" (click)="userDelete(advert.idAdvert)">
                             Удалить
                           </button>
                         </div>
+                        </div>
+                        <ng-template #role>
+                          <div class="col-sm-3" >
+                            <button class="btn btn-danger" (click)="Delete(advert.idAdvert)">
+                              Удалить
+                            </button>
+                          </div>
+                        </ng-template>
                         <div class="col-sm-3">
                           <a class="btn btn-warning lin"
                              [routerLink]="['/profile/edit/advert/'+advert.idAdvert]">Изменить
