@@ -20,7 +20,7 @@ export class ClientsService {
   constructor(private http: HttpClient) {
   }
 
-  getAllClient(idUser: bigint): Observable<Client[]> {
+  getAllClient(): Observable<Client[]> {
     return this.http.get<Client[]>(USER_API, httpOptions);
   }
 

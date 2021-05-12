@@ -1,217 +1,230 @@
 <div *ngIf="login;else el">
-  <div *ngIf="report;else empty">
-    <div class="contents">
-      <div class="custcont">
-        <div class="row">
-          <div class="col" style="text-align: center;font-size: 25px;font-weight: 500">История
-            автомобиля
+  <div  style="margin-left: 30%;margin-right: 30%;"
+       *ngIf="loading; else loadingBlock">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loadingBlock>
+    <div *ngIf="report;else empty">
+      <div class="contents">
+        <div class="custcont">
+          <div class="row">
+            <div class="col" style="text-align: center;font-size: 25px;font-weight: 500">История
+              автомобиля
+            </div>
           </div>
-        </div>
-        <div class="row" style="margin-top: 30px;">
-          <div class="col-5">
-            <div class="row" style="margin-left: 10px">
-              <div class="col-3" style="text-align: center"> Объявления на сайте</div>
-              <div class="col-7" *ngIf="report.advertismentDto.length;else advert">
-                <div *ngFor="let advert of report.advertismentDto">
-                  <a
-                    [routerLink]="['/advert/'+advert.idAdvert]">{{advert.marksTitle}} {{advert.generationsDto.title}}</a>
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5">
+              <div class="row" style="margin-left: 10px">
+                <div class="col-3" style="text-align: center"> Объявления на сайте</div>
+                <div class="col-7" *ngIf="report.advertismentDto.length;else advert">
+                  <div *ngFor="let advert of report.advertismentDto">
+                    <a
+                      [routerLink]="['/advert/'+advert.idAdvert]">{{advert.marksTitle}} {{advert.generationsDto.title}}</a>
+                  </div>
                 </div>
+                <ng-template #advert>
+                  <div class="col-7">
+                    Эта машина никогда не продавалась на сайте.
+                  </div>
+                </ng-template>
               </div>
-              <ng-template #advert>
-                <div class="col-7">
-                  Эта машина никогда не продавалась на сайте.
+              <hr/>
+              <div class="row" style="margin-left: 10px">
+                <div class="col-3" style="text-align: center"> Номер двигателя автомобиля</div>
+                <div class="col-7" *ngIf="report.engineNumber;else engineNumber">
+                  {{report.engineNumber}}
                 </div>
-              </ng-template>
-            </div>
-            <hr/>
-            <div class="row" style="margin-left: 10px">
-              <div class="col-3" style="text-align: center"> Номер двигателя автомобиля</div>
-              <div class="col-7" *ngIf="report.engineNumber;else engineNumber">
-                {{report.engineNumber}}
+                <ng-template #engineNumber>
+                  Нет информации
+                </ng-template>
               </div>
-              <ng-template #engineNumber>
-                Нет информации
-              </ng-template>
-            </div>
-            <hr/>
-            <div class="row" style="margin-left: 10px;">
-              <div class="col-3" style="text-align: center"> Год выпуска машины</div>
-              <div class="col-7" *ngIf="report.buyYear;else buyYear">
-                {{report.buyYear}}
-              </div>
-              <ng-template #buyYear>
-                Нет информации
-              </ng-template>
-            </div>
-            <hr/>
-            <div class="row" style="margin-left: 10px;">
-              <div class="col-3" style="text-align: center">Пробег</div>
-              <div *ngIf="report.mileage;else mil">
-                <div class="col-7">{{report.mileage}}</div>
-              </div>
-              <ng-template #mil>
-                <div class="col-7">Нет пробега в базе</div>
-              </ng-template>
-            </div>
-            <hr/>
-            <div class="row" style="margin-left: 10px;">
-              <div class="col-3" style="text-align: center">Последнее ТО</div>
-
-              <div class="col-7"
-                   *ngIf="report.lastDiagnostic;else lastDiagnostic">{{report.lastDiagnostic}}</div>
-
-              <ng-template #lastDiagnostic>
-                <div class="col-7">Нет информации</div>
-              </ng-template>
-            </div>
-            <hr/>
-            <div class="row" style="margin-left: 10px;">
-              <div class="col-3" style="text-align: center">Последняя дата приобритения</div>
-
-              <div class="col-7" *ngIf="report.lastOwnersDate;else lastOwnersDate"
-              >{{report.lastOwnersDate|date:'yyyy-dd-mm'}}</div>
-              <ng-template #lastOwnersDate>
-                <div class="col-7">Нет информации</div>
-              </ng-template>
-            </div>
-            <hr/>
-            <div class="row" style="margin-left: 10px;">
-              <div class="col-3" style="text-align: center">Количество владельцев</div>
-              <div class="col-7" *ngIf="report.countOwners;else countOwners"
-              >{{report.countOwners}}</div>
-              <ng-template #countOwners>
-                <div class="col-7">Нет информации</div>
-              </ng-template>
-            </div>
-            <hr/>
-
-          </div>
-          <div class="col-5">
-            <div class="row" style="margin-left: 10px;margin-top: 24px">
-              <div class="col-3" style="text-align: center">Количество ДТП</div>
-              <div class="col-7" *ngIf="report.countAccidents;else countAccidents">
-                {{report.countAccidents}}
-              </div>
-              <ng-template #countAccidents>
-                <div class="col-7">
-                  ДТП не найдено
+              <hr/>
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-3" style="text-align: center"> Год выпуска машины</div>
+                <div class="col-7" *ngIf="report.buyYear;else buyYear">
+                  {{report.buyYear}}
                 </div>
-              </ng-template>
-            </div>
-            <hr/>
-            <div class="row" style="margin-left: 10px">
-              <div class="col-3" style="text-align: center">Дтп</div>
-              <div class="col-9" *ngIf="report.accidents;else accidents">
-                <div style="border: 1px solid #2F496E;margin-top: 5px"
-                     *ngFor="let accident of report.accidents">
-                  <div style="margin: 7px">
-                    <div class="row">
-                      <div class="col-5">
-                        Тип повреждений:
-                      </div>
-                      <div class="col-7">{{accident.accidentType}}</div>
-                    </div>
-                    <hr/>
-                    <div class="row">
-                      <div class="col-5">
-                        Дата дтп:
-                      </div>
-                      <div class="col-7">{{accident.yearAccident}}</div>
-                    </div>
-                    <div class="row">
-                      <div class="col-5">
-                        Место дтп:
-                      </div>
-                      <div class="col-7">{{accident.place}}</div>
-                    </div>
-                    <div class="row">
-                      <div class="col-5">
-                        Ссылка на повреждения:
-                      </div>
-                      <div class="col-7" *ngIf="accident.urlImages!='null';else urlImages ">
-                        <a href="{{accident.urlImages}}">
-                          Отчёт с графикой
-                        </a>
-                      </div>
-                      <ng-template #urlImages>
-                        <div class="col-7"> Нет информации</div>
-                      </ng-template>
+                <ng-template #buyYear>
+                  Нет информации
+                </ng-template>
+              </div>
+              <hr/>
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-3" style="text-align: center">Пробег</div>
+                <div *ngIf="report.mileage;else mil">
+                  <div class="col-7">{{report.mileage}}</div>
+                </div>
+                <ng-template #mil>
+                  <div class="col-7">Нет пробега в базе</div>
+                </ng-template>
+              </div>
+              <hr/>
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-3" style="text-align: center">Последнее ТО</div>
 
-                    </div>
-                    <div class="row">
-                      <div class="col-5">
-                        Повреждено:
-                      </div>
-                      <div class="col-7"
-                           *ngIf="accident.damageDescription;else damageDescription">{{accident.damageDescription}}</div>
-                      <ng-template #damageDescription>
-                        <div class="col-7">
-                          Нет информации
+                <div class="col-7"
+                     *ngIf="report.lastDiagnostic;else lastDiagnostic">{{report.lastDiagnostic}}</div>
+
+                <ng-template #lastDiagnostic>
+                  <div class="col-7">Нет информации</div>
+                </ng-template>
+              </div>
+              <hr/>
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-3" style="text-align: center">Последняя дата приобритения</div>
+
+                <div class="col-7" *ngIf="report.lastOwnersDate;else lastOwnersDate"
+                >{{report.lastOwnersDate|date:'yyyy-dd-mm'}}</div>
+                <ng-template #lastOwnersDate>
+                  <div class="col-7">Нет информации</div>
+                </ng-template>
+              </div>
+              <hr/>
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-3" style="text-align: center">Количество владельцев</div>
+                <div class="col-7" *ngIf="report.countOwners;else countOwners"
+                >{{report.countOwners}}</div>
+                <ng-template #countOwners>
+                  <div class="col-7">Нет информации</div>
+                </ng-template>
+              </div>
+              <hr/>
+
+            </div>
+            <div class="col-5">
+              <div class="row" style="margin-left: 10px;margin-top: 24px">
+                <div class="col-3" style="text-align: center">Количество ДТП</div>
+                <div class="col-7" *ngIf="report.countAccidents;else countAccidents">
+                  {{report.countAccidents}}
+                </div>
+                <ng-template #countAccidents>
+                  <div class="col-7">
+                    ДТП не найдено
+                  </div>
+                </ng-template>
+              </div>
+              <hr/>
+              <div class="row" style="margin-left: 10px">
+                <div class="col-3" style="text-align: center">Дтп</div>
+                <div class="col-9" *ngIf="report.accidents;else accidents">
+                  <div style="border: 1px solid #2F496E;margin-top: 5px"
+                       *ngFor="let accident of report.accidents">
+                    <div style="margin: 7px">
+                      <div class="row">
+                        <div class="col-5">
+                          Тип повреждений:
                         </div>
-                      </ng-template>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <ng-template #accidents>
-                <div class="col-7"> Нет информации</div>
-              </ng-template>
-            </div>
-            <hr/>
-            <div class="row" style="margin-left: 10px">
-              <div class="col-3" style="text-align: center">Ограничения на регистрационные действия</div>
-              <div class="col-9" *ngIf="report.restrictoins;else restrictoins">
-                <div style="border: 1px solid #2F496E;margin-top: 5px"
-                     *ngFor="let restri of report.restrictoins">
-                  <div style="margin: 7px">
-                    <div class="row">
-                      <div class="col-5">
-                        Город:
+                        <div class="col-7">{{accident.accidentType}}</div>
                       </div>
-                      <div class="col-7">{{restri.city}}</div>
-                    </div>
-                    <hr/>
-                    <div class="row">
-                      <div class="col-5">
-                        Организация:
+                      <hr/>
+                      <div class="row">
+                        <div class="col-5">
+                          Дата дтп:
+                        </div>
+                        <div class="col-7">{{accident.yearAccident}}</div>
                       </div>
-                      <div class="col-7">{{restri.organization}}</div>
-                    </div>
-                    <div class="row">
-                      <div class="col-5">
-                        Дата:
+                      <div class="row">
+                        <div class="col-5">
+                          Место дтп:
+                        </div>
+                        <div class="col-7">{{accident.place}}</div>
                       </div>
-                      <div class="col-7">{{restri.yearRestrict}}</div>
-                    </div>
-                    <div class="row">
-                      <div class="col-5">
-                        Тип ограничения:
-                      </div>
-                      <div class="col-7">
-                      {{restri.typeRestrict}}
+                      <div class="row">
+                        <div class="col-5">
+                          Ссылка на повреждения:
+                        </div>
+                        <div class="col-7" *ngIf="accident.urlImages!='null';else urlImages ">
+                          <a href="{{accident.urlImages}}">
+                            Отчёт с графикой
+                          </a>
+                        </div>
+                        <ng-template #urlImages>
+                          <div class="col-7"> Нет информации</div>
+                        </ng-template>
 
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-5">
-                        Причина:
+                      <div class="row">
+                        <div class="col-5">
+                          Повреждено:
+                        </div>
+                        <div class="col-7"
+                             *ngIf="accident.damageDescription;else damageDescription">{{accident.damageDescription}}</div>
+                        <ng-template #damageDescription>
+                          <div class="col-7">
+                            Нет информации
+                          </div>
+                        </ng-template>
                       </div>
-                      <div class="col-7">
-                        {{restri.reasons}}</div>
                     </div>
                   </div>
                 </div>
+                <ng-template #accidents>
+                  <div class="col-7"> Нет информации</div>
+                </ng-template>
               </div>
-              <ng-template #restrictoins>
-                <div class="col-7"> Нет информации</div>
-              </ng-template>
+              <hr/>
+              <div class="row" style="margin-left: 10px">
+                <div class="col-3" style="text-align: center">Ограничения на регистрационные
+                  действия
+                </div>
+                <div class="col-9" *ngIf="report.restrictoins;else restrictoins">
+                  <div style="border: 1px solid #2F496E;margin-top: 5px"
+                       *ngFor="let restri of report.restrictoins">
+                    <div style="margin: 7px">
+                      <div class="row">
+                        <div class="col-5">
+                          Город:
+                        </div>
+                        <div class="col-7">{{restri.city}}</div>
+                      </div>
+                      <hr/>
+                      <div class="row">
+                        <div class="col-5">
+                          Организация:
+                        </div>
+                        <div class="col-7">{{restri.organization}}</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-5">
+                          Дата:
+                        </div>
+                        <div class="col-7">{{restri.yearRestrict}}</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-5">
+                          Тип ограничения:
+                        </div>
+                        <div class="col-7">
+                          {{restri.typeRestrict}}
+
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-5">
+                          Причина:
+                        </div>
+                        <div class="col-7">
+                          {{restri.reasons}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <ng-template #restrictoins>
+                  <div class="col-7"> Нет информации</div>
+                </ng-template>
+              </div>
+              <hr/>
             </div>
-            <hr/>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-template>
   <ng-template #empty>
     <div class="contents">
       <div class="custcont">

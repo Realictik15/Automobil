@@ -71,7 +71,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="com.automobil.backend" additivity="false" level="info">
+        <Logger name="com.automobil.backend.api" additivity="false" level="info">
             <AppenderRef ref="apiLog"/>
             <AppenderRef ref="Console"/>
         </Logger>

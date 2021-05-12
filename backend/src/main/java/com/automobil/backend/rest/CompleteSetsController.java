@@ -1,5 +1,6 @@
 package com.automobil.backend.rest;
 
+import com.automobil.backend.dto.ClientsDto;
 import com.automobil.backend.dto.CompleteSetsDto;
 import com.automobil.backend.dto.SizessDto;
 import com.automobil.backend.exeption.EntityNotFoundException;
@@ -15,15 +16,28 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/compls")
-//@CrossOrigin//(origins = " http://localhost:4200")
 public class CompleteSetsController {
     private final CompleteSetsService completeSetsService;
 
     public CompleteSetsController(CompleteSetsService completeSetsService) {
         this.completeSetsService = completeSetsService;
     }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @JsonView(AdminDetails.class)
+    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CompleteSetsDto>> getAllClients() {
+        List<CompleteSetsDto> completeSetsDtos = this.completeSetsService.getAll();
+        if (completeSetsDtos.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(completeSetsDtos, HttpStatus.OK);
+    }
+
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @JsonView(AdvertReviewDetails.class)
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -9,6 +9,8 @@ import com.automobil.backend.service.CompleteSetsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CompleteSetsServiceImpl implements CompleteSetsService {
     private final CompleteSetMapper completeSetMapper;
@@ -34,5 +36,10 @@ public class CompleteSetsServiceImpl implements CompleteSetsService {
     public CompleteSetsDto getById(Long id) throws EntityNotFoundException {
         return completeSetMapper.toCompleteSetsDTO(completesetsRepository.findById(id).
             orElseThrow(() -> new EntityNotFoundException(id, "CompleSets")));
+    }
+
+    @Override
+    public List<CompleteSetsDto> getAll() {
+        return completeSetMapper.toCompleteSetsDTOs(completesetsRepository.findAll());
     }
 }

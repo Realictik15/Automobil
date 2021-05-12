@@ -1,8 +1,6 @@
 package com.automobil.backend.mapStruct;
 
-import com.automobil.backend.dto.GearBoxesDto;
 import com.automobil.backend.dto.TransmissionsDto;
-import com.automobil.backend.models.GearBoxes;
 import com.automobil.backend.models.Transmissions;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

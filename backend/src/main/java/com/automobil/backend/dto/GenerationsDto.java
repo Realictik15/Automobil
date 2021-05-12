@@ -33,12 +33,12 @@ public class GenerationsDto {
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class,AdvertReviewDetails.class})
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Europe/Moscow")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Europe/Moscow")
     private Date yearStartDate;
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonView({Details.class, AdminDetails.class,AdvertReviewDetails.class})
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Europe/Moscow")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Europe/Moscow")
     private Date yearEndDate;
 
     @NotNull(groups = {New.class, Existing.class})

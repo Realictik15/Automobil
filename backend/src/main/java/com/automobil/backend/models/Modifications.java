@@ -86,9 +86,6 @@ public class Modifications {
 
     public void setPossibles(List<Possibles> possibles) {
         if (possibles != null) {
-            if (!this.possibles.isEmpty()) {
-                this.possibles.clear();
-            }
             this.possibles.addAll(possibles);
             possibles.forEach(x -> x.setModification(this));
         }
@@ -97,12 +94,5 @@ public class Modifications {
         possibles.setModification(this);
         this.possibles.add(possibles);
     }
-//    public void addMedias(List<Media> medias){
-//        if (medias != null && !medias.isEmpty()){
-//            this.media.addAll(medias);
-//        }
-//        for (Media media1 : medias) {
-//            media1.setEvent(this);
-//        }
-//    }
+
 }

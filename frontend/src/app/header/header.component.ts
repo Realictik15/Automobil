@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../service/token-storage.service';
+import {User} from '../model/user';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,7 @@ import {TokenStorageService} from '../service/token-storage.service';
 })
 export class HeaderComponent implements OnInit {
   isLogin = false;
+  user: User;
 
   constructor(private tokenStroage: TokenStorageService) {
   }
@@ -15,6 +17,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStroage.getToken()) {
       this.isLogin = true;
+      this.user=this.tokenStroage.getUser();
     }
   }
 

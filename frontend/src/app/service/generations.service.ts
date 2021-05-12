@@ -46,7 +46,7 @@ export class GenerationsService {
     return this.http.delete<any>(GEN_API + '/' + id, httpOptions);
   }
 
-  postAdvert(gen: Generation): Observable<any> {
+  postGen(gen: Generation): Observable<any> {
     return this.http.post<any>(GEN_API, gen, httpOptions);
   }
 }

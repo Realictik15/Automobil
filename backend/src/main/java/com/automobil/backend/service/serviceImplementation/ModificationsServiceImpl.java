@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -73,7 +74,7 @@ public class ModificationsServiceImpl implements ModificationsService {
         if(!modificationsDto.getIdComplSet().isEmpty()){
           modificationsDto.getIdComplSet().forEach(x-> {
               try {
-                  new Possibles(null,modifications,completesetsRepository.findById(x).orElseThrow(EntityNotFoundException::new));
+                 modifications.setPossibles(Collections.singletonList(new Possibles(null, modifications, completesetsRepository.findById(x).orElseThrow(EntityNotFoundException::new))));
               } catch (EntityNotFoundException e) {
                   e.printStackTrace();
               }

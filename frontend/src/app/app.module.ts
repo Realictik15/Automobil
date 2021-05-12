@@ -24,6 +24,7 @@ import { ReportComponent } from './report/report.component';
 import {ProfilComponent} from './profil/profil.component';
 import { EditAdvertComponent } from './edit-advert/edit-advert.component';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
+import { ComplesetsComponent } from './complesets/complesets.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CharacteristicsComponent } from './characteristics/characteristics.comp
     ReportComponent,
     ProfilComponent,
     EditAdvertComponent,
-    CharacteristicsComponent
+    CharacteristicsComponent,
+    ComplesetsComponent
   ],
   imports: [
     ScrollingModule,

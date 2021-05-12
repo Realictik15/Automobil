@@ -13,4 +13,6 @@ public interface CompleteSetsService {
     void deleteById(Long id);
 
     CompleteSetsDto getById(Long id) throws EntityNotFoundException;
+
+    List<CompleteSetsDto> getAll();
 }

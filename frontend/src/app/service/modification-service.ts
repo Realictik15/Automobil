@@ -30,7 +30,7 @@ export class ModificationService {
   }
 
   getListComplByModif(id: bigint): Observable<CompleSet[]> {
-    return this.http.get<CompleSet[]>(MODIF_API+ '/' + id + '/compl', httpOptions);
+    return this.http.get<CompleSet[]>(MODIF_API + '/' + id + '/compl', httpOptions);
   }
 
   getModif(id: bigint): Observable<Modification> {
@@ -43,6 +43,10 @@ export class ModificationService {
 
   getTransmByModif(id: bigint): Observable<Transmission> {
     return this.http.get<Transmission>(MODIF_API + '/' + id + '/transmission', httpOptions);
+  }
+
+  postModif(modif:Modification): Observable<any> {
+    return this.http.post<any>(MODIF_API ,modif, httpOptions);
   }
 
 }

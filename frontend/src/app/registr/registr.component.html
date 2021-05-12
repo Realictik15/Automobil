@@ -1,4 +1,4 @@
-<div style="margin-top: 7%">
+м<div style="margin-top: 7%">
   <div class="container">
     <div class="d-flex justify-content-center h-100">
       <div class="card" *ngIf="!isLogin; else redi">
@@ -24,9 +24,9 @@
                      #name="ngModel">
             </div>
             <div class="errors" *ngIf="name.touched && name.invalid">
-              <div *ngIf="name.errors.required">Username is required</div>
+              <div *ngIf="name.errors.required">Поле должно быть заполнено</div>
               <div *ngIf="name.errors.minlength">
-                Username must be at least 3 characters
+                Имя должно состоять не менее чем из 3 символов
               </div>
               <div *ngIf="name.errors.pattern">Имя не должно содержать ничего кроме букв</div>
             </div>

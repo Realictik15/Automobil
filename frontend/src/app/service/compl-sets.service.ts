@@ -20,7 +20,9 @@ export class ComplSetsService {
   getCompl(id: bigint): Observable<CompleSet> {
     return this.http.get<CompleSet>(COMPL_API + '/' + id, httpOptions);
   }
-
+  getComplAll(): Observable<CompleSet[]> {
+    return this.http.get<CompleSet[]>(COMPL_API, httpOptions);
+  }
   postCompl(compl: CompleSet): Observable<void> {
     return this.http.post<void>(COMPL_API, compl, httpOptions);
   }

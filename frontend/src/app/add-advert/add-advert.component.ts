@@ -153,9 +153,16 @@ export class AddAdvertComponent implements OnInit {
 
   onSubmit() {
     let resformData = this.setFormData(this.formAdvert);
-    console.log(resformData.get('carbodyTitle'))
-   resformData.forEach(element => console.log(element))
-   this.advertSev.postAdvert(resformData).subscribe(res=>(console.log(res)),error => (console.log(error)));
+    console.log(resformData.get('carbodyTitle'));
+    resformData.forEach(element => console.log(element));
+    this.advertSev.postAdvert(resformData).subscribe(res => {
+      console.log(res);
+    }, error => {
+      console.log(error
+      );
+    }
+  )
+    ;
 
   }
 
@@ -198,7 +205,7 @@ export class AddAdvertComponent implements OnInit {
 
     formData.append('owners', String(form.owners));
     formData.append('buydays', String(form.buyday + '-01-01'));
-    if(form.dayofwarranty){
+    if (form.dayofwarranty) {
       formData.append('dayofwarrantys', String(form.dayofwarranty));
     }
     formData.append('vin', form.vin);

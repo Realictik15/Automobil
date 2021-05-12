@@ -17,6 +17,7 @@ export class ReportComponent implements OnInit {
   id: bigint;
   vin: string;
   report: Report;
+  loading=false;
 
   constructor(private advertSev: AdvertismentServiceService, private tokenStorage: TokenStorageService, private route: ActivatedRoute) {
 
@@ -30,15 +31,17 @@ export class ReportComponent implements OnInit {
       this.route.params.subscribe((params: Params) => {
         this.id = params.id;
         this.vin = params.vin;
-
+        this.getRepot();
       });
-      this.getRepot();
+
     }
   }
 
   getRepot() {
+    this.loading=true;
     this.advertSev.getReport(this.id, this.vin).subscribe(data => {
         this.report = data;
+        this.loading=false;
         console.log(this.report);
       }
     )

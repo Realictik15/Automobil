@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.ArrayList;
@@ -105,6 +106,7 @@ public class Advertisments {
     @OneToMany(mappedBy = "advertisment", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
         orphanRemoval = true)
     private List<Comparisons> comparisons = new ArrayList<>();
+
     public void setComparisons(List<Comparisons> comparisons) {
         if (comparisons != null) {
             if (!this.comparisons.isEmpty()) {
