@@ -1,15 +1,9 @@
-package com.automobil.backend.Dto;
+package com.automobil.backend.tests;
 
 import com.automobil.backend.api.Pars.Parser;
 import com.automobil.backend.dto.CountriesDto;
 import com.automobil.backend.dto.ReportDto;
-import com.google.common.reflect.TypeToken;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
-import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,8 +12,6 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.io.IOException;
-import java.io.StringReader;
-import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,12 +20,12 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestDto {
-    private static final Logger logger = LoggerFactory.getLogger(TestDto.class);
+public class Test {
+    private static final Logger logger = LoggerFactory.getLogger(Test.class);
     private final JsonParser parser = new JsonParser();
     private Parser parsert = new Parser();
 
-    @Test
+    @org.junit.jupiter.api.Test
     void countryDto() throws ParseException {
 
         CountriesDto countriesDto = new CountriesDto();
@@ -48,7 +40,7 @@ public class TestDto {
 
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void pars() {
         String hello = "C:\\Users\\Artem\\Desktop\\assets\\advettisment\\7\\hbjbccx,fsf,dfdf";
         int index1 = hello.lastIndexOf('\\');
@@ -59,7 +51,7 @@ public class TestDto {
 
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testParsingGibdd() throws IOException {
         Parser parser = new Parser();
         String text = new String(Files.readAllBytes(Paths.get("C:\\Users\\Artem\\Desktop\\testing.txt")), StandardCharsets.UTF_8);
@@ -68,7 +60,7 @@ public class TestDto {
 
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void read() throws IOException {
         String text = new String(Files.readAllBytes(Paths.get("C:\\Users\\Artem\\Desktop\\cache.txt")), StandardCharsets.UTF_8);
         String json = text;
