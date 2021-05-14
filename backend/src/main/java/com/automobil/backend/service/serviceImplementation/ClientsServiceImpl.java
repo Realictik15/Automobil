@@ -56,7 +56,7 @@ public class ClientsServiceImpl implements ClientService {
     @Override
     public List<ClientsDto> listAll() {
         LOGGER.info("Received all users");
-        return cliensMapper.toClientsDTOs(clientsRepository.findAll());
+        return cliensMapper.toClientsDTOs(clientsRepository.findAll().stream().sorted(Comparator.comparing(Clients::getIdUser)).collect(Collectors.toList()));
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ClientsServiceImpl implements ClientService {
             throw new CLientException("login");
         }
         if (clientsRepository.existsByEmaleIs(clientsDto.getEmale()) > 0) {
-            throw new CLientException("emale");
+            throw new CLientException("email");
         }
         Clients client = new Clients();
         client.setFirstName(clientsDto.getFirstName());

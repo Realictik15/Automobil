@@ -11,15 +11,14 @@ import org.springframework.stereotype.Service;
 public class ApiServiceImpl implements ApiService {
     private static final Logger LOGGER= LogManager.getLogger(ApiServiceImpl.class.getName());
     private final ReportApi reportApi;
-    private final TaxiApi taxiApi;
     private final Parser parser;
 
 
 
     @Autowired
-    public ApiServiceImpl(ReportApi reportApi, TaxiApi taxiApi, Parser parser) {
+    public ApiServiceImpl(ReportApi reportApi, Parser parser) {
         this.reportApi = reportApi;
-        this.taxiApi = taxiApi;
+
         this.parser = parser;
 
 
@@ -39,7 +38,6 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public boolean workInTaxi(String number) {
-//        return  taxiApi.getTaxiInfo(number);
       return false;
     }
 }
