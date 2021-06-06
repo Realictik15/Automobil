@@ -1,4 +1,4 @@
-м<div style="margin-top: 7%">
+<div style="margin-top: 7%">
   <div class="container">
     <div class="d-flex justify-content-center h-100">
       <div class="card" *ngIf="!isLogin; else redi">
@@ -46,8 +46,8 @@
             <div class="errors" *ngIf="LastName.touched && LastName.invalid">
               <div *ngIf="LastName.errors.required">Это поле должно быть заполнено</div>
               <div *ngIf="LastName.errors.minlength">Фамилия должна быть болше 3 символов</div>
+              <div *ngIf="LastName.errors.pattern">Фамилия не должно содержать ничего кроме букв</div>
             </div>
-
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
@@ -80,11 +80,12 @@
               <div *ngIf="email.errors.required">Это поле должно быть заполнено</div>
               <div *ngIf="email.errors.email">Введите корректную почту</div>
             </div>
-
+<div style="margin: 4px 30%;text-align: center;color: white">Дата рождения</div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
+
               <input type="date" class="form-control"
                      placeholder="Дата рождения"
                      name="born"

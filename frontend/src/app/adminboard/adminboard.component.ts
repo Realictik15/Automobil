@@ -17,6 +17,9 @@ import {SizesService} from '../service/sizes.service';
 import {EnginesServiceService} from '../service/engines-service.service';
 import {TransmissionService} from '../service/transmission.service';
 import {ComplSetsService} from '../service/compl-sets.service';
+import {CompleSet} from '../model/compleSet';
+import {Transmission} from '../model/transmission';
+import {Sizes} from '../model/sizes';
 
 @Component({
   selector: 'app-adminboard',
@@ -26,56 +29,112 @@ import {ComplSetsService} from '../service/compl-sets.service';
 export class AdminboardComponent implements OnInit {
   adverts: Advertisment[];
   clients: Client[];
-  user:User;
-  mark:Mark;
-  model:Model;
-  gen:Generation;
-  modif:Modification;
-  loading=false;
+  user: User;
+  mark: Mark;
+  model: Model;
+  modelArr: Model[];
+  generation: Generation;
+  modif: Modification;
+  compl: CompleSet;
+  complArr: CompleSet[];
+  transArr: Transmission[];
+  size: Sizes;
+  loading = false;
+  err=''
 
   constructor(private markServ: MarkServiceService, private modelServ: ModelsService,
               private clientServ: ClientsService, private advertServ: AdvertismentServiceService,
               private genServ: GenerationsService, private modifServ: ModificationService,
-              private tokenStroage: TokenStorageService,private sizeServ:SizesService,
-              private engines:EnginesServiceService,private transServ:TransmissionService,
+              private tokenStroage: TokenStorageService, private sizeServ: SizesService,
+              private engines: EnginesServiceService, private transServ: TransmissionService,
               private complServ: ComplSetsService) {
+    this.generation = new Generation();
+    this.mark = new Mark();
+    this.modif = new Modification();
+    this.model = new Model();
   }
 
   ngOnInit(): void {
     if (this.tokenStroage.getToken()) {
-      this.user=this.tokenStroage.getUser();
+      this.user = this.tokenStroage.getUser();
       this.getAllClient();
+      this.getAllModel();
     }
   }
-  getAllClient(){
-    this.clientServ.getAllClient().subscribe(data=>{
-      this.clients=data;
-      console.log(data)
-    })
-  }
-   postMark(){
-    this.loading=true;
-    this.markServ.postMark(this.mark).subscribe(data=>{
-      this.loading=false;
-    })
-   }
-   postModel(){
-     this.loading=true;
-     this.modelServ.postModel(this.model).subscribe(data=>{
-       this.loading=false;
-     })
-   }
-  postGen(){
-    this.loading=true;
-    this.genServ.postGen(this.gen).subscribe(data=>{
-      this.loading=false;
-    })
-  }
-  postModif(){
-    this.loading=true;
-    this.modifServ.postModif(this.modif).subscribe(data=>{
-      this.loading=false;
-    })
+
+  getAllClient() {
+    this.clientServ.getAllClient().subscribe(data => {
+      this.clients = data;
+      console.log(data);
+    });
   }
 
+  deleteClient(id: bigint) {
+    this.clientServ.deleteClient(id).subscribe(data => {
+      window.location.reload();
+    });
+  }
+
+  postMark(mark:Mark) {
+    this.loading = true;
+    this.markServ.postMark(mark).subscribe(data => {
+      this.loading = false;
+    },err=>{
+      this.err=err.message
+    });
+  }
+
+  postModel() {
+    this.loading = true;
+    this.modelServ.postModel(this.model).subscribe(data => {
+      this.loading = false;
+    });
+  }
+
+  getAllModel() {
+    this.modelServ.getAllModel().subscribe(data => {
+      this.modelArr = data;
+      console.log(data);
+    });
+  }
+
+  postGen() {
+    this.loading = true;
+    this.genServ.postGen(this.generation).subscribe(data => {
+      this.loading = false;
+    });
+  }
+
+  postModif() {
+    this.loading = true;
+    this.modifServ.postModif(this.modif).subscribe(data => {
+      this.loading = false;
+    });
+  }
+
+  postCompl() {
+    this.complServ.postCompl(this.compl).subscribe();
+  }
+
+  getAllCompl() {
+    this.complServ.getComplAll().subscribe(data => {
+      this.complArr = data;
+    });
+  }
+
+  getAllTrans() {
+    this.transServ.getAllTransmission().subscribe(data => {
+      this.transArr = data;
+    });
+  }
+
+  setSizes() {
+    this.sizeServ.postAdvert(this.size).subscribe();
+  }
+
+  onSubmitMark() {
+    this.mark.image='/'
+    console.log(this.mark);
+    this.postMark(this.mark)
+  }
 }

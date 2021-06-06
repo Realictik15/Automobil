@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg" style="background: #ffffff" *ngIf="isLogin">
   <div class="collapse navbar-collapse"  >
-    <ul class="navbar-nav " style="margin-left: 68%">
+    <div class="logo"  style="margin-left: 5%">WithoutBrakes</div>
+    <div style="margin-top: 10px;margin-left: 10px;border-bottom: 1px solid #2F496E">beta</div>
+    <ul class="navbar-nav " style="margin-left: 50%">
       <li *ngIf="user.role=='ADMIN'" class="nav-item" style="margin-right: 2%;">
         <a style="color: #F4EADE;" class="nav-link" [routerLink]="['/admin']" >
           <img class="assets" src="assets/78948.png">
@@ -38,13 +40,13 @@
           <a class="nav-link">Объявления</a>
           <div class="dropdown-content">
             <a [routerLink]="['/adverts/cars']">Легковые</a>
-            <a [routerLink]="['/adverts/truks']">Грузовые</a>
-            <a [routerLink]="['/adverts/motorcycles']">Мотоциклы</a>
+<!--            <a [routerLink]="['#']">Грузовые</a>-->
+<!--            <a [routerLink]="['/adverts/motorcycles']">Мотоциклы</a>-->
           </div>
         </div>
       </li>
       <li class="nav-item">
-        <a   style="color: #F4EADE;" class="nav-link" [routerLink]="['/']">Обзоры</a>
+        <a   style="color: #F4EADE;" class="nav-link" [routerLink]="['/reviews']">Обзоры</a>
       </li>
     </ul>
       <a class="btn one"  [routerLink]="['/login']" *ngIf="!isLogin">Войти</a>

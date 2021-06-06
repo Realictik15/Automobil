@@ -13,6 +13,7 @@ import {ModelsService} from '../service/models.service';
 import {TokenStorageService} from '../service/token-storage.service';
 import {FormAdvert} from '../model/formAdvert';
 import {AdvertismentServiceService} from '../service/advertisment-service.service';
+import {errorObject} from 'rxjs/internal-compatibility';
 
 @Component({
   selector: 'app-add-advert',
@@ -156,12 +157,11 @@ export class AddAdvertComponent implements OnInit {
     console.log(resformData.get('carbodyTitle'));
     resformData.forEach(element => console.log(element));
     this.advertSev.postAdvert(resformData).subscribe(res => {
-      console.log(res);
-    }, error => {
-      console.log(error
-      );
-    }
-  )
+        window.location.reload()
+      }, error => {
+        this.err = error.message;
+      }
+    )
     ;
 
   }

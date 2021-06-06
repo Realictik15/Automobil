@@ -36,7 +36,7 @@ export class RegistrComponent implements OnInit {
     this.authService.register(this.client).subscribe(
       data => {
         this.loading = false;
-        location.href = '/profile';
+        location.href = '/login';
       }, error => {
         this.err = error.error.message;
         console.log(error);

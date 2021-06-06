@@ -7,6 +7,9 @@ import {SizesService} from '../service/sizes.service';
 import {CarbodyService} from '../service/carbody.service';
 import {Carbody} from '../model/carbody';
 import {Sizes} from '../model/sizes';
+import {ComplSetsService} from '../service/compl-sets.service';
+import {ModificationService} from '../service/modification-service';
+import {CompleSet} from '../model/compleSet';
 
 @Component({
   selector: 'app-characteristics',
@@ -19,6 +22,7 @@ export class CharacteristicsComponent implements OnInit {
   generation: Generation;
   modifications: Modification[];
   curentModif: Modification;
+  complesets:CompleSet[];
   carbody: Carbody;
   size: Sizes;
   title: string;
@@ -30,7 +34,7 @@ export class CharacteristicsComponent implements OnInit {
   listBrakes: string[];
   arrClass = [false, false, false, false];
 
-  constructor(private route: ActivatedRoute, private genSev: GenerationsService, private sizeSev: SizesService, private carBodySev: CarbodyService) {
+  constructor(private modifServ:ModificationService ,private route: ActivatedRoute, private genSev: GenerationsService, private sizeSev: SizesService, private carBodySev: CarbodyService) {
   }
 
   ngOnInit(): void {
@@ -76,6 +80,7 @@ export class CharacteristicsComponent implements OnInit {
     }
 
   }
+
 
   getGeneration(): void {
     this.genSev.getGen(this.id).subscribe(data => {

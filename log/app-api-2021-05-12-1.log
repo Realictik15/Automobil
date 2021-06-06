@@ -1,0 +1,14 @@
+[INFO ] 2021-05-12 07:53:36.374 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-12 08:19:59.773 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-12 08:23:24.700 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-12 08:24:17.747 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-12 08:25:45.949 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-12 08:26:07.740 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-12 08:26:22.760 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-12 08:28:25.892 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-12 08:28:56.594 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-12 08:30:05.763 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-12 08:30:20.241 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-12 08:31:55.333 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-12 11:15:07.679 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-12 23:54:59.850 [main] CacheSupport - in postconstruct

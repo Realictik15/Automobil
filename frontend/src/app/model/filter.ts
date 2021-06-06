@@ -7,6 +7,6 @@ export class Filter {
   gearBox: string;
   mileage: number;
   priceStart: bigint;
-  priceEndL: bigint;
+  priceEnd: bigint;
 }
 

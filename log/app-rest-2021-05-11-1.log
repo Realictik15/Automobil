@@ -1,0 +1,5 @@
+[INFO ] 2021-05-11 08:13:21.690 [http-nio-8881-exec-5] AdvertismentController - received report id:1, vin:2C4GJ453XYR693697
+[INFO ] 2021-05-11 08:14:50.724 [http-nio-8881-exec-1] AdvertismentController - received report id:52, vin:XW8ZZZ7PZDG005302
+[INFO ] 2021-05-11 08:15:15.998 [http-nio-8881-exec-2] AdvertismentController - received report id:52, vin:XW8ZZZ7PZDG005302
+[INFO ] 2021-05-11 08:15:30.502 [http-nio-8881-exec-1] AdvertismentController - received report id:46, vin:WP1ZZZ95ZJLB02581
+[INFO ] 2021-05-11 08:16:03.754 [http-nio-8881-exec-5] AdvertismentController - received report id:41, vin:4F2YU08102KM26251

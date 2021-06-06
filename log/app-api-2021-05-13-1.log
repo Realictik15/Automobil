@@ -1,0 +1,50 @@
+[INFO ] 2021-05-13 00:06:12.442 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:10:12.300 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:20:21.681 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:20:49.577 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-13 00:21:10.165 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:22:01.520 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:22:50.315 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-13 00:23:03.914 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:23:37.500 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-13 00:25:01.505 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:25:47.044 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-13 00:26:50.786 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:27:54.643 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-13 00:36:45.707 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:40:10.076 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:43:57.504 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:46:17.004 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-13 00:46:27.098 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:49:47.505 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-13 00:50:00.548 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 00:53:53.181 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 01:00:13.836 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 08:50:46.757 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 10:07:21.028 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 15:50:16.928 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 15:57:27.302 [http-nio-8881-exec-6] ApiServiceImpl - in getTaxiInfo vinWP1ZZZ95ZJLB02581
+[INFO ] 2021-05-13 15:57:27.322 [http-nio-8881-exec-6] ReportApi - Receiving data from an external api:https://ygibdd.ru/parserapi/v1/gibdd/, vin:WP1ZZZ95ZJLB02581 
+[INFO ] 2021-05-13 15:57:56.155 [http-nio-8881-exec-4] ApiServiceImpl - in getTaxiInfo vinXW8ZZZ7PZDG005302
+[INFO ] 2021-05-13 15:58:01.857 [http-nio-8881-exec-9] ApiServiceImpl - in getTaxiInfo vin2C4GJ453XYR693697
+[INFO ] 2021-05-13 15:58:08.499 [http-nio-8881-exec-10] ApiServiceImpl - in getTaxiInfo vinWP1ZZZ95ZJLB02581
+[INFO ] 2021-05-13 15:59:20.048 [http-nio-8881-exec-2] ApiServiceImpl - in getTaxiInfo vinWP1ZZZ95ZJLB02581
+[INFO ] 2021-05-13 15:59:24.256 [http-nio-8881-exec-4] ApiServiceImpl - in getTaxiInfo vinWAGGJ453A67693134
+[INFO ] 2021-05-13 15:59:24.256 [http-nio-8881-exec-4] ReportApi - Receiving data from an external api:https://ygibdd.ru/parserapi/v1/gibdd/, vin:WAGGJ453A67693134 
+[INFO ] 2021-05-13 15:59:42.559 [http-nio-8881-exec-10] ApiServiceImpl - in getTaxiInfo vin2C4GJ453XYR693697
+[INFO ] 2021-05-13 16:16:39.476 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 16:17:49.184 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-13 16:17:59.937 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 16:19:03.548 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 16:23:34.818 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-13 16:23:46.528 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 16:24:23.268 [SpringContextShutdownHook] CacheSupport - in PreDestroy
+[INFO ] 2021-05-13 16:24:34.438 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 20:28:06.576 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-13 20:45:06.830 [http-nio-8881-exec-3] ApiServiceImpl - in getTaxiInfo vin2C4GJ453XYR693697
+[INFO ] 2021-05-13 20:46:17.605 [http-nio-8881-exec-7] ApiServiceImpl - in getTaxiInfo vin2C4GJ453XYR693697
+[INFO ] 2021-05-13 20:46:22.219 [http-nio-8881-exec-1] ApiServiceImpl - in getTaxiInfo vinWAGAJ453A56693541
+[INFO ] 2021-05-13 20:46:22.222 [http-nio-8881-exec-1] ReportApi - Receiving data from an external api:https://ygibdd.ru/parserapi/v1/gibdd/, vin:WAGAJ453A56693541 
+[INFO ] 2021-05-13 20:46:49.681 [http-nio-8881-exec-2] ApiServiceImpl - in getTaxiInfo vinXW8ZZZ7PZDG005302
+[INFO ] 2021-05-13 20:47:08.581 [http-nio-8881-exec-8] ApiServiceImpl - in getTaxiInfo vinXW8ZZZ7PZDG005302
+[INFO ] 2021-05-13 22:45:48.995 [main] CacheSupport - in postconstruct

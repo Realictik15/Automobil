@@ -1,1 +1,101 @@
+<div class="contents">
+  <div class="custcont">
+    <div class="row">
+      <div class="col">
+        <div class="row" style="margin: 5px">
+          <div class="col-2">
+            ID
+          </div>
+          <div class="col-2">
+            ИМЯ
+          </div>
+          <div class="col-3">
+            Login
+          </div>
+          <div class="col-2">
+            Email
+          </div>
 
+        </div>
+        <div *ngFor="let client of clients">
+          <div class="row" style="margin: 5px;border: #2F496E solid 1px">
+            <div class="col-2">
+              {{client.idUser}}
+            </div>
+            <div class="col-2">
+              {{client.firstName}}
+            </div>
+            <div class="col-3">
+              {{client.emale}}
+            </div>
+            <div class="col-2">
+              {{client.login}}
+            </div>
+            <div class="col-2">
+              <button class="btn btn-danger" (click)="deleteClient(client.idUser)">
+                Удалить
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="custcont">
+    <div class="row">
+      <div class="col" style="text-align: center">Добавление новой марки</div>
+    </div>
+    <form (ngSubmit)="onSubmitMark()" #createForm="ngForm">
+      <div class="row" style="margin-top: 10px">
+        <div class="col-2" style=" margin-left: 30px">
+          Страна
+        </div>
+        <div class="col-5">
+          <input type="text" class="form-control"
+                 placeholder="Страна"
+                 [(ngModel)]="mark.countriesDto"
+                 required
+                 name="country"
+                 #country="ngModel">
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px">
+        <div class="col-2" style=" margin-left: 30px">
+          Название
+        </div>
+        <div class="col-5">
+          <input type="text" class="form-control"
+                 placeholder="Название"
+                 [(ngModel)]="mark.title"
+                 required
+                 name="title"
+                 #title="ngModel">
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px">
+        <div class="col-2" style=" margin-left: 30px">
+          Информация
+        </div>
+        <div class="col-5">
+          <input type="text" class="form-control"
+                 placeholder="Информация о марке"
+                 [(ngModel)]="mark.info"
+                 required
+                 name="info"
+                 #info="ngModel">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button style="margin-left: 50%;margin-top: 5px;margin-bottom: 5px" type="submit"
+                  [disabled]="!createForm.valid" class="btn btn-primary b">Создать
+          </button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

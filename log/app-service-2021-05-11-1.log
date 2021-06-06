@@ -1,0 +1,14 @@
+[INFO ] 2021-05-11 08:13:01.631 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 10 
+[INFO ] 2021-05-11 08:13:18.852 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 10 
+[INFO ] 2021-05-11 08:13:21.671 [http-nio-8881-exec-5] AdvertServiceImpl - History of car received with vin of car:2C4GJ453XYR693697
+[INFO ] 2021-05-11 08:14:00.648 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 10 
+[INFO ] 2021-05-11 08:14:47.381 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 10 
+[INFO ] 2021-05-11 08:14:50.723 [http-nio-8881-exec-1] AdvertServiceImpl - History of car received with vin of car:XW8ZZZ7PZDG005302
+[INFO ] 2021-05-11 08:15:15.998 [http-nio-8881-exec-2] AdvertServiceImpl - History of car received with vin of car:XW8ZZZ7PZDG005302
+[INFO ] 2021-05-11 08:15:17.279 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 10 
+[INFO ] 2021-05-11 08:15:20.016 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 10 
+[INFO ] 2021-05-11 08:15:30.502 [http-nio-8881-exec-1] AdvertServiceImpl - History of car received with vin of car:WP1ZZZ95ZJLB02581
+[INFO ] 2021-05-11 08:15:38.497 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 10 
+[INFO ] 2021-05-11 08:15:41.021 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 10 
+[INFO ] 2021-05-11 08:16:03.754 [http-nio-8881-exec-5] AdvertServiceImpl - History of car received with vin of car:4F2YU08102KM26251
+[INFO ] 2021-05-11 08:16:24.905 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 10 

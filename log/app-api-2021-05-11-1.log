@@ -1,0 +1,8 @@
+[INFO ] 2021-05-11 08:11:49.831 [main] CacheSupport - in postconstruct
+[INFO ] 2021-05-11 08:13:21.589 [http-nio-8881-exec-5] ApiServiceImpl - in getTaxiInfo vin2C4GJ453XYR693697
+[INFO ] 2021-05-11 08:14:50.707 [http-nio-8881-exec-1] ApiServiceImpl - in getTaxiInfo vinXW8ZZZ7PZDG005302
+[INFO ] 2021-05-11 08:15:15.991 [http-nio-8881-exec-2] ApiServiceImpl - in getTaxiInfo vinXW8ZZZ7PZDG005302
+[INFO ] 2021-05-11 08:15:26.100 [http-nio-8881-exec-1] ApiServiceImpl - in getTaxiInfo vinWP1ZZZ95ZJLB02581
+[INFO ] 2021-05-11 08:15:26.109 [http-nio-8881-exec-1] ReportApi - Receiving data from an external api:https://ygibdd.ru/parserapi/v1/gibdd/, vin:WP1ZZZ95ZJLB02581 
+[INFO ] 2021-05-11 08:15:47.393 [http-nio-8881-exec-5] ApiServiceImpl - in getTaxiInfo vin4F2YU08102KM26251
+[INFO ] 2021-05-11 08:15:47.403 [http-nio-8881-exec-5] ReportApi - Receiving data from an external api:https://ygibdd.ru/parserapi/v1/gibdd/, vin:4F2YU08102KM26251 

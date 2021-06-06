@@ -1,0 +1,346 @@
+[INFO ] 2021-05-14 09:07:44.466 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 09:19:40.538 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 09:22:57.805 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:46:11.293 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:46:28.346 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:46:43.283 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:46:55.362 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 1 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:46:58.143 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:46:58.592 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:46:59.212 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:50:51.698 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 1 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:51:03.756 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:51:04.471 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:51:05.777 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:51:17.284 [http-nio-8881-exec-10] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:51:17.294 [http-nio-8881-exec-10] AdvertServiceImpl - Filtering by main criteria: mark:Lexus, model:all, mileage-1
+[INFO ] 2021-05-14 10:51:30.472 [http-nio-8881-exec-2] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:51:30.478 [http-nio-8881-exec-2] AdvertServiceImpl - Filtering by main criteria: mark:Lexus, model:RХ, mileage-1
+[INFO ] 2021-05-14 10:51:34.858 [http-nio-8881-exec-3] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:51:34.862 [http-nio-8881-exec-3] AdvertServiceImpl - Filtering by main criteria: mark:Lexus, model:ES, mileage-1
+[INFO ] 2021-05-14 10:51:47.810 [http-nio-8881-exec-4] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:51:47.822 [http-nio-8881-exec-4] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:52:12.061 [http-nio-8881-exec-5] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:52:12.071 [http-nio-8881-exec-5] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:52:15.404 [http-nio-8881-exec-9] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:52:15.423 [http-nio-8881-exec-9] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:52:17.039 [http-nio-8881-exec-10] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:52:17.047 [http-nio-8881-exec-10] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:52:33.188 [http-nio-8881-exec-2] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:52:33.211 [http-nio-8881-exec-2] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:52:36.377 [http-nio-8881-exec-1] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:52:36.394 [http-nio-8881-exec-1] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:52:38.159 [http-nio-8881-exec-4] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:52:38.168 [http-nio-8881-exec-4] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:52:44.051 [http-nio-8881-exec-5] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:52:44.060 [http-nio-8881-exec-5] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:52:45.034 [http-nio-8881-exec-9] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:52:45.039 [http-nio-8881-exec-9] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:52:46.903 [http-nio-8881-exec-10] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:52:46.911 [http-nio-8881-exec-10] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:52:58.061 [http-nio-8881-exec-2] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:52:58.066 [http-nio-8881-exec-2] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:53:09.996 [http-nio-8881-exec-1] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:53:09.999 [http-nio-8881-exec-1] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage30000
+[INFO ] 2021-05-14 10:53:32.461 [http-nio-8881-exec-7] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:53:32.470 [http-nio-8881-exec-7] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:53:45.896 [http-nio-8881-exec-8] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:53:45.903 [http-nio-8881-exec-8] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:53:48.696 [http-nio-8881-exec-10] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:53:48.699 [http-nio-8881-exec-10] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:53:49.321 [http-nio-8881-exec-6] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:53:49.327 [http-nio-8881-exec-6] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:53:50.039 [http-nio-8881-exec-2] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:53:50.043 [http-nio-8881-exec-2] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:53:51.601 [http-nio-8881-exec-1] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:53:51.607 [http-nio-8881-exec-1] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:53:52.255 [http-nio-8881-exec-4] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:53:52.258 [http-nio-8881-exec-4] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:53:54.824 [http-nio-8881-exec-7] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:53:54.830 [http-nio-8881-exec-7] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:54:00.836 [http-nio-8881-exec-8] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:54:00.837 [http-nio-8881-exec-8] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:54:04.251 [http-nio-8881-exec-9] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:54:04.257 [http-nio-8881-exec-9] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:54:11.980 [http-nio-8881-exec-6] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:54:11.983 [http-nio-8881-exec-6] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:54:26.588 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:54:32.444 [http-nio-8881-exec-6] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:54:32.445 [http-nio-8881-exec-6] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:54:35.415 [http-nio-8881-exec-9] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:54:37.559 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 1 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:54:38.086 [http-nio-8881-exec-4] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:54:42.520 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:54:51.652 [http-nio-8881-exec-4] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:54:51.653 [http-nio-8881-exec-4] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:54:54.541 [http-nio-8881-exec-3] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 10:54:54.547 [http-nio-8881-exec-3] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 10:55:11.018 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement received with id:1
+[INFO ] 2021-05-14 10:55:16.509 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:55:18.552 [http-nio-8881-exec-5] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:55:19.183 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:55:21.724 [http-nio-8881-exec-9] AdvertServiceImpl - Advertisement received with id:53
+[INFO ] 2021-05-14 10:56:42.142 [http-nio-8881-exec-2] AdvertServiceImpl - Advertisement received with id:53
+[INFO ] 2021-05-14 10:56:42.522 [http-nio-8881-exec-9] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:57:00.706 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:57:07.467 [http-nio-8881-exec-7] AdvertServiceImpl - Advertisement received with id:53
+[INFO ] 2021-05-14 10:59:36.621 [http-nio-8881-exec-3] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:59:42.177 [http-nio-8881-exec-4] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:59:44.904 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 1 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:59:45.238 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:59:47.415 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement received with id:52
+[INFO ] 2021-05-14 10:59:51.929 [http-nio-8881-exec-6] AdvertServiceImpl - Advertisement received with id:52
+[INFO ] 2021-05-14 10:59:53.483 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 10:59:56.692 [http-nio-8881-exec-6] AdvertServiceImpl - Advertisement received with id:2
+[INFO ] 2021-05-14 11:00:13.964 [http-nio-8881-exec-6] AdvertServiceImpl - Advertisement received with id:2
+[INFO ] 2021-05-14 11:00:14.386 [http-nio-8881-exec-3] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:00:16.957 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 1 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:00:21.050 [http-nio-8881-exec-8] AdvertServiceImpl - Advertisement received with id:5
+[INFO ] 2021-05-14 11:00:30.425 [http-nio-8881-exec-7] AdvertServiceImpl - Advertisement received with id:5
+[INFO ] 2021-05-14 11:00:31.048 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:00:47.508 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:40:00.424 [http-nio-8881-exec-5] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:46:03.242 [http-nio-8881-exec-5] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:46:06.753 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:46:11.143 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:46:24.947 [http-nio-8881-exec-8] AdvertServiceImpl - Advertisement received with id:1
+[INFO ] 2021-05-14 11:46:34.021 [http-nio-8881-exec-8] AdvertServiceImpl - Advertisement received with id:1
+[INFO ] 2021-05-14 11:46:40.413 [http-nio-8881-exec-3] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:46:41.479 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:46:47.434 [http-nio-8881-exec-9] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:48:44.274 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:51:19.627 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:51:24.161 [http-nio-8881-exec-6] AdvertServiceImpl - Advertisement received with id:1
+[INFO ] 2021-05-14 11:53:17.279 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:53:19.487 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:53:21.423 [http-nio-8881-exec-1] AdvertServiceImpl - Advertisement received with id:53
+[INFO ] 2021-05-14 11:53:38.817 [http-nio-8881-exec-1] AdvertServiceImpl - Advertisement received with id:53
+[INFO ] 2021-05-14 11:53:39.405 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:53:46.220 [http-nio-8881-exec-6] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 11:53:46.225 [http-nio-8881-exec-6] AdvertServiceImpl - Filtering by main criteria: mark:Lexus, model:all, mileage-1
+[INFO ] 2021-05-14 11:53:50.050 [http-nio-8881-exec-10] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 11:53:50.054 [http-nio-8881-exec-10] AdvertServiceImpl - Filtering by main criteria: mark:Lexus, model:RХ, mileage-1
+[INFO ] 2021-05-14 11:53:52.149 [http-nio-8881-exec-5] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 11:53:52.158 [http-nio-8881-exec-5] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 11:53:55.199 [http-nio-8881-exec-8] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 11:53:55.206 [http-nio-8881-exec-8] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 11:54:01.382 [http-nio-8881-exec-7] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 11:54:01.391 [http-nio-8881-exec-7] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 11:54:05.964 [http-nio-8881-exec-2] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 11:54:05.972 [http-nio-8881-exec-2] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 11:54:18.056 [http-nio-8881-exec-3] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 11:54:18.063 [http-nio-8881-exec-3] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage40000
+[INFO ] 2021-05-14 11:54:28.487 [http-nio-8881-exec-10] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 11:54:28.489 [http-nio-8881-exec-10] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage40000
+[INFO ] 2021-05-14 11:54:37.679 [http-nio-8881-exec-5] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 11:54:37.683 [http-nio-8881-exec-5] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage40000
+[INFO ] 2021-05-14 11:54:40.455 [http-nio-8881-exec-2] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 11:54:40.463 [http-nio-8881-exec-2] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 11:57:36.326 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:57:38.261 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:57:46.080 [http-nio-8881-exec-9] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 11:57:58.755 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement received with id:1
+[INFO ] 2021-05-14 11:58:01.021 [http-nio-8881-exec-10] AdvertServiceImpl - Advertisement received with id:2
+[INFO ] 2021-05-14 11:58:03.565 [http-nio-8881-exec-4] AdvertServiceImpl - Advertisement received with id:2
+[INFO ] 2021-05-14 11:58:09.748 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:02:56.907 [http-nio-8881-exec-7] AdvertServiceImpl - Files saved, count of files 3
+[INFO ] 2021-05-14 12:02:56.930 [http-nio-8881-exec-7] AdvertServiceImpl - Advertisement saved
+[INFO ] 2021-05-14 12:03:09.058 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement received with id:56
+[INFO ] 2021-05-14 12:03:27.615 [http-nio-8881-exec-9] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 13 
+[INFO ] 2021-05-14 12:03:29.280 [http-nio-8881-exec-5] AdvertServiceImpl - Received a page of all adverttismetns, page: 4 - size: 3, totalElements: 13 
+[INFO ] 2021-05-14 12:03:48.372 [http-nio-8881-exec-7] AdvertServiceImpl - Advertisement received with id:56
+[INFO ] 2021-05-14 12:04:57.265 [http-nio-8881-exec-9] AdvertServiceImpl - Advertisement received with id:56
+[INFO ] 2021-05-14 12:05:05.522 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement with id:56 update
+[INFO ] 2021-05-14 12:05:07.512 [http-nio-8881-exec-8] AdvertServiceImpl - Advertisement received with id:56
+[INFO ] 2021-05-14 12:05:11.217 [http-nio-8881-exec-9] AdvertServiceImpl - Advertisement received with id:56
+[INFO ] 2021-05-14 12:05:29.595 [http-nio-8881-exec-4] AdvertServiceImpl - Advertisement with id:56 update
+[INFO ] 2021-05-14 12:05:32.757 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:05:35.894 [http-nio-8881-exec-9] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:05:44.608 [http-nio-8881-exec-3] AdvertServiceImpl - Advertisement with id:56 update
+[INFO ] 2021-05-14 12:06:00.720 [http-nio-8881-exec-2] AdvertServiceImpl - Advertisement with id:56 update
+[INFO ] 2021-05-14 12:06:13.860 [http-nio-8881-exec-7] AdvertServiceImpl - Advertisement with id:56 delete by user
+[INFO ] 2021-05-14 12:06:26.680 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:08:05.961 [http-nio-8881-exec-5] AdvertServiceImpl - History of car received with vin of car:2C4GJ453XYR693697
+[INFO ] 2021-05-14 12:09:53.777 [http-nio-8881-exec-4] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:09:55.144 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:09:57.934 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:09:59.665 [http-nio-8881-exec-2] AdvertServiceImpl - History of car received with vin of car:XW8ZZZ7PZDG005302
+[INFO ] 2021-05-14 12:10:23.174 [http-nio-8881-exec-5] AdvertServiceImpl - History of car received with vin of car:XW8ZZZ7PZDG005302
+[INFO ] 2021-05-14 12:10:29.087 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:11:05.146 [http-nio-8881-exec-4] AdvertServiceImpl - History of car received with vin of car:WAGGJ453A67693134
+[INFO ] 2021-05-14 12:11:12.689 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:11:14.781 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:12:13.424 [http-nio-8881-exec-2] AdvertServiceImpl - History of car received with vin of car:JTHCH96S960012271
+[INFO ] 2021-05-14 12:12:33.652 [http-nio-8881-exec-6] AdvertServiceImpl - Advertisement received with id:56
+[INFO ] 2021-05-14 12:12:37.562 [http-nio-8881-exec-1] AdvertServiceImpl - History of car received with vin of car:JTHCH96S960012271
+[INFO ] 2021-05-14 12:12:38.520 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:12:40.011 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:12:42.088 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 1 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:12:43.635 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:12:55.902 [http-nio-8881-exec-6] AdvertServiceImpl - History of car received with vin of car:WP1ZZZ95ZJLB02581
+[INFO ] 2021-05-14 12:13:04.959 [http-nio-8881-exec-2] AdvertServiceImpl - Advertisement received with id:55
+[INFO ] 2021-05-14 12:13:07.653 [http-nio-8881-exec-8] AdvertServiceImpl - History of car received with vin of car:WP1ZZZ95ZJLB02581
+[INFO ] 2021-05-14 12:13:08.978 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:13:17.677 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:13:21.269 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:13:41.308 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:13:47.849 [http-nio-8881-exec-3] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:13:48.973 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:13:50.012 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 12 
+[INFO ] 2021-05-14 12:14:15.130 [http-nio-8881-exec-1] AdvertServiceImpl - Advertisement with id:56 deleted
+[INFO ] 2021-05-14 12:14:19.111 [http-nio-8881-exec-9] AdvertServiceImpl - Advertisement with id:55 deleted
+[INFO ] 2021-05-14 12:14:29.132 [http-nio-8881-exec-1] AdvertServiceImpl - Advertisement with id:28 update
+[INFO ] 2021-05-14 12:15:43.729 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 12:15:45.990 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:14:02.945 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:14:37.900 [http-nio-8881-exec-3] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:17:37.800 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:18:15.035 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 1 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:18:17.413 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:18:19.019 [http-nio-8881-exec-5] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:18:21.288 [http-nio-8881-exec-9] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:19:00.190 [http-nio-8881-exec-1] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 16:19:00.205 [http-nio-8881-exec-1] AdvertServiceImpl - Filtering by main criteria: mark:Lexus, model:all, mileage-1
+[INFO ] 2021-05-14 16:19:18.519 [http-nio-8881-exec-3] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 16:19:18.525 [http-nio-8881-exec-3] AdvertServiceImpl - Filtering by main criteria: mark:Lexus, model:RХ, mileage-1
+[INFO ] 2021-05-14 16:19:21.137 [http-nio-8881-exec-9] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 16:19:21.149 [http-nio-8881-exec-9] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 16:19:40.234 [http-nio-8881-exec-2] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 16:19:40.251 [http-nio-8881-exec-2] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 16:19:45.940 [http-nio-8881-exec-6] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 16:19:45.952 [http-nio-8881-exec-6] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 16:19:55.176 [http-nio-8881-exec-8] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 16:19:55.186 [http-nio-8881-exec-8] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 16:19:59.775 [http-nio-8881-exec-1] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 16:19:59.785 [http-nio-8881-exec-1] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 16:20:04.407 [http-nio-8881-exec-3] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 16:20:04.418 [http-nio-8881-exec-3] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 16:20:12.887 [http-nio-8881-exec-7] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 16:20:12.889 [http-nio-8881-exec-7] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 16:20:21.185 [http-nio-8881-exec-10] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 16:20:21.196 [http-nio-8881-exec-10] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 16:20:45.182 [http-nio-8881-exec-4] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 16:20:45.186 [http-nio-8881-exec-4] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage30000
+[INFO ] 2021-05-14 16:20:52.059 [http-nio-8881-exec-1] AdvertServiceImpl - Advertisement received with id:46
+[INFO ] 2021-05-14 16:22:16.116 [http-nio-8881-exec-1] AdvertServiceImpl - Advertisement received with id:46
+[INFO ] 2021-05-14 16:22:17.507 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:22:23.060 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 1 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:22:27.367 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement received with id:40
+[INFO ] 2021-05-14 16:22:39.572 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement received with id:40
+[INFO ] 2021-05-14 16:22:40.703 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:22:43.991 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement received with id:1
+[INFO ] 2021-05-14 16:22:59.506 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:23:46.103 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:23:59.491 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:24:00.897 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:24:08.437 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:24:19.126 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement received with id:1
+[INFO ] 2021-05-14 16:24:23.703 [http-nio-8881-exec-9] AdvertServiceImpl - Advertisement received with id:1
+[INFO ] 2021-05-14 16:24:29.316 [http-nio-8881-exec-3] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:24:47.000 [http-nio-8881-exec-4] AdvertServiceImpl - Advertisement received with id:41
+[INFO ] 2021-05-14 16:25:24.951 [http-nio-8881-exec-8] AdvertServiceImpl - Advertisement with id:41 update
+[INFO ] 2021-05-14 16:25:26.370 [http-nio-8881-exec-9] AdvertServiceImpl - Advertisement with id:41 update
+[INFO ] 2021-05-14 16:25:46.754 [http-nio-8881-exec-3] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:27:26.123 [http-nio-8881-exec-10] AdvertServiceImpl - History of car received with vin of car:2C4GJ453XYR693697
+[INFO ] 2021-05-14 16:27:36.360 [http-nio-8881-exec-4] AdvertServiceImpl - Advertisement received with id:28
+[INFO ] 2021-05-14 16:27:49.884 [http-nio-8881-exec-9] AdvertServiceImpl - History of car received with vin of car:2C4GJ453XYR693697
+[INFO ] 2021-05-14 16:27:52.664 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:27:59.836 [http-nio-8881-exec-8] AdvertServiceImpl - History of car received with vin of car:2C4GJ453XYR693697
+[INFO ] 2021-05-14 16:28:00.750 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement received with id:28
+[INFO ] 2021-05-14 16:28:02.957 [http-nio-8881-exec-7] AdvertServiceImpl - History of car received with vin of car:2C4GJ453XYR693697
+[INFO ] 2021-05-14 16:28:03.492 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:28:08.146 [http-nio-8881-exec-1] AdvertServiceImpl - History of car received with vin of car:2C4GJ453XYR693697
+[INFO ] 2021-05-14 16:28:47.501 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:28:55.319 [http-nio-8881-exec-4] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:28:58.820 [http-nio-8881-exec-6] AdvertServiceImpl - History of car received with vin of car:XW8ZZZ7PZDG005302
+[INFO ] 2021-05-14 16:29:19.881 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:29:21.817 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:29:25.619 [http-nio-8881-exec-2] AdvertServiceImpl - History of car received with vin of car:XW8ZZZ7PZDG005302
+[INFO ] 2021-05-14 16:29:55.533 [http-nio-8881-exec-10] AdvertServiceImpl - History of car received with vin of car:XW8ZZZ7PZDG005302
+[INFO ] 2021-05-14 16:29:57.450 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:29:59.394 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:30:03.765 [http-nio-8881-exec-2] AdvertServiceImpl - History of car received with vin of car:WP1ZZZ95ZJLB02581
+[INFO ] 2021-05-14 16:30:10.045 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:30:11.462 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:30:54.455 [http-nio-8881-exec-8] AdvertServiceImpl - History of car received with vin of car:4F2YU08102KM26251
+[INFO ] 2021-05-14 16:31:21.822 [http-nio-8881-exec-6] AdvertServiceImpl - History of car received with vin of car:4F2YU08102KM26251
+[INFO ] 2021-05-14 16:31:25.989 [http-nio-8881-exec-9] AdvertServiceImpl - History of car received with vin of car:4F2YU08102KM26251
+[INFO ] 2021-05-14 16:31:31.971 [http-nio-8881-exec-3] AdvertServiceImpl - History of car received with vin of car:4F2YU08102KM26251
+[INFO ] 2021-05-14 16:31:51.879 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:31:53.904 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 2 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:32:09.521 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:32:24.525 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:32:26.077 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:33:04.196 [http-nio-8881-exec-4] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 16:33:14.734 [http-nio-8881-exec-2] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:05:58.727 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:06:02.090 [http-nio-8881-exec-3] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:06:02.117 [http-nio-8881-exec-3] AdvertServiceImpl - Filtering by main criteria: mark:AUDI, model:all, mileage-1
+[INFO ] 2021-05-14 17:06:13.927 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:06:14.828 [http-nio-8881-exec-10] AdvertServiceImpl - History of car received with vin of car:2C4GJ453XYR693697
+[INFO ] 2021-05-14 17:06:16.150 [http-nio-8881-exec-3] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:06:17.410 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:20:11.642 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:20:37.489 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:25:10.271 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:25:57.849 [http-nio-8881-exec-5] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:25:58.751 [http-nio-8881-exec-10] AdvertServiceImpl - History of car received with vin of car:2C4GJ453XYR693697
+[INFO ] 2021-05-14 17:26:01.137 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:26:02.606 [http-nio-8881-exec-4] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:35:17.062 [http-nio-8881-exec-4] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:35:46.853 [http-nio-8881-exec-1] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:35:49.107 [http-nio-8881-exec-4] AdvertServiceImpl - Advertisement received with id:1
+[INFO ] 2021-05-14 17:36:30.671 [http-nio-8881-exec-3] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:36:33.373 [http-nio-8881-exec-4] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:36:36.273 [http-nio-8881-exec-7] AdvertServiceImpl - Advertisement received with id:53
+[INFO ] 2021-05-14 17:36:47.487 [http-nio-8881-exec-7] AdvertServiceImpl - Advertisement received with id:53
+[INFO ] 2021-05-14 17:36:48.450 [http-nio-8881-exec-8] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:37:22.007 [http-nio-8881-exec-2] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:37:22.019 [http-nio-8881-exec-2] AdvertServiceImpl - Filtering by main criteria: mark:Lexus, model:all, mileage-1
+[INFO ] 2021-05-14 17:37:32.604 [http-nio-8881-exec-3] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:37:32.611 [http-nio-8881-exec-3] AdvertServiceImpl - Filtering by main criteria: mark:Lexus, model:RХ, mileage-1
+[INFO ] 2021-05-14 17:37:35.115 [http-nio-8881-exec-9] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:37:35.129 [http-nio-8881-exec-9] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 17:37:38.723 [http-nio-8881-exec-4] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:37:38.734 [http-nio-8881-exec-4] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 17:37:40.455 [http-nio-8881-exec-6] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:37:40.462 [http-nio-8881-exec-6] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 17:37:42.774 [http-nio-8881-exec-7] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:37:42.785 [http-nio-8881-exec-7] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 17:37:46.938 [http-nio-8881-exec-2] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:37:46.947 [http-nio-8881-exec-2] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 17:37:54.797 [http-nio-8881-exec-4] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:37:54.799 [http-nio-8881-exec-4] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 17:37:59.665 [http-nio-8881-exec-8] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:37:59.676 [http-nio-8881-exec-8] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 17:38:07.241 [http-nio-8881-exec-7] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:38:07.246 [http-nio-8881-exec-7] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage30000
+[INFO ] 2021-05-14 17:38:18.185 [http-nio-8881-exec-2] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:38:18.187 [http-nio-8881-exec-2] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage30000
+[INFO ] 2021-05-14 17:38:22.218 [http-nio-8881-exec-9] AdvertServiceImpl - In method of filters 
+[INFO ] 2021-05-14 17:38:22.236 [http-nio-8881-exec-9] AdvertServiceImpl - Filtering by main criteria: mark:all, model:all, mileage-1
+[INFO ] 2021-05-14 17:41:58.588 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:42:11.212 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:42:13.350 [http-nio-8881-exec-4] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:42:27.113 [http-nio-8881-exec-8] AdvertServiceImpl - Advertisement received with id:1
+[INFO ] 2021-05-14 17:50:46.751 [http-nio-8881-exec-3] AdvertServiceImpl - Files saved, count of files 2
+[INFO ] 2021-05-14 17:50:46.785 [http-nio-8881-exec-3] AdvertServiceImpl - Advertisement saved
+[INFO ] 2021-05-14 17:50:55.106 [http-nio-8881-exec-10] AdvertServiceImpl - Advertisement received with id:57
+[INFO ] 2021-05-14 17:53:21.573 [http-nio-8881-exec-4] AdvertServiceImpl - Advertisement received with id:57
+[INFO ] 2021-05-14 17:53:42.270 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement with id:57 update
+[INFO ] 2021-05-14 17:53:44.340 [http-nio-8881-exec-3] AdvertServiceImpl - Advertisement received with id:57
+[INFO ] 2021-05-14 17:53:55.517 [http-nio-8881-exec-4] AdvertServiceImpl - Advertisement with id:57 update
+[INFO ] 2021-05-14 17:53:58.246 [http-nio-8881-exec-4] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:54:00.814 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 3 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:54:05.317 [http-nio-8881-exec-5] AdvertServiceImpl - Advertisement with id:57 delete by user
+[INFO ] 2021-05-14 17:54:13.577 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:54:17.035 [http-nio-8881-exec-10] AdvertServiceImpl - History of car received with vin of car:2C4GJ453XYR693697
+[INFO ] 2021-05-14 17:54:39.816 [http-nio-8881-exec-6] AdvertServiceImpl - Advertisement received with id:28
+[INFO ] 2021-05-14 17:54:45.348 [http-nio-8881-exec-1] AdvertServiceImpl - History of car received with vin of car:2C4GJ453XYR693697
+[INFO ] 2021-05-14 17:54:46.170 [http-nio-8881-exec-10] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:55:59.657 [http-nio-8881-exec-1] AdvertServiceImpl - History of car received with vin of car:WAGGJ453A67693134
+[INFO ] 2021-05-14 17:58:56.333 [http-nio-8881-exec-7] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:59:03.953 [http-nio-8881-exec-9] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 17:59:40.475 [http-nio-8881-exec-4] AdvertServiceImpl - Advertisement with id:28 deleted
+[INFO ] 2021-05-14 18:02:16.001 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 
+[INFO ] 2021-05-14 22:36:00.524 [http-nio-8881-exec-6] AdvertServiceImpl - Received a page of all adverttismetns, page: 0 - size: 3, totalElements: 11 

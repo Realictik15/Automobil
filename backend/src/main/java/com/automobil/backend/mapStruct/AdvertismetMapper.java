@@ -106,7 +106,13 @@ public abstract class AdvertismetMapper {
         advertisments.setModification(modificationMapper.toModification(advertismentDto.getModificationsDto()));
         advertisments.setIdAdvert(advertismentDto.getIdAdvert());
         advertisments.setAvailable(advertismentDto.getAvailable());
-        advertisments.setPrice(advertismentDto.getPrice());
+        if(advertismentDto.getPrice()<0){
+            advertisments.setPrice(advertismentDto.getPrice()*-1);
+        }else {
+            advertisments.setPrice(advertismentDto.getPrice());
+        }
+
+
         advertisments.setColour(advertismentDto.getColour());
         advertisments.setMileage(advertismentDto.getMileage());
         advertisments.setBroken(advertismentDto.getBroken());

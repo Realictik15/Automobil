@@ -117,6 +117,7 @@ export class AdvertismetsComponent implements OnInit {
     this.adverdServ.postAdvertFilters(this.filter, page, this.size)
       .subscribe(data => {
           this.pageAdvert = data;
+          console.log(this.filter)
           this.loading = false;
         }, error => {
           this.err = error.error.message;

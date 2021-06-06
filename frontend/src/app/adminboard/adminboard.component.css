@@ -1,0 +1,40 @@
+.contents {
+  height: 100%;
+  width: 100%;
+
+}
+
+.custcont {
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .125);
+  width: auto;
+  height: auto;
+  margin: 4% 1%;
+}
+
+.navp {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.custrow {
+  margin-bottom: 10px;
+}
+
+.custtit {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.co {
+  margin: 10px 5px;
+  border: 1px solid black;
+}
+
+.img {
+  width: 315px;
+  height: 200px;
+
+}
